@@ -13,3 +13,8 @@ buildNumber.properties
 
 **.iml
 
+**/mvnw
+**/mvnw.cmd
+**/.mvn
+**/target
+**/.gitignore
