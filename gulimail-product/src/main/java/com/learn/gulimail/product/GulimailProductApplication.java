@@ -3,6 +3,7 @@ package com.learn.gulimail.product;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 /**
  * 1. 整合Mybatis-plus
@@ -15,6 +16,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  *         2、配置Mybatis-plus
  */
 @MapperScan("com.learn.gulimail.product.dao")
+@EnableDiscoveryClient
 @SpringBootApplication
 public class GulimailProductApplication {
 
