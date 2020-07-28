@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
 import com.learn.common.utils.PageUtils;
 import com.learn.gulimail.product.entity.CategoryEntity;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -16,5 +17,12 @@ import java.util.Map;
 public interface CategoryService extends IService<CategoryEntity> {
 
     PageUtils queryPage(Map<String, Object> params);
+
+
+    /**
+     * 查询所有分类，并以树形结构组装
+     * @return 返回以树形结构组装起来的分类信息
+     */
+    List<CategoryEntity> listWithTree();
 }
 

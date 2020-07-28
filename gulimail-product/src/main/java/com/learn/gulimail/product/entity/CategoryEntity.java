@@ -1,11 +1,13 @@
 package com.learn.gulimail.product.entity;
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.learn.common.utils.TreeAble;
+import lombok.Data;
 
 import java.io.Serializable;
-import java.util.Date;
-import lombok.Data;
+import java.util.List;
 
 /**
  * 商品三级分类
@@ -16,7 +18,7 @@ import lombok.Data;
  */
 @Data
 @TableName("pms_category")
-public class CategoryEntity implements Serializable {
+public class CategoryEntity implements Serializable, TreeAble {
 	private static final long serialVersionUID = 1L;
 
 	/**
@@ -57,4 +59,29 @@ public class CategoryEntity implements Serializable {
 	 */
 	private Integer productCount;
 
+	/**
+	 * 子菜单列表
+	 */
+	@TableField(exist = false)
+	private List<CategoryEntity> childrens;
+
+	@Override
+	public Long getPId() {
+		return parentCid;
+	}
+
+	@Override
+	public void setChildrens(List childrens) {
+		this.childrens = childrens;
+	}
+
+	@Override
+	public Integer getOrder() {
+		return this.sort;
+	}
+
+	@Override
+	public Long getId() {
+		return this.catId;
+	}
 }
