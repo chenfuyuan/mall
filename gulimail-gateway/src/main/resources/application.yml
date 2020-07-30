@@ -2,11 +2,39 @@ spring:
   cloud:
     gateway:
       routes:
-        - id: baidu-route
-          uri: https://www.baidu.com
+        - id: product-route
+          uri: lb://gulimail-product
           predicates:
-            - Query=url,baidu
-        - id: qq-route
-          uri: https://www.qq.com
+            - Path=/api/product/**
+          filters:
+            - RewritePath=/api/(?<segment>/?.*),/$\{segment}
+        - id: coupon-route
+          uri: lb://gulimail-coupon
           predicates:
-            - Query=url,qq
+            - Path=/api/coupon/**
+          filters:
+            - RewritePath=/api/(?<segment>/?.*),/$\{segment}
+        - id: member-route
+          uri: lb://gulimail-member
+          predicates:
+            - Path=/api/member/**
+          filters:
+            - RewritePath=/api/(?<segment>/?.*),/$\{segment}
+        - id: order-route
+          uri: lb://gulimail-order
+          predicates:
+            - Path=/api/order/**
+          filters:
+            - RewritePath=/api/(?<segment>/?.*),/$\{segment}
+        - id: ware-route
+          uri: lb://gulimail-ware
+          predicates:
+            - Path=/api/ware/**
+          filters:
+            - RewritePath=/api/(?<segment>/?.*),/$\{segment}
+        - id : admin-route
+          uri: lb://renren-fast
+          predicates:
+            - Path=/api/**
+          filters :
+            - RewritePath=/api/(?<segment>/?.*),/renren-fast/$\{segment}
