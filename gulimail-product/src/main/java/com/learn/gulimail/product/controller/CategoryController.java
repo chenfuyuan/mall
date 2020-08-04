@@ -3,6 +3,7 @@ package com.learn.gulimail.product.controller;
 import com.learn.common.utils.R;
 import com.learn.gulimail.product.entity.CategoryEntity;
 import com.learn.gulimail.product.service.CategoryService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,6 +22,7 @@ import java.util.Map;
  */
 @RestController
 @RequestMapping("product/category")
+@Slf4j
 public class CategoryController {
     @Autowired
     private CategoryService categoryService;
@@ -43,7 +45,7 @@ public class CategoryController {
     public R info(@PathVariable("catId") Long catId){
 		CategoryEntity category = categoryService.getById(catId);
 
-        return R.ok().put("category", category);
+        return R.ok().put("data", category);
     }
 
     /**
@@ -74,8 +76,20 @@ public class CategoryController {
     @RequestMapping("/delete")
     //@RequiresPermissions("product:category:delete")
     public R delete(@RequestBody Long[] catIds){
-		categoryService.removeByIds(Arrays.asList(catIds));
+		categoryService.removeMenuByIds(Arrays.asList(catIds));
 
+        return R.ok();
+    }
+
+    @RequestMapping("/update/batch")
+    public R updateBatch(@RequestBody List<CategoryEntity> categoryEntities){
+        categoryService.updateBatchById(categoryEntities);
+        return R.ok();
+    }
+
+    @RequestMapping("/delete/batch")
+    public R deleteBatch(@RequestBody List<Integer> deleteCId){
+        categoryService.removeByIds(deleteCId);
         return R.ok();
     }
 

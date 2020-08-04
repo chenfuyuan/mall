@@ -8,7 +8,7 @@ import org.springframework.web.cors.reactive.UrlBasedCorsConfigurationSource;
 
 /**
  * @ClassName GuliCorsConfiguration
- * @Description TODO
+ * @Description 解决跨域问题配置
  * @Author chenfuyuan
  * @Date 2020-7-30 20:16
  * @Version 1.0

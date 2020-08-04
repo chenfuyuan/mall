@@ -4,7 +4,7 @@ import java.util.List;
 
 /**
  * @InterfaceName TreeAble
- * @Description TODO
+ * @Description 标记可以被树形结构展示的数据
  * @Author chenfuyuan
  * @Date 2020-7-29 1:38
  * @Version 1.0

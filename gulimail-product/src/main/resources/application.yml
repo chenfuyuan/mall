@@ -14,8 +14,11 @@ mybatis-plus:
   global-config:
     db-config:
       id-type: auto
+      logic-not-delete-value: 1
+      logic-delete-value: 0
   mapper-locations: classpath:/mapper/**/*.xml
 server:
   port: 10001
-
-
+logging:
+  level:
+    com.learn.gulimail: debug

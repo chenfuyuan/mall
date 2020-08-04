@@ -46,4 +46,18 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryDao, CategoryEntity
         return  treeList;
     }
 
+    /**
+     * 逻辑删除符合规定的Menus
+     *
+     * @param asList
+     * @author: Vito.Chen
+     * @date: 2020-8-2 8:38
+     * @return: void
+     */
+    @Override
+    public void removeMenuByIds(List<Long> asList) {
+        //TODO 1、检查当前菜单是否被引用
+
+        baseMapper.deleteBatchIds(asList);
+    }
 }

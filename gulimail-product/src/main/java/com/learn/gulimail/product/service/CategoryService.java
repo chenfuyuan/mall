@@ -24,5 +24,7 @@ public interface CategoryService extends IService<CategoryEntity> {
      * @return 返回以树形结构组装起来的分类信息
      */
     List<CategoryEntity> listWithTree();
+
+    void removeMenuByIds(List<Long> asList);
 }
 

@@ -127,6 +127,12 @@
 			<artifactId>mongo-java-driver</artifactId>
 			<version>${mongo.version}</version>
 		</dependency>
+
+		<dependency>
+			<groupId>com.learn.gulimail</groupId>
+			<artifactId>gulimail-common</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
 	</dependencies>
 
 	<build>

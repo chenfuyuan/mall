@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
  * @ClassName CouponFeignService
- * @Description TODO
+ * @Description 调用优惠券服务Fegin
  * @Author chenfuyuan
  * @Date 2020-7-27 7:38
  * @Version 1.0
