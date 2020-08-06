@@ -32,6 +32,12 @@ spring:
             - Path=/api/ware/**
           filters:
             - RewritePath=/api/(?<segment>/?.*),/$\{segment}
+        - id: thirdParty-route
+          uri: lb://gulimail-third-party
+          predicates:
+            - Path=/api/thirdParty/**
+          filters:
+            - RewritePath=/api/thirdParty/(?<segment>/?.*),/$\{segment}
         - id : admin-route
           uri: lb://renren-fast
           predicates:

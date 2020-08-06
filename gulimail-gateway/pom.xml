@@ -38,6 +38,12 @@
         <dependency>
             <groupId>com.learn.gulimail</groupId>
             <artifactId>gulimail-common</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>com.baomidou</groupId>
+                    <artifactId>mybatis-plus-boot-starter</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
     </dependencies>
 
