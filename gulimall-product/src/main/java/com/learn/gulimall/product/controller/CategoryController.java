@@ -1,5 +1,6 @@
 package com.learn.gulimall.product.controller;
 
+import com.learn.common.constant.BizCode;
 import com.learn.common.utils.R;
 import com.learn.gulimall.product.entity.CategoryEntity;
 import com.learn.gulimall.product.service.CategoryService;
@@ -91,6 +92,15 @@ public class CategoryController {
     public R deleteBatch(@RequestBody List<Integer> deleteCId){
         categoryService.removeByIds(deleteCId);
         return R.ok();
+    }
+
+    @RequestMapping("/path/{catId}")
+    public R getCategoryPath(@PathVariable(name = "catId")Long catId){
+        Long[] categoryPath = categoryService.findCategoryPath(catId);
+        if(categoryPath.length!=3&&catId!=0){
+           return R.error(BizCode.NOT_FOUND.getCode(),"对应分类路径未找到");
+        }
+      return R.ok().put("data",categoryPath);
     }
 
 }

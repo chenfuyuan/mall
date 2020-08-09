@@ -19,8 +19,11 @@ public enum BizCode {
     /**
      * 参数校验失败异常
      */
-    VALID_EXCEPTION(10001,"参数格式校验失败");
-
+    VALID_EXCEPTION(10001,"参数格式校验失败"),
+    /**
+     * 数据未找到错误
+     */
+    NOT_FOUND(10002,"未找到对应数据");
     /**
      * 状态码
      */

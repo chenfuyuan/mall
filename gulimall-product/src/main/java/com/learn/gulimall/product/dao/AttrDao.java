@@ -9,7 +9,7 @@ import org.apache.ibatis.annotations.Mapper;
  * 
  * @author chenfuyuan
  * @email chenfuyuan0713@163.com
- * @date 2020-07-26 13:41:52
+ * @date 2020-08-09 14:43:23
  */
 @Mapper
 public interface AttrDao extends BaseMapper<AttrEntity> {
