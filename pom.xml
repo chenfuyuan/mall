@@ -9,43 +9,44 @@
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.learn.gulimail</groupId>
-    <artifactId>gulimail</artifactId>
+    <groupId>com.learn.gulimall</groupId>
+    <artifactId>gulimall</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>gulimail</name>
+    <name>gulimall</name>
     <description>聚合服务</description>
     <packaging>pom</packaging>
     <properties>
         <java.version>1.8</java.version>
         <spring-cloud.version>Hoxton.SR6</spring-cloud.version>
-        <gulimail.version>0.0.1-SNAPSHOT</gulimail.version>
+        <gulimall.version>0.0.1-SNAPSHOT</gulimall.version>
         <mybatis-plus.version>3.3.2</mybatis-plus.version>
         <httpcore.version>4.4.13</httpcore.version>
         <commons.lang.version>2.6</commons.lang.version>
         <mysql.version>8.0.19</mysql.version>
         <spring-cloud-alibaba.version>2.2.0.RELEASE</spring-cloud-alibaba.version>
         <spring-cloud.version>Hoxton.SR6</spring-cloud.version>
+        <javax-validation.version>1.1.0.Final</javax-validation.version>
     </properties>
 
     <modules>
-        <module>gulimail-product</module>
-        <module>gulimail-coupon</module>
-        <module>gulimail-member</module>
-        <module>gulimail-order</module>
-        <module>gulimail-ware</module>
+        <module>gulimall-product</module>
+        <module>gulimall-coupon</module>
+        <module>gulimall-member</module>
+        <module>gulimall-order</module>
+        <module>gulimall-ware</module>
         <module>renren-fast</module>
         <module>renren-generator</module>
-        <module>gulimail-common</module>
-        <module>gulimail-gateway</module>
+        <module>gulimall-common</module>
+        <module>gulimall-gateway</module>
     </modules>
 
     <dependencyManagement>
         <dependencies>
-            <!-- gulimail-common -->
+            <!-- gulimall-common -->
             <dependency>
-                <groupId>com.learn.gulimail</groupId>
-                <artifactId>gulimail-common</artifactId>
-                <version>${gulimail.version}</version>
+                <groupId>com.learn.gulimall</groupId>
+                <artifactId>gulimall-common</artifactId>
+                <version>${gulimall.version}</version>
             </dependency>
 
             <!--lombok-->
@@ -97,6 +98,8 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+
+
         </dependencies>
     </dependencyManagement>
 

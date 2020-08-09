@@ -52,8 +52,8 @@
 
 	<dependencies>
 		<dependency>
-			<groupId>com.learn.gulimail</groupId>
-			<artifactId>gulimail-common</artifactId>
+			<groupId>com.learn.gulimall</groupId>
+			<artifactId>gulimall-common</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 		<dependency>
