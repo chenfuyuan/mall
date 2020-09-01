@@ -50,4 +50,7 @@ public class AttrGroupEntity implements Serializable {
 	 */
 	@TableField(exist = false)
 	private Long[] categoryPath;
+
+	@TableField(exist = false)
+	private String catelogName;
 }

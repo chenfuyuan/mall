@@ -16,5 +16,8 @@ import java.util.Map;
 public interface CategoryBoundsService extends IService<CategoryBoundsEntity> {
 
     PageUtils queryPage(Map<String, Object> params);
+
+
+
 }
 

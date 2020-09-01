@@ -20,9 +20,8 @@ public class AttrGroupServiceImpl extends ServiceImpl<AttrGroupDao, AttrGroupEnt
     public PageUtils queryPage(Map<String, Object> params) {
         IPage<AttrGroupEntity> page = this.page(
                 new Query<AttrGroupEntity>().getPage(params),
-                new QueryWrapper<AttrGroupEntity>()
+                new QueryWrapper<AttrGroupEntity>().like("attr_group_name",params.get("key"))
         );
-
         return new PageUtils(page);
     }
 
@@ -32,10 +31,9 @@ public class AttrGroupServiceImpl extends ServiceImpl<AttrGroupDao, AttrGroupEnt
         QueryWrapper<AttrGroupEntity> queryWrapper = new QueryWrapper<>();
         //查询对应分类的 属性分组
         queryWrapper.eq("catelog_id",catId);
-
+        queryWrapper.like("attr_group_name", params.get("key"));
         //构建page对象，传入params和查询条件
         IPage<AttrGroupEntity> page = this.page(new Query<AttrGroupEntity>().getPage(params),queryWrapper);
-
     return new PageUtils(page);
     }
 

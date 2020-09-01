@@ -5,6 +5,7 @@ import com.learn.common.utils.R;
 import com.learn.common.validation.group.SaveGroup;
 import com.learn.gulimall.product.entity.BrandEntity;
 import com.learn.gulimall.product.service.BrandService;
+import com.learn.gulimall.product.service.CategoryBrandRelationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -26,6 +27,8 @@ public class BrandController {
     @Autowired
     private BrandService brandService;
 
+    @Autowired
+    private CategoryBrandRelationService categoryBrandRelationService;
     /**
      * 列表
      */
@@ -33,7 +36,6 @@ public class BrandController {
     //@RequiresPermissions("product:brand:list")
     public R list(@RequestParam Map<String, Object> params) {
         PageUtils page = brandService.queryPage(params);
-
         return R.ok().put("page", page);
     }
 
@@ -45,7 +47,6 @@ public class BrandController {
     //@RequiresPermissions("product:brand:info")
     public R info(@PathVariable("brandId") Long brandId) {
         BrandEntity brand = brandService.getById(brandId);
-
         return R.ok().put("brand", brand);
     }
 
@@ -75,7 +76,7 @@ public class BrandController {
     @RequestMapping("/update")
     //@RequiresPermissions("product:brand:update")
     public R update(/*@Validated(UpdateGroup.class) */@Validated @RequestBody BrandEntity brand) {
-        brandService.updateById(brand);
+        brandService.updateDetail(brand);
         return R.ok();
     }
 
