@@ -2,6 +2,7 @@ package com.learn.gulimall.product.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.learn.common.utils.PageUtils;
+import com.learn.gulimall.product.Vo.AttrVo;
 import com.learn.gulimall.product.entity.AttrEntity;
 
 import java.util.Map;
@@ -16,5 +17,9 @@ import java.util.Map;
 public interface AttrService extends IService<AttrEntity> {
 
     PageUtils queryPage(Map<String, Object> params);
+
+    PageUtils queryPageByCatId(Map<String, Object> params, Long catId);
+
+    void saveAttr(AttrVo attr);
 }
 

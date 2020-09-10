@@ -2,6 +2,7 @@ package com.learn.gulimall.product.controller;
 
 import com.learn.common.utils.PageUtils;
 import com.learn.common.utils.R;
+import com.learn.gulimall.product.Vo.AttrVo;
 import com.learn.gulimall.product.entity.AttrEntity;
 import com.learn.gulimall.product.service.AttrService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,11 +29,12 @@ public class AttrController {
     /**
      * 列表
      */
-    @RequestMapping("/list")
+    @RequestMapping("/list/{catId}")
     //@RequiresPermissions("product:attr:list")
-    public R list(@RequestParam Map<String, Object> params){
-        PageUtils page = attrService.queryPage(params);
-
+    public R list(@RequestParam Map<String, Object> params,@PathVariable(name = "catId")Long catId){
+//        PageUtils page = attrService.queryPage(params);\
+        //根据分类id获取对应的规格参数
+        PageUtils page = attrService.queryPageByCatId(params,catId);
         return R.ok().put("page", page);
     }
 
@@ -53,9 +55,8 @@ public class AttrController {
      */
     @RequestMapping("/save")
     //@RequiresPermissions("product:attr:save")
-    public R save(@RequestBody AttrEntity attr){
-		attrService.save(attr);
-
+    public R save(@RequestBody AttrVo attr){
+		attrService.saveAttr(attr);
         return R.ok();
     }
 
