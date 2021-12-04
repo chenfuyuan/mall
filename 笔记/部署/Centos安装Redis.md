@@ -119,7 +119,7 @@ systemctl enable redis.service #添加开机自启
 ``journalctl -u xxxx.service``可查看对应服务的``systemctl``运行日志
 
 ## 修改配置
-
+官方文档[https://redis.io/topics/config](https://redis.io/topics/config)
 ```
 bind 127.0.0.1 #默认只允许本机访问，如果需要开放外网，则注释掉这行
 protected-mode yes #保护模式，如果需要开放外网，则改为 no
@@ -128,7 +128,10 @@ requirepass password #登录密码，该配置默认是注释的，放开之后�
 daemonize yes #修改为yes，支持后台运行
 logfile "/data/redis/logs/redis.log"    #设置log日志存放位置
 dir /data/redis/data/    #设置数据存放位置
+appendonly yes     # 开启aof持久化
 ```
+
+
 
 ## 配置环境变量
 
