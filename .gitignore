@@ -3,3 +3,11 @@
 *.iml
 
 #java
+
+**/mvnw
+**/mvnw.cmd
+**/HELP.md
+**/.mvn
+**/*.iml
+**/target
+**/.gitignore
