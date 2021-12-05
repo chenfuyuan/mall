@@ -20,5 +20,7 @@
         <module>mall-product</module>
         <!--库存服务-->
         <module>mall-ware</module>
+        <!--人人开源-后台管理系统-后端代码-->
+        <module>renren-fast</module>
     </modules>
 </project>
