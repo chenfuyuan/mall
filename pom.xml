@@ -24,5 +24,6 @@
         <module>renren-fast</module>
         <!--人人开源-代码生成器-与人人开源后台管理系统相搭配-->
         <module>renren-generator</module>
+        <module>mall-common</module>
     </modules>
 </project>
