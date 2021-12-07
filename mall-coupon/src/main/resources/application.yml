@@ -1,0 +1,15 @@
+# DataSource Config
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://192.168.249.4:3306/mall_sms?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+    username: root
+    password: 123456
+
+mybatis-plus:
+  #配置mapper.xml扫描路径
+  mapper-locations: classpath*:/mapper/**/*.xml
+  global-config:
+    db-config:
+      #配置数据库主键 自增
+      id-type: auto
