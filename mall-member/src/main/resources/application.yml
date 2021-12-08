@@ -5,6 +5,10 @@ spring:
     url: jdbc:mysql://192.168.249.4:3306/mall_ums?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
     username: root
     password: 123456
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 192.168.249.4:8848
 
 mybatis-plus:
   #配置mapper.xml扫描路径
