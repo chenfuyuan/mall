@@ -6,7 +6,7 @@ package com.learn.project.common.utils;
  * @author chenfuyuan
  * @date 2021/12/6 17:25
  */
-public class Constant {
+public class GlobalConstant {
     /**
      * 当前页码
      */
@@ -27,4 +27,14 @@ public class Constant {
      *  升序
      */
     public static final String ASC = "asc";
+
+    /**
+     * 是否展示-否
+     */
+    public static final int SHOW_STATUS_NO = 0;
+
+    /**
+     * 是否展示-是
+     */
+    public static final int SHOW_STATUS_YES = 1;
 }

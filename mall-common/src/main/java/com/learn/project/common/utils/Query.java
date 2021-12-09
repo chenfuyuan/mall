@@ -33,28 +33,28 @@ public class Query<T> {
         long curPage = 1;
         long limit = 10;
 
-        if(params.get(Constant.PAGE) != null){
-            curPage = Long.parseLong((String)params.get(Constant.PAGE));
+        if(params.get(GlobalConstant.PAGE) != null){
+            curPage = Long.parseLong((String)params.get(GlobalConstant.PAGE));
         }
-        if(params.get(Constant.LIMIT) != null){
-            limit = Long.parseLong((String)params.get(Constant.LIMIT));
+        if(params.get(GlobalConstant.LIMIT) != null){
+            limit = Long.parseLong((String)params.get(GlobalConstant.LIMIT));
         }
 
         //分页对象
         Page<T> page = new Page<>(curPage, limit);
 
         //分页参数
-        params.put(Constant.PAGE, page);
+        params.put(GlobalConstant.PAGE, page);
 
         //排序字段
         //防止SQL注入（因为sidx、order是通过拼接SQL实现排序的，会有SQL注入风险）
-        String orderField = SQLFilter.sqlInject((String)params.get(Constant.ORDER_FIELD));
-        String order = (String)params.get(Constant.ORDER);
+        String orderField = SQLFilter.sqlInject((String)params.get(GlobalConstant.ORDER_FIELD));
+        String order = (String)params.get(GlobalConstant.ORDER);
 
 
         //前端字段排序
         if(StringUtils.isNotEmpty(orderField) && StringUtils.isNotEmpty(order)){
-            if(Constant.ASC.equalsIgnoreCase(order)) {
+            if(GlobalConstant.ASC.equalsIgnoreCase(order)) {
                 return  page.addOrder(OrderItem.asc(orderField));
             }else {
                 return page.addOrder(OrderItem.desc(orderField));
