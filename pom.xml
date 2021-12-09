@@ -30,6 +30,7 @@
         <spring-cloud-alibaba.version>2.2.7.RELEASE</spring-cloud-alibaba.version>
         <java.version>1.8</java.version>
         <spring-cloud.version>2021.0.0</spring-cloud.version>
+        <mall.version>0.0.1-SNAPSHOT</mall.version>
     </properties>
 
     <modules>
@@ -49,10 +50,18 @@
         <module>renren-generator</module>
         <!--公共模块-->
         <module>mall-common</module>
+        <!--网关-->
+        <module>mall-gateway</module>
     </modules>
 
     <dependencyManagement>
         <dependencies>
+            <dependency>
+                <groupId>com.learn.project</groupId>
+                <artifactId>mall-common</artifactId>
+                <version>${mall.version}</version>
+            </dependency>
+
             <!--spring-cloud-alibaba-->
             <dependency>
                 <groupId>com.alibaba.cloud</groupId>
