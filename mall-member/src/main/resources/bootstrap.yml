@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: member
+  profiles:
+    active: dev
+  cloud:
+    nacos:
+      config:
+        group: member
+        file-extension: yml
+        #共享配置
+        shared-configs:
+          - dataId: mybatis.yml
+            group: global
+            refresh: true
+          - dataId: global.yml
+            group: global
+            refresh: true
+        #扩展配置
+        extension-configs:
+          - dataId: datasource.yml
+            group: member
+            refresh: true

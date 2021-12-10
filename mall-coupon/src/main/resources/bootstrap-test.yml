@@ -1,0 +1,6 @@
+spring:
+  cloud:
+    nacos:
+      config:
+        namespace: test
+        server-addr: 192.168.249.4:8848

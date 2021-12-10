@@ -1,0 +1,27 @@
+spring:
+  application:
+    name: coupon
+  profiles:
+    active: dev
+  cloud:
+    nacos:
+      config:
+        #配置默认读取的文件 group:coupon dataId coupon-dev.yml
+        group: coupon
+        file-extension: yml
+        #共享配置
+        shared-configs:
+          - dataId: mybatis.yml
+            group: global
+            refresh: true
+          - dataId: global.yml
+            group: global
+            refresh: true
+        #扩展配置
+        extension-configs:
+          - dataId: other.yml
+            group: coupon
+            refresh: true
+          - dataId: datasource.yml
+            group: coupon
+            refresh: true
