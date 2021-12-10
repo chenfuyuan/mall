@@ -64,10 +64,28 @@
 		</dependencies>
 	</dependencyManagement>
 	<dependencies>
-		<!--nacos-->
+		<!--nacos-discovery-->
 		<dependency>
 			<groupId>com.alibaba.cloud</groupId>
 			<artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
+			<exclusions>
+				<exclusion>
+					<groupId>org.springframework.cloud</groupId>
+					<artifactId>spring-cloud-starter-netflix-ribbon</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		<!--nacos-config 配置中心-->
+		<dependency>
+			<groupId>com.alibaba.cloud</groupId>
+			<artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
+		</dependency>
+
+		<!--引入starter-bootstrap 读取bootstrap.properties配置文件-->
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-bootstrap</artifactId>
 		</dependency>
 
 		<dependency>
@@ -204,6 +222,12 @@
 			<groupId>io.springfox</groupId>
 			<artifactId>springfox-swagger2</artifactId>
 			<version>${swagger.version}</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>guava</artifactId>
+					<groupId>com.google.guava</groupId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 		<dependency>
 			<groupId>io.springfox</groupId>
