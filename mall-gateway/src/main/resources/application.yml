@@ -1,0 +1,47 @@
+# DataSource Config
+spring:
+  application:
+    name: gateway
+
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 192.168.249.4:8848
+    gateway:
+      routes:
+        - id: coupon
+          uri: lb://coupon
+          predicates:
+            - Path=/coupon/**
+
+        - id: member
+          uri: lb://member
+          predicates:
+            - Path=/member/**
+
+        - id: order
+          uri: lb://order
+          predicates:
+            - Path=/order/**
+
+        - id: product
+          uri: lb://product
+          predicates:
+            - Path=/product/**
+
+        - id: ware
+          uri: lb://ware
+          predicates:
+            - Path=/ware/**
+
+        - id: admin
+          uri: lb://admin
+          predicates:
+            - Path=/api/**
+          filters:
+            - RewritePath=/api/?(?<segment>.*), /renren-fast/$\{segment}
+server:
+  port: 88
+logging:
+  level:
+    org.springframework.cloud.gateway: debug
