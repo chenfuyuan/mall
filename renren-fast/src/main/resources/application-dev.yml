@@ -37,7 +37,7 @@ spring:
             discovery:
                 server-addr: 192.168.249.4:8848
     application:
-        name: renren-fast
+        name: admin
 
 ##多数据源的配置
 #dynamic:
