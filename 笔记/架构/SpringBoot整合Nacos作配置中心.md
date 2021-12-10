@@ -103,12 +103,13 @@ spring:
 
 ### 4.1 配置文件读取顺序
 
-1.  bootstrap.properties/yml
+1. bootstrap.properties/yml
 2. bootstrap-``profile``.properties/yml
-3. nacos ``shared-configs``配置(按照索引顺序进行读取)
-4. nacos ``extension-configs``配置(按照索引顺序进行读取)
-5. ``应用名.properties/yml``
-6. ``应用名.环境.properties/yml``
+3. application.properties/yml
+4. nacos ``shared-configs``配置(按照索引顺序进行读取)
+5. nacos ``extension-configs``配置(按照索引顺序进行读取)
+6. ``应用名.properties/yml``
+7. ``应用名.环境.properties/yml``
 
 ### 4.2 优先级
 
