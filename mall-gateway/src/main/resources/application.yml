@@ -9,32 +9,42 @@ spring:
         server-addr: 192.168.249.4:8848
     gateway:
       routes:
-        - id: coupon
+        - id: coupon    #优惠券服务
           uri: lb://coupon
           predicates:
-            - Path=/coupon/**
+            - Path=/api/coupon/**
+          filters:
+            - RewritePath=/api/?(?<segment>.*), /$\{segment}
 
-        - id: member
+        - id: member    #会员服务
           uri: lb://member
           predicates:
-            - Path=/member/**
+            - Path=/api/member/**
+          filters:
+            - RewritePath=/api/?(?<segment>.*), /$\{segment}
 
-        - id: order
+        - id: order    #订单服务
           uri: lb://order
           predicates:
-            - Path=/order/**
+            - Path=/api/order/**
+          filters:
+            - RewritePath=/api/?(?<segment>.*), /$\{segment}
 
-        - id: product
+        - id: product    #商品服务
           uri: lb://product
           predicates:
-            - Path=/product/**
+            - Path=/api/product/**
+          filters:
+            - RewritePath=/api/?(?<segment>.*), /$\{segment}
 
-        - id: ware
+        - id: ware    #仓储服务
           uri: lb://ware
           predicates:
-            - Path=/ware/**
+            - Path=/api/ware/**
+          filters:
+            - RewritePath=/api/?(?<segment>.*), /$\{segment}
 
-        - id: admin
+        - id: admin    #后台服务
           uri: lb://admin
           predicates:
             - Path=/api/**
