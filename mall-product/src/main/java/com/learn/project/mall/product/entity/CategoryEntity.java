@@ -1,10 +1,14 @@
 package com.learn.project.mall.product.entity;
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 
 import java.io.Serializable;
+import java.util.Comparator;
 import java.util.Date;
+import java.util.List;
+
 import lombok.Data;
 
 /**
@@ -57,4 +61,19 @@ public class CategoryEntity implements Serializable {
 	 */
 	private Integer productCount;
 
+	/**
+	 * 子菜单列表
+	 */
+	@TableField(exist = false)
+	private List<CategoryEntity> subCategorys;
+
+	/**
+	 * 获取一个排序比较器
+	 * @return
+	 */
+	public static Comparator<CategoryEntity> getSortComparator(){
+		return (category01, category02) -> {
+			return (category01.getSort()==null?0:category01.getSort()) - (category02.getSort()==null?0: category02.getSort());
+		};
+	}
 }
