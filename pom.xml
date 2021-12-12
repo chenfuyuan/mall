@@ -31,6 +31,7 @@
         <java.version>1.8</java.version>
         <spring-cloud.version>2021.0.0</spring-cloud.version>
         <mall.version>0.0.1-SNAPSHOT</mall.version>
+        <upTool.version>1.0.0</upTool.version>
     </properties>
 
     <modules>
@@ -56,6 +57,16 @@
 
     <dependencyManagement>
         <dependencies>
+
+            <!--upTool工具类 https://github.com/chenfuyuan/uptool-->
+            <dependency>
+                <groupId>com.upTool</groupId>
+                <artifactId>upTool-core</artifactId>
+                <version>${upTool.version}</version>
+            </dependency>
+
+
+            <!--公共模块-->
             <dependency>
                 <groupId>com.learn.project</groupId>
                 <artifactId>mall-common</artifactId>

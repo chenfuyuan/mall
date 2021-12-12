@@ -14,6 +14,12 @@
 
 
     <dependencies>
+        <!--upTool-->
+        <dependency>
+            <groupId>com.upTool</groupId>
+            <artifactId>upTool-core</artifactId>
+        </dependency>
+
         <!--Mybatis-plus-->
         <dependency>
             <groupId>com.baomidou</groupId>
