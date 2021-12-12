@@ -12,7 +12,13 @@ import com.learn.project.mall.product.dao.SkuInfoDao;
 import com.learn.project.mall.product.entity.SkuInfoEntity;
 import com.learn.project.mall.product.service.SkuInfoService;
 
-
+/**
+ * sku信息Service实现类
+ *
+ * @author chenfuyuan
+ * @email chenfuyuan0713@163.com
+ * @date 2021-12-12 14:35:18
+ */
 @Service("skuInfoService")
 public class SkuInfoServiceImpl extends ServiceImpl<SkuInfoDao, SkuInfoEntity> implements SkuInfoService {
 

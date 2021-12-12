@@ -1,9 +1,7 @@
 package com.learn.project.mall.product.controller;
 
 import java.util.Arrays;
-import java.util.List;
 import java.util.Map;
-
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,11 +18,11 @@ import com.learn.project.common.utils.R;
 
 
 /**
- * 商品三级分类
+ * 商品三级分类Controller
  *
  * @author chenfuyuan
  * @email chenfuyuan0713@163.com
- * @date 2021-12-06 17:28:37
+ * @date 2021-12-12 14:35:18
  */
 @RestController
 @RequestMapping("product/category")
@@ -33,13 +31,13 @@ public class CategoryController {
     private CategoryService categoryService;
 
     /**
-     * 获取当前分类及其子分类。并将其组合成树状结构进行返回
+     * 列表
      */
-    @RequestMapping("/list/tree")
-    public R listByTree(){
-        List<CategoryEntity> listByTree = categoryService.listByTree();
+    @RequestMapping("/list")
+    public R list(@RequestParam Map<String, Object> params){
+        PageUtils page = categoryService.queryPage(params);
 
-        return R.ok().put("data", listByTree);
+        return R.ok().put("page", page);
     }
 
 

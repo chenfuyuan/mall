@@ -12,7 +12,13 @@ import com.learn.project.mall.product.dao.AttrAttrgroupRelationDao;
 import com.learn.project.mall.product.entity.AttrAttrgroupRelationEntity;
 import com.learn.project.mall.product.service.AttrAttrgroupRelationService;
 
-
+/**
+ * 属性&属性分组关联Service实现类
+ *
+ * @author chenfuyuan
+ * @email chenfuyuan0713@163.com
+ * @date 2021-12-12 14:35:18
+ */
 @Service("attrAttrgroupRelationService")
 public class AttrAttrgroupRelationServiceImpl extends ServiceImpl<AttrAttrgroupRelationDao, AttrAttrgroupRelationEntity> implements AttrAttrgroupRelationService {
 

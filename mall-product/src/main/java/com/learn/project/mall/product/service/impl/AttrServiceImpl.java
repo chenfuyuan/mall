@@ -12,7 +12,13 @@ import com.learn.project.mall.product.dao.AttrDao;
 import com.learn.project.mall.product.entity.AttrEntity;
 import com.learn.project.mall.product.service.AttrService;
 
-
+/**
+ * 商品属性Service实现类
+ *
+ * @author chenfuyuan
+ * @email chenfuyuan0713@163.com
+ * @date 2021-12-12 14:35:18
+ */
 @Service("attrService")
 public class AttrServiceImpl extends ServiceImpl<AttrDao, AttrEntity> implements AttrService {
 

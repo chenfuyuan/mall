@@ -12,7 +12,13 @@ import com.learn.project.mall.product.dao.CommentReplayDao;
 import com.learn.project.mall.product.entity.CommentReplayEntity;
 import com.learn.project.mall.product.service.CommentReplayService;
 
-
+/**
+ * 商品评价回复关系Service实现类
+ *
+ * @author chenfuyuan
+ * @email chenfuyuan0713@163.com
+ * @date 2021-12-12 14:35:18
+ */
 @Service("commentReplayService")
 public class CommentReplayServiceImpl extends ServiceImpl<CommentReplayDao, CommentReplayEntity> implements CommentReplayService {
 

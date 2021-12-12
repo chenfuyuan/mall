@@ -12,7 +12,13 @@ import com.learn.project.mall.product.dao.SkuImagesDao;
 import com.learn.project.mall.product.entity.SkuImagesEntity;
 import com.learn.project.mall.product.service.SkuImagesService;
 
-
+/**
+ * sku图片Service实现类
+ *
+ * @author chenfuyuan
+ * @email chenfuyuan0713@163.com
+ * @date 2021-12-12 14:35:18
+ */
 @Service("skuImagesService")
 public class SkuImagesServiceImpl extends ServiceImpl<SkuImagesDao, SkuImagesEntity> implements SkuImagesService {
 

@@ -12,7 +12,13 @@ import com.learn.project.mall.product.dao.BrandDao;
 import com.learn.project.mall.product.entity.BrandEntity;
 import com.learn.project.mall.product.service.BrandService;
 
-
+/**
+ * 品牌Service实现类
+ *
+ * @author chenfuyuan
+ * @email chenfuyuan0713@163.com
+ * @date 2021-12-12 14:35:18
+ */
 @Service("brandService")
 public class BrandServiceImpl extends ServiceImpl<BrandDao, BrandEntity> implements BrandService {
 

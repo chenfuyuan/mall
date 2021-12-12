@@ -12,7 +12,13 @@ import com.learn.project.mall.product.dao.SkuSaleAttrValueDao;
 import com.learn.project.mall.product.entity.SkuSaleAttrValueEntity;
 import com.learn.project.mall.product.service.SkuSaleAttrValueService;
 
-
+/**
+ * sku销售属性&值Service实现类
+ *
+ * @author chenfuyuan
+ * @email chenfuyuan0713@163.com
+ * @date 2021-12-12 14:35:18
+ */
 @Service("skuSaleAttrValueService")
 public class SkuSaleAttrValueServiceImpl extends ServiceImpl<SkuSaleAttrValueDao, SkuSaleAttrValueEntity> implements SkuSaleAttrValueService {
 

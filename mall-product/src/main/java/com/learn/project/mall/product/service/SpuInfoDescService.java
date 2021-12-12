@@ -7,11 +7,11 @@ import com.learn.project.mall.product.entity.SpuInfoDescEntity;
 import java.util.Map;
 
 /**
- * spu信息介绍
+ * spu信息介绍Service接口
  *
  * @author chenfuyuan
  * @email chenfuyuan0713@163.com
- * @date 2021-12-06 17:28:37
+ * @date 2021-12-12 14:35:18
  */
 public interface SpuInfoDescService extends IService<SpuInfoDescEntity> {
 

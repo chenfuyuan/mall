@@ -8,11 +8,11 @@ import java.util.Date;
 import lombok.Data;
 
 /**
- * 属性分组
+ * 属性分组Entity
  * 
  * @author chenfuyuan
  * @email chenfuyuan0713@163.com
- * @date 2021-12-06 17:28:37
+ * @date 2021-12-12 14:35:18
  */
 @Data
 @TableName("pms_attr_group")

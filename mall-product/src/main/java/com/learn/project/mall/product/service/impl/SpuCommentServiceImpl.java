@@ -12,7 +12,13 @@ import com.learn.project.mall.product.dao.SpuCommentDao;
 import com.learn.project.mall.product.entity.SpuCommentEntity;
 import com.learn.project.mall.product.service.SpuCommentService;
 
-
+/**
+ * 商品评价Service实现类
+ *
+ * @author chenfuyuan
+ * @email chenfuyuan0713@163.com
+ * @date 2021-12-12 14:35:18
+ */
 @Service("spuCommentService")
 public class SpuCommentServiceImpl extends ServiceImpl<SpuCommentDao, SpuCommentEntity> implements SpuCommentService {
 

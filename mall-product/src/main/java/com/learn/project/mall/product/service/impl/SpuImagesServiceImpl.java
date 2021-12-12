@@ -12,7 +12,13 @@ import com.learn.project.mall.product.dao.SpuImagesDao;
 import com.learn.project.mall.product.entity.SpuImagesEntity;
 import com.learn.project.mall.product.service.SpuImagesService;
 
-
+/**
+ * spu图片Service实现类
+ *
+ * @author chenfuyuan
+ * @email chenfuyuan0713@163.com
+ * @date 2021-12-12 14:35:18
+ */
 @Service("spuImagesService")
 public class SpuImagesServiceImpl extends ServiceImpl<SpuImagesDao, SpuImagesEntity> implements SpuImagesService {
 

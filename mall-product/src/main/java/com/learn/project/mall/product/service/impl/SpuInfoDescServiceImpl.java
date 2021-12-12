@@ -12,7 +12,13 @@ import com.learn.project.mall.product.dao.SpuInfoDescDao;
 import com.learn.project.mall.product.entity.SpuInfoDescEntity;
 import com.learn.project.mall.product.service.SpuInfoDescService;
 
-
+/**
+ * spu信息介绍Service实现类
+ *
+ * @author chenfuyuan
+ * @email chenfuyuan0713@163.com
+ * @date 2021-12-12 14:35:18
+ */
 @Service("spuInfoDescService")
 public class SpuInfoDescServiceImpl extends ServiceImpl<SpuInfoDescDao, SpuInfoDescEntity> implements SpuInfoDescService {
 

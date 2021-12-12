@@ -12,7 +12,13 @@ import com.learn.project.mall.product.dao.CategoryBrandRelationDao;
 import com.learn.project.mall.product.entity.CategoryBrandRelationEntity;
 import com.learn.project.mall.product.service.CategoryBrandRelationService;
 
-
+/**
+ * 品牌分类关联Service实现类
+ *
+ * @author chenfuyuan
+ * @email chenfuyuan0713@163.com
+ * @date 2021-12-12 14:35:18
+ */
 @Service("categoryBrandRelationService")
 public class CategoryBrandRelationServiceImpl extends ServiceImpl<CategoryBrandRelationDao, CategoryBrandRelationEntity> implements CategoryBrandRelationService {
 

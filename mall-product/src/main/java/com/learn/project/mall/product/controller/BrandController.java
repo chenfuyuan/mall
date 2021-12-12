@@ -3,7 +3,6 @@ package com.learn.project.mall.product.controller;
 import java.util.Arrays;
 import java.util.Map;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -19,11 +18,11 @@ import com.learn.project.common.utils.R;
 
 
 /**
- * 品牌
+ * 品牌Controller
  *
  * @author chenfuyuan
  * @email chenfuyuan0713@163.com
- * @date 2021-12-06 17:28:37
+ * @date 2021-12-12 14:35:18
  */
 @RestController
 @RequestMapping("product/brand")
