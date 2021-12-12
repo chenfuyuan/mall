@@ -7,7 +7,7 @@ import ${package}.${moduleName}.entity.${className}Entity;
 import java.util.Map;
 
 /**
- * ${comments}
+ * ${comments}Service接口
  *
  * @author ${author}
  * @email ${email}

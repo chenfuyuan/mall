@@ -12,7 +12,13 @@ import ${package}.${moduleName}.dao.${className}Dao;
 import ${package}.${moduleName}.entity.${className}Entity;
 import ${package}.${moduleName}.service.${className}Service;
 
-
+/**
+ * ${comments}Service实现类
+ *
+ * @author ${author}
+ * @email ${email}
+ * @date ${datetime}
+ */
 @Service("${classname}Service")
 public class ${className}ServiceImpl extends ServiceImpl<${className}Dao, ${className}Entity> implements ${className}Service {
 
