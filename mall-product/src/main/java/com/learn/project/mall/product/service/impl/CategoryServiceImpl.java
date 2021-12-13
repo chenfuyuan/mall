@@ -1,9 +1,12 @@
 package com.learn.project.mall.product.service.impl;
 
+import com.baomidou.mybatisplus.extension.toolkit.SqlHelper;
 import com.learn.project.common.utils.GlobalConstant;
 import com.learn.project.mall.product.util.PmsConstant;
+import com.uptool.core.util.EmptyUtil;
 import org.springframework.stereotype.Service;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -54,6 +57,24 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryDao, CategoryEntity
             return category;
         }).sorted(CategoryEntity.getSortComparator()).collect(Collectors.toList());
         return list;
+    }
+
+    @Override
+    public boolean removeCategoryByIds(Collection<Long> catIds) {
+        if (EmptyUtil.isEmpty(catIds)) {
+            return false;
+        }
+        //判断该分类是否含有子分类
+        QueryWrapper<CategoryEntity> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("show_status", "1");
+        queryWrapper.in("parent_cid", catIds);
+        List<CategoryEntity> categoryEntities = baseMapper.selectList(queryWrapper);
+        if (EmptyUtil.isNotEmpty(categoryEntities)) {
+            return false;
+        }
+
+        //删除分类
+        return SqlHelper.retBool(this.baseMapper.deleteBatchIds(catIds));
     }
 
     /**

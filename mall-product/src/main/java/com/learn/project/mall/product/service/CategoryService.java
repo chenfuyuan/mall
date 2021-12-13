@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
 import com.learn.project.common.utils.PageUtils;
 import com.learn.project.mall.product.entity.CategoryEntity;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
@@ -24,5 +25,12 @@ public interface CategoryService extends IService<CategoryEntity> {
      * @return
      */
     List<CategoryEntity> listByTree();
+
+    /**
+     * 根据catId删除指定的分类
+     * @param catIds 需要删除的分类id
+     * @return 是否删除成功
+     */
+    boolean removeCategoryByIds(Collection<Long> catIds);
 }
 

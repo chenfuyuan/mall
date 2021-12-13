@@ -58,8 +58,8 @@ public class CategoryController {
     @RequestMapping("/save")
     public R save(@RequestBody CategoryEntity category){
 		categoryService.save(category);
-
-        return R.ok();
+        //返回添加成功后的catId
+        return R.ok().put("saveCatId",category.getCatId());
     }
 
     /**
@@ -77,9 +77,9 @@ public class CategoryController {
      */
     @RequestMapping("/delete")
     public R delete(@RequestBody Long[] catIds){
-		categoryService.removeByIds(Arrays.asList(catIds));
-
-        return R.ok();
+        //根据业务要求，删除指定分类
+        boolean result = categoryService.removeCategoryByIds(Arrays.asList(catIds));
+        return result ? R.ok() : R.error("删除失败");
     }
 
 }
