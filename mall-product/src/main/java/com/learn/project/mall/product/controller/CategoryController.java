@@ -62,6 +62,11 @@ public class CategoryController {
         return R.ok().put("saveCatId",category.getCatId());
     }
 
+    @RequestMapping("/batch/update")
+    public R update(@RequestBody List<CategoryEntity> categoryList){
+        categoryService.updateBatchById(categoryList);
+        return R.ok();
+    }
     /**
      * 修改
      */
