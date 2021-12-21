@@ -84,7 +84,7 @@ public class CategoryController {
     public R delete(@RequestBody Long[] catIds){
         //根据业务要求，删除指定分类
         boolean result = categoryService.removeCategoryByIds(Arrays.asList(catIds));
-        return result ? R.ok() : R.error("删除失败");
+        return result ? R.ok() : R.error("删除失败!");
     }
 
 }

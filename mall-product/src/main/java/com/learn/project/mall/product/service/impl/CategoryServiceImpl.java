@@ -66,9 +66,14 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryDao, CategoryEntity
         }
         //判断该分类是否含有子分类
         QueryWrapper<CategoryEntity> queryWrapper = new QueryWrapper<>();
-        queryWrapper.eq("show_status", "1");
         queryWrapper.in("parent_cid", catIds);
+        queryWrapper.notIn("cat_id", catIds);
         List<CategoryEntity> categoryEntities = baseMapper.selectList(queryWrapper);
+
+        //过滤需要删除的元素
+//        categoryEntities = categoryEntities.stream().filter(item ->
+//                !catIds.contains(item.getCatId())
+//        ).collect(Collectors.toList());
         if (EmptyUtil.isNotEmpty(categoryEntities)) {
             return false;
         }
@@ -91,8 +96,8 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryDao, CategoryEntity
 
         return all.stream().filter(category ->
                 root.getCatId().equals(category.getParentCid())
-        ).map(category->{
-            category.setSubCategorys(getSubCategorys(category,all));
+        ).map(category -> {
+            category.setSubCategorys(getSubCategorys(category, all));
             return category;
         }).sorted(CategoryEntity.getSortComparator()).collect(Collectors.toList());
 
