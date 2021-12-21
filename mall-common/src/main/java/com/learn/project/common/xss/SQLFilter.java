@@ -8,7 +8,7 @@
 
 package com.learn.project.common.xss;
 
-import com.learn.project.exception.RRException;
+import com.learn.project.common.exception.RRException;
 import org.apache.commons.lang3.StringUtils;
 
 /**

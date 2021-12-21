@@ -6,7 +6,7 @@
  * 版权所有，侵权必究！
  */
 
-package com.learn.project.exception;
+package com.learn.project.common.exception;
 
 /**
  * 自定义异常
