@@ -11,6 +11,9 @@
         <result property="ip" column="ip"/>
         <result property="city" column="city"/>
         <result property="loginType" column="login_type"/>
+        <result property="isDelete" column="is_delete"/>
+        <result property="gmtCreate" column="gmt_create"/>
+        <result property="gmtModified" column="gmt_modified"/>
     </resultMap>
 
 

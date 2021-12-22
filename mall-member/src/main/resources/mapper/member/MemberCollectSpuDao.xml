@@ -11,6 +11,9 @@
         <result property="spuName" column="spu_name"/>
         <result property="spuImg" column="spu_img"/>
         <result property="createTime" column="create_time"/>
+        <result property="isDelete" column="is_delete"/>
+        <result property="gmtCreate" column="gmt_create"/>
+        <result property="gmtModified" column="gmt_modified"/>
     </resultMap>
 
 

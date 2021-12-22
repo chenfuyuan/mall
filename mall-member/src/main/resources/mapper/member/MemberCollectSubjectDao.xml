@@ -10,6 +10,9 @@
         <result property="subjectName" column="subject_name"/>
         <result property="subjectImg" column="subject_img"/>
         <result property="subjectUrll" column="subject_urll"/>
+        <result property="isDelete" column="is_delete"/>
+        <result property="gmtCreate" column="gmt_create"/>
+        <result property="gmtModified" column="gmt_modified"/>
     </resultMap>
 
 

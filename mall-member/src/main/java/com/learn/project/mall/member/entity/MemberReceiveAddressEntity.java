@@ -8,11 +8,11 @@ import java.util.Date;
 import lombok.Data;
 
 /**
- * 会员收货地址
+ * 会员收货地址Entity
  * 
  * @author chenfuyuan
  * @email chenfuyuan0713@163.com
- * @date 2021-12-07 16:11:21
+ * @date 2021-12-22 16:29:18
  */
 @Data
 @TableName("ums_member_receive_address")
@@ -64,5 +64,17 @@ public class MemberReceiveAddressEntity implements Serializable {
 	 * 是否默认
 	 */
 	private Integer defaultStatus;
+	/**
+	 * 是否删除[0-未删除, 1-删除]
+	 */
+	private Integer isDelete;
+	/**
+	 * 创建时间
+	 */
+	private Date gmtCreate;
+	/**
+	 * 修改时间
+	 */
+	private Date gmtModified;
 
 }

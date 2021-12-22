@@ -9,11 +9,11 @@ import java.util.Date;
 import lombok.Data;
 
 /**
- * 会员等级
+ * 会员等级Entity
  * 
  * @author chenfuyuan
  * @email chenfuyuan0713@163.com
- * @date 2021-12-07 16:11:21
+ * @date 2021-12-22 16:29:18
  */
 @Data
 @TableName("ums_member_level")
@@ -61,5 +61,17 @@ public class MemberLevelEntity implements Serializable {
 	 * 备注
 	 */
 	private String note;
+	/**
+	 * 是否删除[0-未删除, 1-删除]
+	 */
+	private Integer isDelete;
+	/**
+	 * 创建时间
+	 */
+	private Date gmtCreate;
+	/**
+	 * 修改时间
+	 */
+	private Date gmtModified;
 
 }

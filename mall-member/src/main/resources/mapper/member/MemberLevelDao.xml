@@ -15,6 +15,9 @@
         <result property="priviledgeMemberPrice" column="priviledge_member_price"/>
         <result property="priviledgeBirthday" column="priviledge_birthday"/>
         <result property="note" column="note"/>
+        <result property="isDelete" column="is_delete"/>
+        <result property="gmtCreate" column="gmt_create"/>
+        <result property="gmtModified" column="gmt_modified"/>
     </resultMap>
 
 

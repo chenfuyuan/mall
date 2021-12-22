@@ -8,11 +8,11 @@ import java.util.Date;
 import lombok.Data;
 
 /**
- * 会员收藏的商品
+ * 会员收藏的商品Entity
  * 
  * @author chenfuyuan
  * @email chenfuyuan0713@163.com
- * @date 2021-12-07 16:11:21
+ * @date 2021-12-22 16:29:18
  */
 @Data
 @TableName("ums_member_collect_spu")
@@ -44,5 +44,17 @@ public class MemberCollectSpuEntity implements Serializable {
 	 * create_time
 	 */
 	private Date createTime;
+	/**
+	 * 是否删除[0-未删除, 1-删除]
+	 */
+	private Integer isDelete;
+	/**
+	 * 创建时间
+	 */
+	private Date gmtCreate;
+	/**
+	 * 修改时间
+	 */
+	private Date gmtModified;
 
 }
