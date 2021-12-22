@@ -13,6 +13,9 @@
         <result property="url" column="url"/>
         <result property="sort" column="sort"/>
         <result property="img" column="img"/>
+        <result property="isDelete" column="is_delete"/>
+        <result property="gmtCreate" column="gmt_create"/>
+        <result property="gmtModified" column="gmt_modified"/>
     </resultMap>
 
 

@@ -11,6 +11,9 @@
         <result property="discount" column="discount"/>
         <result property="price" column="price"/>
         <result property="addOther" column="add_other"/>
+        <result property="isDelete" column="is_delete"/>
+        <result property="gmtCreate" column="gmt_create"/>
+        <result property="gmtModified" column="gmt_modified"/>
     </resultMap>
 
 

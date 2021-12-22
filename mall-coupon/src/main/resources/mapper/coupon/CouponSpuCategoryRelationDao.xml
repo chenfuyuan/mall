@@ -9,6 +9,9 @@
         <result property="couponId" column="coupon_id"/>
         <result property="categoryId" column="category_id"/>
         <result property="categoryName" column="category_name"/>
+        <result property="isDelete" column="is_delete"/>
+        <result property="gmtCreate" column="gmt_create"/>
+        <result property="gmtModified" column="gmt_modified"/>
     </resultMap>
 
 

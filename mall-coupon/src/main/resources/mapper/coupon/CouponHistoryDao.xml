@@ -15,6 +15,9 @@
         <result property="useTime" column="use_time"/>
         <result property="orderId" column="order_id"/>
         <result property="orderSn" column="order_sn"/>
+        <result property="isDelete" column="is_delete"/>
+        <result property="gmtCreate" column="gmt_create"/>
+        <result property="gmtModified" column="gmt_modified"/>
     </resultMap>
 
 

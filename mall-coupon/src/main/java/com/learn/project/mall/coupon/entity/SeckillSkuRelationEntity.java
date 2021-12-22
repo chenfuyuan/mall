@@ -9,11 +9,11 @@ import java.util.Date;
 import lombok.Data;
 
 /**
- * 秒杀活动商品关联
+ * 秒杀活动商品关联Entity
  * 
  * @author chenfuyuan
  * @email chenfuyuan0713@163.com
- * @date 2021-12-07 16:07:17
+ * @date 2021-12-22 16:26:49
  */
 @Data
 @TableName("sms_seckill_sku_relation")
@@ -53,5 +53,17 @@ public class SeckillSkuRelationEntity implements Serializable {
 	 * 排序
 	 */
 	private Integer seckillSort;
+	/**
+	 * 是否删除[0-未删除, 1-删除]
+	 */
+	private Integer isDelete;
+	/**
+	 * 创建时间
+	 */
+	private Date gmtCreate;
+	/**
+	 * 修改时间
+	 */
+	private Date gmtModified;
 
 }

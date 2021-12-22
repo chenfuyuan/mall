@@ -9,6 +9,9 @@
         <result property="couponId" column="coupon_id"/>
         <result property="spuId" column="spu_id"/>
         <result property="spuName" column="spu_name"/>
+        <result property="isDelete" column="is_delete"/>
+        <result property="gmtCreate" column="gmt_create"/>
+        <result property="gmtModified" column="gmt_modified"/>
     </resultMap>
 
 

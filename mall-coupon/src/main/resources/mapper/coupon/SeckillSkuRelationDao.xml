@@ -13,6 +13,9 @@
         <result property="seckillCount" column="seckill_count"/>
         <result property="seckillLimit" column="seckill_limit"/>
         <result property="seckillSort" column="seckill_sort"/>
+        <result property="isDelete" column="is_delete"/>
+        <result property="gmtCreate" column="gmt_create"/>
+        <result property="gmtModified" column="gmt_modified"/>
     </resultMap>
 
 

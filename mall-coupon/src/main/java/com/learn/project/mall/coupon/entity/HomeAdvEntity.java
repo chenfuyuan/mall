@@ -8,11 +8,11 @@ import java.util.Date;
 import lombok.Data;
 
 /**
- * 首页轮播广告
+ * 首页轮播广告Entity
  * 
  * @author chenfuyuan
  * @email chenfuyuan0713@163.com
- * @date 2021-12-07 16:07:17
+ * @date 2021-12-22 16:26:49
  */
 @Data
 @TableName("sms_home_adv")
@@ -68,5 +68,17 @@ public class HomeAdvEntity implements Serializable {
 	 * 审核者
 	 */
 	private Long authId;
+	/**
+	 * 是否删除[0-未删除, 1-删除]
+	 */
+	private Integer isDelete;
+	/**
+	 * 创建时间
+	 */
+	private Date gmtCreate;
+	/**
+	 * 修改时间
+	 */
+	private Date gmtModified;
 
 }

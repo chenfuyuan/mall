@@ -9,11 +9,11 @@ import java.util.Date;
 import lombok.Data;
 
 /**
- * 优惠券信息
+ * 优惠券信息Entity
  * 
  * @author chenfuyuan
  * @email chenfuyuan0713@163.com
- * @date 2021-12-07 16:07:17
+ * @date 2021-12-22 16:26:49
  */
 @Data
 @TableName("sms_coupon")
@@ -101,5 +101,17 @@ public class CouponEntity implements Serializable {
 	 * 发布状态[0-未发布，1-已发布]
 	 */
 	private Integer publish;
+	/**
+	 * 是否删除[0-未删除, 1-删除]
+	 */
+	private Integer isDelete;
+	/**
+	 * 创建时间
+	 */
+	private Date gmtCreate;
+	/**
+	 * 修改时间
+	 */
+	private Date gmtModified;
 
 }

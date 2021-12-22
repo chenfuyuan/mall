@@ -25,6 +25,9 @@
         <result property="code" column="code"/>
         <result property="memberLevel" column="member_level"/>
         <result property="publish" column="publish"/>
+        <result property="isDelete" column="is_delete"/>
+        <result property="gmtCreate" column="gmt_create"/>
+        <result property="gmtModified" column="gmt_modified"/>
     </resultMap>
 
 

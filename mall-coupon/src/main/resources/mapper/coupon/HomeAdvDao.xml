@@ -17,6 +17,9 @@
         <result property="sort" column="sort"/>
         <result property="publisherId" column="publisher_id"/>
         <result property="authId" column="auth_id"/>
+        <result property="isDelete" column="is_delete"/>
+        <result property="gmtCreate" column="gmt_create"/>
+        <result property="gmtModified" column="gmt_modified"/>
     </resultMap>
 
 

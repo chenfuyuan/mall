@@ -9,11 +9,11 @@ import java.util.Date;
 import lombok.Data;
 
 /**
- * 商品spu积分设置
+ * 商品spu积分设置Entity
  * 
  * @author chenfuyuan
  * @email chenfuyuan0713@163.com
- * @date 2021-12-07 16:07:17
+ * @date 2021-12-22 16:26:49
  */
 @Data
 @TableName("sms_spu_bounds")
@@ -41,5 +41,17 @@ public class SpuBoundsEntity implements Serializable {
 	 * 优惠生效情况[1111（四个状态位，从右到左）;0 - 无优惠，成长积分是否赠送;1 - 无优惠，购物积分是否赠送;2 - 有优惠，成长积分是否赠送;3 - 有优惠，购物积分是否赠送【状态位0：不赠送，1：赠送】]
 	 */
 	private Integer work;
+	/**
+	 * 是否删除[0-未删除, 1-删除]
+	 */
+	private Integer isDelete;
+	/**
+	 * 创建时间
+	 */
+	private Date gmtCreate;
+	/**
+	 * 修改时间
+	 */
+	private Date gmtModified;
 
 }

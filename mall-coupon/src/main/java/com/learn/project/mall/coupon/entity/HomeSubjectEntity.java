@@ -8,11 +8,11 @@ import java.util.Date;
 import lombok.Data;
 
 /**
- * 首页专题表【jd首页下面很多专题，每个专题链接新的页面，展示专题商品信息】
+ * 首页专题表【jd首页下面很多专题，每个专题链接新的页面，展示专题商品信息】Entity
  * 
  * @author chenfuyuan
  * @email chenfuyuan0713@163.com
- * @date 2021-12-07 16:07:17
+ * @date 2021-12-22 16:26:49
  */
 @Data
 @TableName("sms_home_subject")
@@ -52,5 +52,17 @@ public class HomeSubjectEntity implements Serializable {
 	 * 专题图片地址
 	 */
 	private String img;
+	/**
+	 * 是否删除[0-未删除, 1-删除]
+	 */
+	private Integer isDelete;
+	/**
+	 * 创建时间
+	 */
+	private Date gmtCreate;
+	/**
+	 * 修改时间
+	 */
+	private Date gmtModified;
 
 }

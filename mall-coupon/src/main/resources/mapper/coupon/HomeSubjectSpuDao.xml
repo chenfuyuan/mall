@@ -10,6 +10,9 @@
         <result property="subjectId" column="subject_id"/>
         <result property="spuId" column="spu_id"/>
         <result property="sort" column="sort"/>
+        <result property="isDelete" column="is_delete"/>
+        <result property="gmtCreate" column="gmt_create"/>
+        <result property="gmtModified" column="gmt_modified"/>
     </resultMap>
 
 

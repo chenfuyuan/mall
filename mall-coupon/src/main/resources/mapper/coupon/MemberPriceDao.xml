@@ -11,6 +11,9 @@
         <result property="memberLevelName" column="member_level_name"/>
         <result property="memberPrice" column="member_price"/>
         <result property="addOther" column="add_other"/>
+        <result property="isDelete" column="is_delete"/>
+        <result property="gmtCreate" column="gmt_create"/>
+        <result property="gmtModified" column="gmt_modified"/>
     </resultMap>
 
 

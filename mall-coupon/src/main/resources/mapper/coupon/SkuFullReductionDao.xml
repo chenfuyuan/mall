@@ -10,6 +10,9 @@
         <result property="fullPrice" column="full_price"/>
         <result property="reducePrice" column="reduce_price"/>
         <result property="addOther" column="add_other"/>
+        <result property="isDelete" column="is_delete"/>
+        <result property="gmtCreate" column="gmt_create"/>
+        <result property="gmtModified" column="gmt_modified"/>
     </resultMap>
 
 
