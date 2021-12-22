@@ -51,6 +51,8 @@ create table wms_purchase_detail
     primary key (id)
 );
 
+alter table wms_purchase_detail comment '采购详细信息';
+
 /*==============================================================*/
 /* Table: wms_ware_info                                         */
 /*==============================================================*/
