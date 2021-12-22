@@ -21,6 +21,9 @@
         <result property="content" column="content"/>
         <result property="memberIcon" column="member_icon"/>
         <result property="commentType" column="comment_type"/>
+        <result property="isDelete" column="is_delete"/>
+        <result property="gmtCreate" column="gmt_create"/>
+        <result property="gmtModified" column="gmt_modified"/>
     </resultMap>
 
 

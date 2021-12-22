@@ -12,7 +12,7 @@ import lombok.Data;
  * 
  * @author chenfuyuan
  * @email chenfuyuan0713@163.com
- * @date 2021-12-12 14:35:18
+ * @date 2021-12-22 14:53:22
  */
 @Data
 @TableName("pms_sku_sale_attr_value")
@@ -44,5 +44,17 @@ public class SkuSaleAttrValueEntity implements Serializable {
 	 * 顺序
 	 */
 	private Integer attrSort;
+	/**
+	 * 是否删除[0-未删除, 1-删除]
+	 */
+	private Integer isDelete;
+	/**
+	 * 创建时间
+	 */
+	private Date gmtCreate;
+	/**
+	 * 修改时间
+	 */
+	private Date gmtModified;
 
 }

@@ -14,6 +14,9 @@
         <result property="icon" column="icon"/>
         <result property="productUnit" column="product_unit"/>
         <result property="productCount" column="product_count"/>
+        <result property="isDelete" column="is_delete"/>
+        <result property="gmtCreate" column="gmt_create"/>
+        <result property="gmtModified" column="gmt_modified"/>
     </resultMap>
 
 

@@ -12,7 +12,7 @@ import lombok.Data;
  * 
  * @author chenfuyuan
  * @email chenfuyuan0713@163.com
- * @date 2021-12-12 14:35:18
+ * @date 2021-12-22 14:53:22
  */
 @Data
 @TableName("pms_spu_comment")
@@ -84,5 +84,17 @@ public class SpuCommentEntity implements Serializable {
 	 * 评论类型[0 - 对商品的直接评论，1 - 对评论的回复]
 	 */
 	private Integer commentType;
+	/**
+	 * 是否删除[0-未删除, 1-删除]
+	 */
+	private Integer isDelete;
+	/**
+	 * 创建时间
+	 */
+	private Date gmtCreate;
+	/**
+	 * 修改时间
+	 */
+	private Date gmtModified;
 
 }

@@ -11,6 +11,9 @@
         <result property="descript" column="descript"/>
         <result property="icon" column="icon"/>
         <result property="catelogId" column="catelog_id"/>
+        <result property="isDelete" column="is_delete"/>
+        <result property="gmtCreate" column="gmt_create"/>
+        <result property="gmtModified" column="gmt_modified"/>
     </resultMap>
 
 

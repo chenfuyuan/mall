@@ -14,6 +14,9 @@
         <result property="enable" column="enable"/>
         <result property="catelogId" column="catelog_id"/>
         <result property="showDesc" column="show_desc"/>
+        <result property="isDelete" column="is_delete"/>
+        <result property="gmtCreate" column="gmt_create"/>
+        <result property="gmtModified" column="gmt_modified"/>
     </resultMap>
 
 

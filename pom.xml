@@ -32,6 +32,7 @@
         <spring-cloud.version>2021.0.0</spring-cloud.version>
         <mall.version>0.0.1-SNAPSHOT</mall.version>
         <upTool.version>1.0.0</upTool.version>
+        <p6spy.version>3.9.1</p6spy.version>
     </properties>
 
     <modules>

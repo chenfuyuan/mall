@@ -10,6 +10,9 @@
         <result property="imgUrl" column="img_url"/>
         <result property="imgSort" column="img_sort"/>
         <result property="defaultImg" column="default_img"/>
+        <result property="isDelete" column="is_delete"/>
+        <result property="gmtCreate" column="gmt_create"/>
+        <result property="gmtModified" column="gmt_modified"/>
     </resultMap>
 
 

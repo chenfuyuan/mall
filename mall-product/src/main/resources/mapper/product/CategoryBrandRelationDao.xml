@@ -10,6 +10,9 @@
         <result property="catelogId" column="catelog_id"/>
         <result property="brandName" column="brand_name"/>
         <result property="catelogName" column="catelog_name"/>
+        <result property="isDelete" column="is_delete"/>
+        <result property="gmtCreate" column="gmt_create"/>
+        <result property="gmtModified" column="gmt_modified"/>
     </resultMap>
 
 

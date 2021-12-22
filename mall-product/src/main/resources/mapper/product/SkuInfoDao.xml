@@ -16,6 +16,9 @@
         <result property="skuSubtitle" column="sku_subtitle"/>
         <result property="price" column="price"/>
         <result property="saleCount" column="sale_count"/>
+        <result property="isDelete" column="is_delete"/>
+        <result property="gmtCreate" column="gmt_create"/>
+        <result property="gmtModified" column="gmt_modified"/>
     </resultMap>
 
 

@@ -16,6 +16,9 @@ spring:
           - dataId: global.yml
             group: global
             refresh: true
+          - dataId: spy.properties
+            group: global
+
         #扩展配置
         extension-configs:
           - dataId: datasource.yml

@@ -12,6 +12,9 @@
         <result property="showStatus" column="show_status"/>
         <result property="firstLetter" column="first_letter"/>
         <result property="sort" column="sort"/>
+        <result property="isDelete" column="is_delete"/>
+        <result property="gmtCreate" column="gmt_create"/>
+        <result property="gmtModified" column="gmt_modified"/>
     </resultMap>
 
 
