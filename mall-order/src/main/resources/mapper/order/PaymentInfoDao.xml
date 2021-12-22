@@ -16,6 +16,9 @@
         <result property="confirmTime" column="confirm_time"/>
         <result property="callbackContent" column="callback_content"/>
         <result property="callbackTime" column="callback_time"/>
+        <result property="isDelete" column="is_delete"/>
+        <result property="gmtCreate" column="gmt_create"/>
+        <result property="gmtModified" column="gmt_modified"/>
     </resultMap>
 
 

@@ -12,6 +12,9 @@
         <result property="finishOvertime" column="finish_overtime"/>
         <result property="commentOvertime" column="comment_overtime"/>
         <result property="memberLevel" column="member_level"/>
+        <result property="isDelete" column="is_delete"/>
+        <result property="gmtCreate" column="gmt_create"/>
+        <result property="gmtModified" column="gmt_modified"/>
     </resultMap>
 
 

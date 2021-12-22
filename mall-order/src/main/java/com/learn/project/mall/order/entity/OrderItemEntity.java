@@ -9,11 +9,11 @@ import java.util.Date;
 import lombok.Data;
 
 /**
- * 订单项信息
+ * 订单项信息Entity
  * 
  * @author chenfuyuan
  * @email chenfuyuan0713@163.com
- * @date 2021-12-07 16:20:05
+ * @date 2021-12-22 16:28:07
  */
 @Data
 @TableName("oms_order_item")
@@ -101,5 +101,17 @@ public class OrderItemEntity implements Serializable {
 	 * 赠送成长值
 	 */
 	private Integer giftGrowth;
+	/**
+	 * 是否删除[0-未删除, 1-删除]
+	 */
+	private Integer isDelete;
+	/**
+	 * 创建时间
+	 */
+	private Date gmtCreate;
+	/**
+	 * 修改时间
+	 */
+	private Date gmtModified;
 
 }

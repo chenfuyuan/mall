@@ -11,6 +11,9 @@
         <result property="createTime" column="create_time"/>
         <result property="orderStatus" column="order_status"/>
         <result property="note" column="note"/>
+        <result property="isDelete" column="is_delete"/>
+        <result property="gmtCreate" column="gmt_create"/>
+        <result property="gmtModified" column="gmt_modified"/>
     </resultMap>
 
 

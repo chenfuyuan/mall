@@ -8,11 +8,11 @@ import java.util.Date;
 import lombok.Data;
 
 /**
- * 订单配置信息
+ * 订单配置信息Entity
  * 
  * @author chenfuyuan
  * @email chenfuyuan0713@163.com
- * @date 2021-12-07 16:20:05
+ * @date 2021-12-22 16:28:07
  */
 @Data
 @TableName("oms_order_setting")
@@ -48,5 +48,17 @@ public class OrderSettingEntity implements Serializable {
 	 * 会员等级【0-不限会员等级，全部通用；其他-对应的其他会员等级】
 	 */
 	private Integer memberLevel;
+	/**
+	 * 是否删除[0-未删除, 1-删除]
+	 */
+	private Integer isDelete;
+	/**
+	 * 创建时间
+	 */
+	private Date gmtCreate;
+	/**
+	 * 修改时间
+	 */
+	private Date gmtModified;
 
 }

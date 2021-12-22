@@ -33,6 +33,9 @@
         <result property="receiveNote" column="receive_note"/>
         <result property="receivePhone" column="receive_phone"/>
         <result property="companyAddress" column="company_address"/>
+        <result property="isDelete" column="is_delete"/>
+        <result property="gmtCreate" column="gmt_create"/>
+        <result property="gmtModified" column="gmt_modified"/>
     </resultMap>
 
 

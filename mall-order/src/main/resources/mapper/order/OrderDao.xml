@@ -47,6 +47,9 @@
         <result property="receiveTime" column="receive_time"/>
         <result property="commentTime" column="comment_time"/>
         <result property="modifyTime" column="modify_time"/>
+        <result property="isDelete" column="is_delete"/>
+        <result property="gmtCreate" column="gmt_create"/>
+        <result property="gmtModified" column="gmt_modified"/>
     </resultMap>
 
 

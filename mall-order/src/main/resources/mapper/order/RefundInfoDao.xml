@@ -12,6 +12,9 @@
         <result property="refundStatus" column="refund_status"/>
         <result property="refundChannel" column="refund_channel"/>
         <result property="refundContent" column="refund_content"/>
+        <result property="isDelete" column="is_delete"/>
+        <result property="gmtCreate" column="gmt_create"/>
+        <result property="gmtModified" column="gmt_modified"/>
     </resultMap>
 
 

@@ -10,6 +10,9 @@
         <result property="sort" column="sort"/>
         <result property="status" column="status"/>
         <result property="createTime" column="create_time"/>
+        <result property="isDelete" column="is_delete"/>
+        <result property="gmtCreate" column="gmt_create"/>
+        <result property="gmtModified" column="gmt_modified"/>
     </resultMap>
 
 

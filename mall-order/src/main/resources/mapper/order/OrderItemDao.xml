@@ -25,6 +25,9 @@
         <result property="realAmount" column="real_amount"/>
         <result property="giftIntegration" column="gift_integration"/>
         <result property="giftGrowth" column="gift_growth"/>
+        <result property="isDelete" column="is_delete"/>
+        <result property="gmtCreate" column="gmt_create"/>
+        <result property="gmtModified" column="gmt_modified"/>
     </resultMap>
 
 
