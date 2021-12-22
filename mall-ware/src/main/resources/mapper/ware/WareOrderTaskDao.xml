@@ -19,6 +19,9 @@
         <result property="createTime" column="create_time"/>
         <result property="wareId" column="ware_id"/>
         <result property="taskComment" column="task_comment"/>
+        <result property="isDelete" column="is_delete"/>
+        <result property="gmtCreate" column="gmt_create"/>
+        <result property="gmtModified" column="gmt_modified"/>
     </resultMap>
 
 

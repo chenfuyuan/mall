@@ -11,6 +11,9 @@
         <result property="stock" column="stock"/>
         <result property="skuName" column="sku_name"/>
         <result property="stockLocked" column="stock_locked"/>
+        <result property="isDelete" column="is_delete"/>
+        <result property="gmtCreate" column="gmt_create"/>
+        <result property="gmtModified" column="gmt_modified"/>
     </resultMap>
 
 
