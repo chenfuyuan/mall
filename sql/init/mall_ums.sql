@@ -27,6 +27,9 @@ create table ums_growth_change_history
     change_count int comment '改变的值（正负计数）',
     note         varchar(0) comment '备注',
     source_type  tinyint comment '积分来源[0-购物，1-管理员修改]',
+    is_delete tinyint DEFAULT '0' COMMENT '是否删除[0-未删除, 1-删除]',
+    gmt_create timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+    gmt_modified timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
     primary key (id)
 );
 
@@ -43,6 +46,9 @@ create table ums_integration_change_history
     change_count int comment '变化的值',
     note         varchar(255) comment '备注',
     source_tyoe  tinyint comment '来源[0->购物；1->管理员修改;2->活动]',
+    is_delete tinyint DEFAULT '0' COMMENT '是否删除[0-未删除, 1-删除]',
+    gmt_create timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+    gmt_modified timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
     primary key (id)
 );
 
@@ -71,6 +77,9 @@ create table ums_member
     growth      int comment '成长值',
     status      tinyint comment '启用状态',
     create_time datetime comment '注册时间',
+    is_delete tinyint DEFAULT '0' COMMENT '是否删除[0-未删除, 1-删除]',
+    gmt_create timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+    gmt_modified timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
     primary key (id)
 );
 
@@ -87,6 +96,9 @@ create table ums_member_collect_spu
     spu_name    varchar(500) comment 'spu_name',
     spu_img     varchar(500) comment 'spu_img',
     create_time datetime comment 'create_time',
+    is_delete tinyint DEFAULT '0' COMMENT '是否删除[0-未删除, 1-删除]',
+    gmt_create timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+    gmt_modified timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
     primary key (id)
 );
 
@@ -102,6 +114,9 @@ create table ums_member_collect_subject
     subject_name varchar(255) comment 'subject_name',
     subject_img  varchar(500) comment 'subject_img',
     subject_urll varchar(500) comment '活动url',
+    is_delete tinyint DEFAULT '0' COMMENT '是否删除[0-未删除, 1-删除]',
+    gmt_create timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+    gmt_modified timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
     primary key (id)
 );
 
@@ -122,6 +137,9 @@ create table ums_member_level
     priviledge_member_price tinyint comment '是否有会员价格特权',
     priviledge_birthday     tinyint comment '是否有生日特权',
     note                    varchar(255) comment '备注',
+    is_delete tinyint DEFAULT '0' COMMENT '是否删除[0-未删除, 1-删除]',
+    gmt_create timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+    gmt_modified timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
     primary key (id)
 );
 
@@ -138,6 +156,9 @@ create table ums_member_login_log
     ip          varchar(64) comment 'ip',
     city        varchar(64) comment 'city',
     login_type  tinyint(1) comment '登录类型[1-web，2-app]',
+    is_delete tinyint DEFAULT '0' COMMENT '是否删除[0-未删除, 1-删除]',
+    gmt_create timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+    gmt_modified timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
     primary key (id)
 );
 
@@ -159,6 +180,9 @@ create table ums_member_receive_address
     detail_address varchar(255) comment '详细地址(街道)',
     areacode       varchar(15) comment '省市区代码',
     default_status tinyint(1) comment '是否默认',
+    is_delete tinyint DEFAULT '0' COMMENT '是否删除[0-未删除, 1-删除]',
+    gmt_create timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+    gmt_modified timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
     primary key (id)
 );
 
@@ -184,6 +208,9 @@ create table ums_member_statistics_info
     collect_subject_count int comment '收藏的专题活动数量',
     collect_comment_count int comment '收藏的评论数量',
     invite_friend_count   int comment '邀请的朋友数量',
+    is_delete tinyint DEFAULT '0' COMMENT '是否删除[0-未删除, 1-删除]',
+    gmt_create timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+    gmt_modified timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
     primary key (id)
 );
 

@@ -61,6 +61,9 @@ create table oms_order
     receive_time            datetime comment '确认收货时间',
     comment_time            datetime comment '评价时间',
     modify_time             datetime comment '修改时间',
+    is_delete tinyint DEFAULT '0' COMMENT '是否删除[0-未删除, 1-删除]',
+    gmt_create timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+    gmt_modified timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
     primary key (id)
 );
 
@@ -91,6 +94,9 @@ create table oms_order_item
     real_amount        decimal(18, 4) comment '该商品经过优惠后的分解金额',
     gift_integration   int comment '赠送积分',
     gift_growth        int comment '赠送成长值',
+    is_delete tinyint DEFAULT '0' COMMENT '是否删除[0-未删除, 1-删除]',
+    gmt_create timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+    gmt_modified timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
     primary key (id)
 );
 
@@ -107,6 +113,9 @@ create table oms_order_operate_history
     create_time  datetime comment '操作时间',
     order_status tinyint comment '订单状态【0->待付款；1->待发货；2->已发货；3->已完成；4->已关闭；5->无效订单】',
     note         varchar(500) comment '备注',
+    is_delete tinyint DEFAULT '0' COMMENT '是否删除[0-未删除, 1-删除]',
+    gmt_create timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+    gmt_modified timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
     primary key (id)
 );
 
@@ -145,6 +154,9 @@ create table oms_order_return_apply
     receive_note    varchar(500) comment '收货备注',
     receive_phone   varchar(20) comment '收货电话',
     company_address varchar(500) comment '公司收货地址',
+    is_delete tinyint DEFAULT '0' COMMENT '是否删除[0-未删除, 1-删除]',
+    gmt_create timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+    gmt_modified timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
     primary key (id)
 );
 
@@ -160,6 +172,9 @@ create table oms_order_return_reason
     sort        int comment '排序',
     status      tinyint(1) comment '启用状态',
     create_time datetime comment 'create_time',
+    is_delete tinyint DEFAULT '0' COMMENT '是否删除[0-未删除, 1-删除]',
+    gmt_create timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+    gmt_modified timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
     primary key (id)
 );
 
@@ -177,6 +192,9 @@ create table oms_order_setting
     finish_overtime       int comment '自动完成交易时间，不能申请退货（天）',
     comment_overtime      int comment '订单完成后自动好评时间（天）',
     member_level          tinyint(2) comment '会员等级【0-不限会员等级，全部通用；其他-对应的其他会员等级】',
+    is_delete tinyint DEFAULT '0' COMMENT '是否删除[0-未删除, 1-删除]',
+    gmt_create timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+    gmt_modified timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
     primary key (id)
 );
 
@@ -198,6 +216,9 @@ create table oms_payment_info
     confirm_time     datetime comment '确认时间',
     callback_content varchar(4000) comment '回调内容',
     callback_time    datetime comment '回调时间',
+    is_delete tinyint DEFAULT '0' COMMENT '是否删除[0-未删除, 1-删除]',
+    gmt_create timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+    gmt_modified timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
     primary key (id)
 );
 
@@ -215,6 +236,9 @@ create table oms_refund_info
     refund_status   tinyint(1) comment '退款状态',
     refund_channel  tinyint comment '退款渠道[1-支付宝，2-微信，3-银联，4-汇款]',
     refund_content  varchar(5000),
+    is_delete tinyint DEFAULT '0' COMMENT '是否删除[0-未删除, 1-删除]',
+    gmt_create timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+    gmt_modified timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
     primary key (id)
 );
 

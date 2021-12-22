@@ -11,7 +11,10 @@ CREATE TABLE `pms_category`
     `icon`          char(255) DEFAULT NULL COMMENT '图标地址',
     `product_unit`  char(50)  DEFAULT NULL COMMENT '计量单位',
     `product_count` int(11) DEFAULT NULL COMMENT '商品数量',
-    PRIMARY KEY (`cat_id`)
+    is_delete tinyint DEFAULT '0' COMMENT '是否删除[0-未删除, 1-删除]',
+    gmt_create timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+    gmt_modified timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
+    primary key (`cat_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1433 DEFAULT CHARSET=utf8mb4 COMMENT='商品三级分类';
 
 /*Data for the table `pms_category` */

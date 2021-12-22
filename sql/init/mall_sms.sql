@@ -53,6 +53,9 @@ create table sms_coupon
     code              varchar(64) comment '优惠码',
     member_level      tinyint(1) comment '可以领取的会员等级[0->不限等级，其他-对应等级]',
     publish           tinyint(1) comment '发布状态[0-未发布，1-已发布]',
+    is_delete tinyint DEFAULT '0' COMMENT '是否删除[0-未删除, 1-删除]',
+    gmt_create timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+    gmt_modified timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
     primary key (id)
 );
 
@@ -73,6 +76,9 @@ create table sms_coupon_history
     use_time         datetime comment '使用时间',
     order_id         bigint comment '订单id',
     order_sn         bigint comment '订单号',
+    is_delete tinyint DEFAULT '0' COMMENT '是否删除[0-未删除, 1-删除]',
+    gmt_create timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+    gmt_modified timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
     primary key (id)
 );
 
@@ -87,6 +93,9 @@ create table sms_coupon_spu_category_relation
     coupon_id     bigint comment '优惠券id',
     category_id   bigint comment '产品分类id',
     category_name varchar(64) comment '产品分类名称',
+    is_delete tinyint DEFAULT '0' COMMENT '是否删除[0-未删除, 1-删除]',
+    gmt_create timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+    gmt_modified timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
     primary key (id)
 );
 
@@ -101,6 +110,9 @@ create table sms_coupon_spu_relation
     coupon_id bigint comment '优惠券id',
     spu_id    bigint comment 'spu_id',
     spu_name  varchar(255) comment 'spu_name',
+    is_delete tinyint DEFAULT '0' COMMENT '是否删除[0-未删除, 1-删除]',
+    gmt_create timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+    gmt_modified timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
     primary key (id)
 );
 
@@ -123,6 +135,9 @@ create table sms_home_adv
     sort         int comment '排序',
     publisher_id bigint comment '发布者',
     auth_id      bigint comment '审核者',
+    is_delete tinyint DEFAULT '0' COMMENT '是否删除[0-未删除, 1-删除]',
+    gmt_create timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+    gmt_modified timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
     primary key (id)
 );
 
@@ -141,6 +156,9 @@ create table sms_home_subject
     url       varchar(500) comment '详情连接',
     sort      int comment '排序',
     img       varchar(500) comment '专题图片地址',
+    is_delete tinyint DEFAULT '0' COMMENT '是否删除[0-未删除, 1-删除]',
+    gmt_create timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+    gmt_modified timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
     primary key (id)
 );
 
@@ -156,6 +174,9 @@ create table sms_home_subject_spu
     subject_id bigint comment '专题id',
     spu_id     bigint comment 'spu_id',
     sort       int comment '排序',
+    is_delete tinyint DEFAULT '0' COMMENT '是否删除[0-未删除, 1-删除]',
+    gmt_create timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+    gmt_modified timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
     primary key (id)
 );
 
@@ -172,6 +193,9 @@ create table sms_member_price
     member_level_name varchar(100) comment '会员等级名',
     member_price      decimal(18, 4) comment '会员对应价格',
     add_other         tinyint(1) comment '可否叠加其他优惠[0-不可叠加优惠，1-可叠加]',
+    is_delete tinyint DEFAULT '0' COMMENT '是否删除[0-未删除, 1-删除]',
+    gmt_create timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+    gmt_modified timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
     primary key (id)
 );
 
@@ -189,6 +213,9 @@ create table sms_seckill_promotion
     status      tinyint comment '上下线状态',
     create_time datetime comment '创建时间',
     user_id     bigint comment '创建人',
+    is_delete tinyint DEFAULT '0' COMMENT '是否删除[0-未删除, 1-删除]',
+    gmt_create timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+    gmt_modified timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
     primary key (id)
 );
 
@@ -205,6 +232,9 @@ create table sms_seckill_session
     end_time    datetime comment '每日结束时间',
     status      tinyint(1) comment '启用状态',
     create_time datetime comment '创建时间',
+    is_delete tinyint DEFAULT '0' COMMENT '是否删除[0-未删除, 1-删除]',
+    gmt_create timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+    gmt_modified timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
     primary key (id)
 );
 
@@ -222,6 +252,9 @@ create table sms_seckill_sku_notice
     subcribe_time datetime comment '订阅时间',
     send_time     datetime comment '发送时间',
     notice_type   tinyint(1) comment '通知方式[0-短信，1-邮件]',
+    is_delete tinyint DEFAULT '0' COMMENT '是否删除[0-未删除, 1-删除]',
+    gmt_create timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+    gmt_modified timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
     primary key (id)
 );
 
@@ -240,6 +273,9 @@ create table sms_seckill_sku_relation
     seckill_count        decimal comment '秒杀总量',
     seckill_limit        decimal comment '每人限购数量',
     seckill_sort         int comment '排序',
+    is_delete tinyint DEFAULT '0' COMMENT '是否删除[0-未删除, 1-删除]',
+    gmt_create timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+    gmt_modified timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
     primary key (id)
 );
 
@@ -255,6 +291,9 @@ create table sms_sku_full_reduction
     full_price   decimal(18, 4) comment '满多少',
     reduce_price decimal(18, 4) comment '减多少',
     add_other    tinyint(1) comment '是否参与其他优惠',
+    is_delete tinyint DEFAULT '0' COMMENT '是否删除[0-未删除, 1-删除]',
+    gmt_create timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+    gmt_modified timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
     primary key (id)
 );
 
@@ -271,6 +310,9 @@ create table sms_sku_ladder
     discount   decimal(4, 2) comment '打几折',
     price      decimal(18, 4) comment '折后价',
     add_other  tinyint(1) comment '是否叠加其他优惠[0-不可叠加，1-可叠加]',
+    is_delete tinyint DEFAULT '0' COMMENT '是否删除[0-未删除, 1-删除]',
+    gmt_create timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+    gmt_modified timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
     primary key (id)
 );
 
@@ -286,6 +328,9 @@ create table sms_spu_bounds
     grow_bounds decimal(18, 4) comment '成长积分',
     buy_bounds  decimal(18, 4) comment '购物积分',
     work        tinyint(1) comment '优惠生效情况[1111（四个状态位，从右到左）;0 - 无优惠，成长积分是否赠送;1 - 无优惠，购物积分是否赠送;2 - 有优惠，成长积分是否赠送;3 - 有优惠，购物积分是否赠送【状态位0：不赠送，1：赠送】]',
+    is_delete tinyint DEFAULT '0' COMMENT '是否删除[0-未删除, 1-删除]',
+    gmt_create timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+    gmt_modified timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
     primary key (id)
 );
 

@@ -42,6 +42,9 @@ create table pms_attr
     enable       bigint comment '启用状态[0 - 禁用，1 - 启用]',
     catelog_id   bigint comment '所属分类',
     show_desc    tinyint comment '快速展示【是否展示在介绍上；0-否 1-是】，在sku中仍然可以调整',
+    is_delete tinyint DEFAULT '0' COMMENT '是否删除[0-未删除, 1-删除]',
+    gmt_create timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+    gmt_modified timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
     primary key (attr_id)
 );
 
@@ -56,6 +59,9 @@ create table pms_attr_attrgroup_relation
     attr_id       bigint comment '属性id',
     attr_group_id bigint comment '属性分组id',
     attr_sort     int comment '属性组内排序',
+    is_delete tinyint DEFAULT '0' COMMENT '是否删除[0-未删除, 1-删除]',
+    gmt_create timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+    gmt_modified timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
     primary key (id)
 );
 
@@ -72,6 +78,9 @@ create table pms_attr_group
     descript        varchar(255) comment '描述',
     icon            varchar(255) comment '组图标',
     catelog_id      bigint comment '所属分类id',
+    is_delete tinyint DEFAULT '0' COMMENT '是否删除[0-未删除, 1-删除]',
+    gmt_create timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+    gmt_modified timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
     primary key (attr_group_id)
 );
 
@@ -89,6 +98,9 @@ create table pms_brand
     show_status  tinyint comment '显示状态[0-不显示；1-显示]',
     first_letter char(1) comment '检索首字母',
     sort         int comment '排序',
+    is_delete tinyint DEFAULT '0' COMMENT '是否删除[0-未删除, 1-删除]',
+    gmt_create timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+    gmt_modified timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
     primary key (brand_id)
 );
 
@@ -108,6 +120,9 @@ create table pms_category
     icon          char(255) comment '图标地址',
     product_unit  char(50) comment '计量单位',
     product_count int comment '商品数量',
+    is_delete tinyint DEFAULT '0' COMMENT '是否删除[0-未删除, 1-删除]',
+    gmt_create timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+    gmt_modified timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
     primary key (cat_id)
 );
 
@@ -123,6 +138,9 @@ create table pms_category_brand_relation
     catelog_id   bigint comment '分类id',
     brand_name   varchar(255),
     catelog_name varchar(255),
+    is_delete tinyint DEFAULT '0' COMMENT '是否删除[0-未删除, 1-删除]',
+    gmt_create timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+    gmt_modified timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
     primary key (id)
 );
 
@@ -136,6 +154,9 @@ create table pms_comment_replay
     id         bigint not null auto_increment comment 'id',
     comment_id bigint comment '评论id',
     reply_id   bigint comment '回复id',
+    is_delete tinyint DEFAULT '0' COMMENT '是否删除[0-未删除, 1-删除]',
+    gmt_create timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+    gmt_modified timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
     primary key (id)
 );
 
@@ -153,6 +174,9 @@ create table pms_product_attr_value
     attr_value varchar(200) comment '属性值',
     attr_sort  int comment '顺序',
     quick_show tinyint comment '快速展示【是否展示在介绍上；0-否 1-是】',
+    is_delete tinyint DEFAULT '0' COMMENT '是否删除[0-未删除, 1-删除]',
+    gmt_create timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+    gmt_modified timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
     primary key (id)
 );
 
@@ -168,6 +192,9 @@ create table pms_sku_images
     img_url     varchar(255) comment '图片地址',
     img_sort    int comment '排序',
     default_img int comment '默认图[0 - 不是默认图，1 - 是默认图]',
+    is_delete tinyint DEFAULT '0' COMMENT '是否删除[0-未删除, 1-删除]',
+    gmt_create timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+    gmt_modified timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
     primary key (id)
 );
 
@@ -189,6 +216,9 @@ create table pms_sku_info
     sku_subtitle    varchar(2000) comment '副标题',
     price           decimal(18, 4) comment '价格',
     sale_count      bigint comment '销量',
+    is_delete tinyint DEFAULT '0' COMMENT '是否删除[0-未删除, 1-删除]',
+    gmt_create timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+    gmt_modified timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
     primary key (sku_id)
 );
 
@@ -205,6 +235,9 @@ create table pms_sku_sale_attr_value
     attr_name  varchar(200) comment '销售属性名',
     attr_value varchar(200) comment '销售属性值',
     attr_sort  int comment '顺序',
+    is_delete tinyint DEFAULT '0' COMMENT '是否删除[0-未删除, 1-删除]',
+    gmt_create timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+    gmt_modified timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
     primary key (id)
 );
 
@@ -231,6 +264,9 @@ create table pms_spu_comment
     content          text comment '内容',
     member_icon      varchar(255) comment '用户头像',
     comment_type     tinyint comment '评论类型[0 - 对商品的直接评论，1 - 对评论的回复]',
+    is_delete tinyint DEFAULT '0' COMMENT '是否删除[0-未删除, 1-删除]',
+    gmt_create timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+    gmt_modified timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
     primary key (id)
 );
 
@@ -247,6 +283,9 @@ create table pms_spu_images
     img_url     varchar(255) comment '图片地址',
     img_sort    int comment '顺序',
     default_img tinyint comment '是否默认图',
+    is_delete tinyint DEFAULT '0' COMMENT '是否删除[0-未删除, 1-删除]',
+    gmt_create timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+    gmt_modified timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
     primary key (id)
 );
 
@@ -266,6 +305,9 @@ create table pms_spu_info
     publish_status  tinyint comment '上架状态[0 - 下架，1 - 上架]',
     create_time     datetime,
     update_time     datetime,
+    is_delete tinyint DEFAULT '0' COMMENT '是否删除[0-未删除, 1-删除]',
+    gmt_create timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+    gmt_modified timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
     primary key (id)
 );
 
@@ -278,6 +320,9 @@ create table pms_spu_info_desc
 (
     spu_id  bigint not null comment '商品id',
     decript longtext comment '商品介绍',
+    is_delete tinyint DEFAULT '0' COMMENT '是否删除[0-未删除, 1-删除]',
+    gmt_create timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+    gmt_modified timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
     primary key (spu_id)
 );
 

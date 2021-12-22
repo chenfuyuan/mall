@@ -25,6 +25,9 @@ create table wms_purchase
     amount        decimal(18, 4) comment '总金额',
     create_time   datetime comment '创建日期',
     update_time   datetime comment '更新日期',
+    is_delete tinyint DEFAULT '0' COMMENT '是否删除[0-未删除, 1-删除]',
+    gmt_create timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+    gmt_modified timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
     primary key (id)
 );
 
@@ -42,6 +45,9 @@ create table wms_purchase_detail
     sku_price   decimal(18, 4) comment '采购金额',
     ware_id     bigint comment '仓库id',
     status      int comment '状态[0新建，1已分配，2正在采购，3已完成，4采购失败]',
+    is_delete tinyint DEFAULT '0' COMMENT '是否删除[0-未删除, 1-删除]',
+    gmt_create timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+    gmt_modified timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
     primary key (id)
 );
 
@@ -54,6 +60,9 @@ create table wms_ware_info
     name     varchar(255) comment '仓库名',
     address  varchar(255) comment '仓库地址',
     areacode varchar(20) comment '区域编码',
+    is_delete tinyint DEFAULT '0' COMMENT '是否删除[0-未删除, 1-删除]',
+    gmt_create timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+    gmt_modified timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
     primary key (id)
 );
 
@@ -78,6 +87,9 @@ create table wms_ware_order_task
     create_time      datetime comment 'create_time',
     ware_id          bigint comment '仓库id',
     task_comment     varchar(500) comment '工作单备注',
+    is_delete tinyint DEFAULT '0' COMMENT '是否删除[0-未删除, 1-删除]',
+    gmt_create timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+    gmt_modified timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
     primary key (id)
 );
 
@@ -93,6 +105,9 @@ create table wms_ware_order_task_detail
     sku_name varchar(255) comment 'sku_name',
     sku_num  int comment '购买个数',
     task_id  bigint comment '工作单id',
+    is_delete tinyint DEFAULT '0' COMMENT '是否删除[0-未删除, 1-删除]',
+    gmt_create timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+    gmt_modified timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
     primary key (id)
 );
 
@@ -109,6 +124,9 @@ create table wms_ware_sku
     stock        int comment '库存数',
     sku_name     varchar(200) comment 'sku_name',
     stock_locked int comment '锁定库存',
+    is_delete tinyint DEFAULT '0' COMMENT '是否删除[0-未删除, 1-删除]',
+    gmt_create timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+    gmt_modified timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
     primary key (id)
 );
 
