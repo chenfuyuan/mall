@@ -48,15 +48,9 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryDao, CategoryEntity
         queryWrapper.eq("show_status", GlobalConstant.SHOW_STATUS_YES);
         List<CategoryEntity> allCategory = baseMapper.selectList(queryWrapper);
 
-        //过滤出一级分类
-        List<CategoryEntity> list = allCategory.stream().filter(category ->
-                category.getCatLevel() == PmsConstant.CATEGORT_LEVEL_ONE
-        ).map(category -> {
-            //填充子分类
-            category.setSubCategorys(getSubCategorys(category, allCategory));
-            return category;
-        }).sorted(CategoryEntity.getSortComparator()).collect(Collectors.toList());
-        return list;
+        //调整为树形结构
+        List<CategoryEntity> categoryTree = CategoryEntity.listToTree(allCategory);
+        return categoryTree;
     }
 
     @Override
@@ -82,25 +76,5 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryDao, CategoryEntity
         return SqlHelper.retBool(this.baseMapper.deleteBatchIds(catIds));
     }
 
-    /**
-     * 根据传过来的categorys获取其中以root为父级分类的所有分类集合
-     *
-     * @param root
-     * @param all
-     * @return
-     */
-    private List<CategoryEntity> getSubCategorys(CategoryEntity root, List<CategoryEntity> all) {
-        if (root == null) {
-            return null;
-        }
-
-        return all.stream().filter(category ->
-                root.getCatId().equals(category.getParentCid())
-        ).map(category -> {
-            category.setSubCategorys(getSubCategorys(category, all));
-            return category;
-        }).sorted(CategoryEntity.getSortComparator()).collect(Collectors.toList());
-
-    }
 
 }

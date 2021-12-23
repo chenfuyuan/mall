@@ -9,7 +9,9 @@ import java.io.Serializable;
 import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
+import com.learn.project.mall.product.util.PmsConstant;
 import lombok.Data;
 
 /**
@@ -90,5 +92,42 @@ public class CategoryEntity implements Serializable {
 		return (category01, category02) -> {
 			return (category01.getSort()==null?0:category01.getSort()) - (category02.getSort()==null?0: category02.getSort());
 		};
+	}
+
+
+	/**
+	 * 将线性结构列表 转换成 树形结构
+	 * @param source 需要转化的数据
+	 * @return
+	 */
+	public static List<CategoryEntity> listToTree(List<CategoryEntity> source) {
+		//过滤出一级分类
+		List<CategoryEntity> result = source.stream().filter(category ->
+				category.getCatLevel() == PmsConstant.CATEGORT_LEVEL_ONE
+		).map(category -> {
+			//填充子分类
+			category.setSubCategorys(buildSubCategorysByList(category, source));
+			return category;
+		}).sorted(CategoryEntity.getSortComparator()).collect(Collectors.toList());
+		return result;
+	}
+
+	/**
+	 * 根据传过来的source获取其中以root为父级分类的所有分类集合
+	 * @param root 根节点
+	 * @param source 所有分类列表
+	 * @return
+	 */
+	private static List<CategoryEntity> buildSubCategorysByList(CategoryEntity root, List<CategoryEntity> source) {
+		if (root == null) {
+			return null;
+		}
+
+		return source.stream().filter(category ->
+				root.getCatId().equals(category.getParentCid())
+		).map(category -> {
+			category.setSubCategorys(buildSubCategorysByList(category, source));
+			return category;
+		}).sorted(CategoryEntity.getSortComparator()).collect(Collectors.toList());
 	}
 }
