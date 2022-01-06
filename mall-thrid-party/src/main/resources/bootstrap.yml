@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: thirdparty
+  profiles:
+    active: dev
+  cloud:
+    nacos:
+      config:
+        group: thirdparty
+        file-extension: yml
+        #共享配置
+        shared-configs:
+          - dataId: global.yml
+            group: global
+            refresh: true
+        #扩展配置
+        extension-configs:

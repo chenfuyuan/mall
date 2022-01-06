@@ -44,6 +44,13 @@ spring:
           filters:
             - RewritePath=/api/?(?<segment>.*), /$\{segment}
 
+        - id: third-party    #第三方服务
+          uri: lb://thirdparty
+          predicates:
+            - Path=/api/thirdparty/**
+          filters:
+            - RewritePath=/api/thirdparty/?(?<segment>.*), /$\{segment}
+
         - id: admin    #后台服务
           uri: lb://admin
           predicates:

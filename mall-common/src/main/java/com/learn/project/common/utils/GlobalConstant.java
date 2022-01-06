@@ -37,4 +37,14 @@ public class GlobalConstant {
      * 是否展示-是
      */
     public static final int SHOW_STATUS_YES = 1;
+
+    /**
+     * 时间格式化，没有时间只有日期
+     */
+    public static final String DATE_FORMAT_NO_TIME = "yyyy-MM-dd";
+
+    /**
+     * 字符编码: uft-8
+     */
+    public static final String CHARSET_UTF8 = "utf-8";
 }

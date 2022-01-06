@@ -1,0 +1,27 @@
+# DataSource Config
+spring:
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 192.168.249.4:8848
+#通过配置中心配置
+alibaba:
+  cloud:
+    access-key: xxx
+    secret-key: xxx
+    oss:
+      endpoint: xxx
+
+config:
+  oss:
+    bucket: chenfuyuan-mall
+    expire-time: 30
+    content-length-range: 1048576000 #上传文件最大大小
+
+
+
+logging:
+  level:
+    com.alibaba.cloud.nacos.client: debug
+server:
+  port: 6000

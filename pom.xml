@@ -33,6 +33,7 @@
         <mall.version>0.0.1-SNAPSHOT</mall.version>
         <upTool.version>1.0.0</upTool.version>
         <p6spy.version>3.9.1</p6spy.version>
+        <aliyun-spring-boot-dependencies.version>1.0.0</aliyun-spring-boot-dependencies.version>
     </properties>
 
     <modules>
@@ -54,10 +55,20 @@
         <module>mall-common</module>
         <!--网关-->
         <module>mall-gateway</module>
+        <module>mall-thrid-party</module>
     </modules>
 
     <dependencyManagement>
         <dependencies>
+            <!--阿里云spring依赖-->
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>aliyun-spring-boot-dependencies</artifactId>
+                <version>${aliyun-spring-boot-dependencies.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
 
             <!--upTool工具类 https://github.com/chenfuyuan/uptool-->
             <dependency>
