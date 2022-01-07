@@ -1,10 +1,6 @@
 package com.learn.project.mall.thirdparty.domain;
 
-import com.aliyun.oss.model.MatchMode;
-import com.aliyun.oss.model.PolicyConditions;
-import com.uptool.core.util.TimeUtil;
 import lombok.Data;
-import lombok.Getter;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
@@ -43,13 +39,13 @@ public class AliYunOssConfig {
      * 超时时间(默认为30秒)
      */
     @Value("${config.oss.expire-time}")
-    private long expireTime = 30;
+    private long expireTime;
 
     /**
      * 上传文件最大大小
      */
     @Value("${config.oss.content-length-range}")
-    private long contentLengthRange = 1048576000;
+    private long contentLengthRange;
 
     /**
      * 获取超时时间
