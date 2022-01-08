@@ -12,7 +12,7 @@ import lombok.Data;
  * 
  * @author chenfuyuan
  * @email chenfuyuan0713@163.com
- * @date 2021-12-22 14:53:22
+ * @date 2022-01-08 19:44:17
  */
 @Data
 @TableName("pms_sku_images")
@@ -52,5 +52,9 @@ public class SkuImagesEntity implements Serializable {
 	 * 修改时间
 	 */
 	private Date gmtModified;
+	/**
+	 * 更新版本
+	 */
+	private Integer updateVersion;
 
 }

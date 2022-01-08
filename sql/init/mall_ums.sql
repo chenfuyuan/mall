@@ -30,6 +30,7 @@ create table ums_growth_change_history
     is_delete tinyint DEFAULT '0' COMMENT '是否删除[0-未删除, 1-删除]',
     gmt_create timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
     gmt_modified timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
+    update_version int(11) DEFAULT '0' COMMENT '更新版本',
     primary key (id)
 );
 
@@ -49,6 +50,7 @@ create table ums_integration_change_history
     is_delete tinyint DEFAULT '0' COMMENT '是否删除[0-未删除, 1-删除]',
     gmt_create timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
     gmt_modified timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
+    update_version int(11) DEFAULT '0' COMMENT '更新版本',
     primary key (id)
 );
 
@@ -80,6 +82,7 @@ create table ums_member
     is_delete tinyint DEFAULT '0' COMMENT '是否删除[0-未删除, 1-删除]',
     gmt_create timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
     gmt_modified timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
+    update_version int(11) DEFAULT '0' COMMENT '更新版本',
     primary key (id)
 );
 
@@ -99,6 +102,7 @@ create table ums_member_collect_spu
     is_delete tinyint DEFAULT '0' COMMENT '是否删除[0-未删除, 1-删除]',
     gmt_create timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
     gmt_modified timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
+    update_version int(11) DEFAULT '0' COMMENT '更新版本',
     primary key (id)
 );
 
@@ -117,6 +121,7 @@ create table ums_member_collect_subject
     is_delete tinyint DEFAULT '0' COMMENT '是否删除[0-未删除, 1-删除]',
     gmt_create timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
     gmt_modified timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
+    update_version int(11) DEFAULT '0' COMMENT '更新版本',
     primary key (id)
 );
 
@@ -140,6 +145,7 @@ create table ums_member_level
     is_delete tinyint DEFAULT '0' COMMENT '是否删除[0-未删除, 1-删除]',
     gmt_create timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
     gmt_modified timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
+    update_version int(11) DEFAULT '0' COMMENT '更新版本',
     primary key (id)
 );
 
@@ -159,6 +165,7 @@ create table ums_member_login_log
     is_delete tinyint DEFAULT '0' COMMENT '是否删除[0-未删除, 1-删除]',
     gmt_create timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
     gmt_modified timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
+    update_version int(11) DEFAULT '0' COMMENT '更新版本',
     primary key (id)
 );
 
@@ -183,6 +190,7 @@ create table ums_member_receive_address
     is_delete tinyint DEFAULT '0' COMMENT '是否删除[0-未删除, 1-删除]',
     gmt_create timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
     gmt_modified timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
+    update_version int(11) DEFAULT '0' COMMENT '更新版本',
     primary key (id)
 );
 
@@ -211,6 +219,7 @@ create table ums_member_statistics_info
     is_delete tinyint DEFAULT '0' COMMENT '是否删除[0-未删除, 1-删除]',
     gmt_create timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
     gmt_modified timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
+    update_version int(11) DEFAULT '0' COMMENT '更新版本',
     primary key (id)
 );
 

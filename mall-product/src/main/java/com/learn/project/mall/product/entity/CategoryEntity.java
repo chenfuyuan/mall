@@ -77,6 +77,10 @@ public class CategoryEntity implements Serializable {
 	 * 修改时间
 	 */
 	private Date gmtModified;
+	/**
+	 * 更新版本
+	 */
+	private Integer updateVersion;
 
 	/**
 	 * 子菜单列表

@@ -64,6 +64,7 @@ create table oms_order
     is_delete tinyint DEFAULT '0' COMMENT '是否删除[0-未删除, 1-删除]',
     gmt_create timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
     gmt_modified timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
+    update_version int(11) DEFAULT '0' COMMENT '更新版本',
     primary key (id)
 );
 
@@ -97,6 +98,7 @@ create table oms_order_item
     is_delete tinyint DEFAULT '0' COMMENT '是否删除[0-未删除, 1-删除]',
     gmt_create timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
     gmt_modified timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
+    update_version int(11) DEFAULT '0' COMMENT '更新版本',
     primary key (id)
 );
 
@@ -116,6 +118,7 @@ create table oms_order_operate_history
     is_delete tinyint DEFAULT '0' COMMENT '是否删除[0-未删除, 1-删除]',
     gmt_create timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
     gmt_modified timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
+    update_version int(11) DEFAULT '0' COMMENT '更新版本',
     primary key (id)
 );
 
@@ -157,6 +160,7 @@ create table oms_order_return_apply
     is_delete tinyint DEFAULT '0' COMMENT '是否删除[0-未删除, 1-删除]',
     gmt_create timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
     gmt_modified timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
+    update_version int(11) DEFAULT '0' COMMENT '更新版本',
     primary key (id)
 );
 
@@ -175,6 +179,7 @@ create table oms_order_return_reason
     is_delete tinyint DEFAULT '0' COMMENT '是否删除[0-未删除, 1-删除]',
     gmt_create timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
     gmt_modified timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
+    update_version int(11) DEFAULT '0' COMMENT '更新版本',
     primary key (id)
 );
 
@@ -195,6 +200,7 @@ create table oms_order_setting
     is_delete tinyint DEFAULT '0' COMMENT '是否删除[0-未删除, 1-删除]',
     gmt_create timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
     gmt_modified timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
+    update_version int(11) DEFAULT '0' COMMENT '更新版本',
     primary key (id)
 );
 
@@ -219,6 +225,7 @@ create table oms_payment_info
     is_delete tinyint DEFAULT '0' COMMENT '是否删除[0-未删除, 1-删除]',
     gmt_create timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
     gmt_modified timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
+    update_version int(11) DEFAULT '0' COMMENT '更新版本',
     primary key (id)
 );
 
@@ -239,6 +246,7 @@ create table oms_refund_info
     is_delete tinyint DEFAULT '0' COMMENT '是否删除[0-未删除, 1-删除]',
     gmt_create timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
     gmt_modified timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
+    update_version int(11) DEFAULT '0' COMMENT '更新版本',
     primary key (id)
 );
 

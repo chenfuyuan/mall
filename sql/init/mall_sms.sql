@@ -56,6 +56,7 @@ create table sms_coupon
     is_delete tinyint DEFAULT '0' COMMENT '是否删除[0-未删除, 1-删除]',
     gmt_create timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
     gmt_modified timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
+    update_version int(11) DEFAULT '0' COMMENT '更新版本',
     primary key (id)
 );
 
@@ -79,6 +80,7 @@ create table sms_coupon_history
     is_delete tinyint DEFAULT '0' COMMENT '是否删除[0-未删除, 1-删除]',
     gmt_create timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
     gmt_modified timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
+    update_version int(11) DEFAULT '0' COMMENT '更新版本',
     primary key (id)
 );
 
@@ -96,6 +98,7 @@ create table sms_coupon_spu_category_relation
     is_delete tinyint DEFAULT '0' COMMENT '是否删除[0-未删除, 1-删除]',
     gmt_create timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
     gmt_modified timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
+    update_version int(11) DEFAULT '0' COMMENT '更新版本',
     primary key (id)
 );
 
@@ -113,6 +116,7 @@ create table sms_coupon_spu_relation
     is_delete tinyint DEFAULT '0' COMMENT '是否删除[0-未删除, 1-删除]',
     gmt_create timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
     gmt_modified timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
+    update_version int(11) DEFAULT '0' COMMENT '更新版本',
     primary key (id)
 );
 
@@ -138,6 +142,7 @@ create table sms_home_adv
     is_delete tinyint DEFAULT '0' COMMENT '是否删除[0-未删除, 1-删除]',
     gmt_create timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
     gmt_modified timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
+    update_version int(11) DEFAULT '0' COMMENT '更新版本',
     primary key (id)
 );
 
@@ -159,6 +164,7 @@ create table sms_home_subject
     is_delete tinyint DEFAULT '0' COMMENT '是否删除[0-未删除, 1-删除]',
     gmt_create timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
     gmt_modified timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
+    update_version int(11) DEFAULT '0' COMMENT '更新版本',
     primary key (id)
 );
 
@@ -177,6 +183,7 @@ create table sms_home_subject_spu
     is_delete tinyint DEFAULT '0' COMMENT '是否删除[0-未删除, 1-删除]',
     gmt_create timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
     gmt_modified timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
+    update_version int(11) DEFAULT '0' COMMENT '更新版本',
     primary key (id)
 );
 
@@ -196,6 +203,7 @@ create table sms_member_price
     is_delete tinyint DEFAULT '0' COMMENT '是否删除[0-未删除, 1-删除]',
     gmt_create timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
     gmt_modified timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
+    update_version int(11) DEFAULT '0' COMMENT '更新版本',
     primary key (id)
 );
 
@@ -216,6 +224,7 @@ create table sms_seckill_promotion
     is_delete tinyint DEFAULT '0' COMMENT '是否删除[0-未删除, 1-删除]',
     gmt_create timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
     gmt_modified timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
+    update_version int(11) DEFAULT '0' COMMENT '更新版本',
     primary key (id)
 );
 
@@ -235,6 +244,7 @@ create table sms_seckill_session
     is_delete tinyint DEFAULT '0' COMMENT '是否删除[0-未删除, 1-删除]',
     gmt_create timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
     gmt_modified timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
+    update_version int(11) DEFAULT '0' COMMENT '更新版本',
     primary key (id)
 );
 
@@ -255,6 +265,7 @@ create table sms_seckill_sku_notice
     is_delete tinyint DEFAULT '0' COMMENT '是否删除[0-未删除, 1-删除]',
     gmt_create timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
     gmt_modified timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
+    update_version int(11) DEFAULT '0' COMMENT '更新版本',
     primary key (id)
 );
 
@@ -276,6 +287,7 @@ create table sms_seckill_sku_relation
     is_delete tinyint DEFAULT '0' COMMENT '是否删除[0-未删除, 1-删除]',
     gmt_create timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
     gmt_modified timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
+    update_version int(11) DEFAULT '0' COMMENT '更新版本',
     primary key (id)
 );
 
@@ -294,6 +306,7 @@ create table sms_sku_full_reduction
     is_delete tinyint DEFAULT '0' COMMENT '是否删除[0-未删除, 1-删除]',
     gmt_create timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
     gmt_modified timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
+    update_version int(11) DEFAULT '0' COMMENT '更新版本',
     primary key (id)
 );
 
@@ -313,6 +326,7 @@ create table sms_sku_ladder
     is_delete tinyint DEFAULT '0' COMMENT '是否删除[0-未删除, 1-删除]',
     gmt_create timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
     gmt_modified timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
+    update_version int(11) DEFAULT '0' COMMENT '更新版本',
     primary key (id)
 );
 
@@ -331,6 +345,7 @@ create table sms_spu_bounds
     is_delete tinyint DEFAULT '0' COMMENT '是否删除[0-未删除, 1-删除]',
     gmt_create timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
     gmt_modified timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
+    update_version int(11) DEFAULT '0' COMMENT '更新版本',
     primary key (id)
 );
 

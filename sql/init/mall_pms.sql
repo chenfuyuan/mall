@@ -45,6 +45,7 @@ create table pms_attr
     is_delete tinyint DEFAULT '0' COMMENT '是否删除[0-未删除, 1-删除]',
     gmt_create timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
     gmt_modified timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
+    update_version int(11) DEFAULT '0' COMMENT '更新版本',
     primary key (attr_id)
 );
 
@@ -62,6 +63,7 @@ create table pms_attr_attrgroup_relation
     is_delete tinyint DEFAULT '0' COMMENT '是否删除[0-未删除, 1-删除]',
     gmt_create timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
     gmt_modified timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
+    update_version int(11) DEFAULT '0' COMMENT '更新版本',
     primary key (id)
 );
 
@@ -81,6 +83,7 @@ create table pms_attr_group
     is_delete tinyint DEFAULT '0' COMMENT '是否删除[0-未删除, 1-删除]',
     gmt_create timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
     gmt_modified timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
+    update_version int(11) DEFAULT '0' COMMENT '更新版本',
     primary key (attr_group_id)
 );
 
@@ -101,6 +104,7 @@ create table pms_brand
     is_delete tinyint DEFAULT '0' COMMENT '是否删除[0-未删除, 1-删除]',
     gmt_create timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
     gmt_modified timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
+    update_version int(11) DEFAULT '0' COMMENT '更新版本',
     primary key (brand_id)
 );
 
@@ -123,6 +127,7 @@ create table pms_category
     is_delete tinyint DEFAULT '0' COMMENT '是否删除[0-未删除, 1-删除]',
     gmt_create timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
     gmt_modified timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
+    update_version int(11) DEFAULT '0' COMMENT '更新版本',
     primary key (cat_id)
 );
 
@@ -141,6 +146,7 @@ create table pms_category_brand_relation
     is_delete tinyint DEFAULT '0' COMMENT '是否删除[0-未删除, 1-删除]',
     gmt_create timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
     gmt_modified timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
+    update_version int(11) DEFAULT '0' COMMENT '更新版本',
     primary key (id)
 );
 
@@ -157,6 +163,7 @@ create table pms_comment_replay
     is_delete tinyint DEFAULT '0' COMMENT '是否删除[0-未删除, 1-删除]',
     gmt_create timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
     gmt_modified timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
+    update_version int(11) DEFAULT '0' COMMENT '更新版本',
     primary key (id)
 );
 
@@ -177,6 +184,7 @@ create table pms_product_attr_value
     is_delete tinyint DEFAULT '0' COMMENT '是否删除[0-未删除, 1-删除]',
     gmt_create timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
     gmt_modified timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
+    update_version int(11) DEFAULT '0' COMMENT '更新版本',
     primary key (id)
 );
 
@@ -195,6 +203,7 @@ create table pms_sku_images
     is_delete tinyint DEFAULT '0' COMMENT '是否删除[0-未删除, 1-删除]',
     gmt_create timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
     gmt_modified timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
+    update_version int(11) DEFAULT '0' COMMENT '更新版本',
     primary key (id)
 );
 
@@ -219,6 +228,7 @@ create table pms_sku_info
     is_delete tinyint DEFAULT '0' COMMENT '是否删除[0-未删除, 1-删除]',
     gmt_create timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
     gmt_modified timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
+    update_version int(11) DEFAULT '0' COMMENT '更新版本',
     primary key (sku_id)
 );
 
@@ -238,6 +248,7 @@ create table pms_sku_sale_attr_value
     is_delete tinyint DEFAULT '0' COMMENT '是否删除[0-未删除, 1-删除]',
     gmt_create timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
     gmt_modified timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
+    update_version int(11) DEFAULT '0' COMMENT '更新版本',
     primary key (id)
 );
 
@@ -267,6 +278,7 @@ create table pms_spu_comment
     is_delete tinyint DEFAULT '0' COMMENT '是否删除[0-未删除, 1-删除]',
     gmt_create timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
     gmt_modified timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
+    update_version int(11) DEFAULT '0' COMMENT '更新版本',
     primary key (id)
 );
 
@@ -286,6 +298,7 @@ create table pms_spu_images
     is_delete tinyint DEFAULT '0' COMMENT '是否删除[0-未删除, 1-删除]',
     gmt_create timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
     gmt_modified timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
+    update_version int(11) DEFAULT '0' COMMENT '更新版本',
     primary key (id)
 );
 
@@ -308,6 +321,7 @@ create table pms_spu_info
     is_delete tinyint DEFAULT '0' COMMENT '是否删除[0-未删除, 1-删除]',
     gmt_create timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
     gmt_modified timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
+    update_version int(11) DEFAULT '0' COMMENT '更新版本',
     primary key (id)
 );
 
@@ -323,6 +337,7 @@ create table pms_spu_info_desc
     is_delete tinyint DEFAULT '0' COMMENT '是否删除[0-未删除, 1-删除]',
     gmt_create timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
     gmt_modified timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
+    update_version int(11) DEFAULT '0' COMMENT '更新版本',
     primary key (spu_id)
 );
 

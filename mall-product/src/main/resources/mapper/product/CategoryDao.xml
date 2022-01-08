@@ -17,6 +17,7 @@
         <result property="isDelete" column="is_delete"/>
         <result property="gmtCreate" column="gmt_create"/>
         <result property="gmtModified" column="gmt_modified"/>
+        <result property="updateVersion" column="update_version"/>
     </resultMap>
 
 
