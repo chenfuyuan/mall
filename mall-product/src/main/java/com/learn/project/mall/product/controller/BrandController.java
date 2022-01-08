@@ -3,7 +3,11 @@ package com.learn.project.mall.product.controller;
 import java.util.Arrays;
 import java.util.Map;
 
+import com.learn.project.common.valid.group.Add;
+import com.learn.project.common.valid.group.Update;
+import com.learn.project.common.valid.group.UpdateShowStatus;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -55,7 +59,7 @@ public class BrandController {
      * 保存
      */
     @RequestMapping("/save")
-    public R save(@RequestBody BrandEntity brand){
+    public R save(@RequestBody @Validated({Add.class}) BrandEntity brand){
 		brandService.save(brand);
 
         return R.ok();
@@ -65,9 +69,19 @@ public class BrandController {
      * 修改
      */
     @RequestMapping("/update")
-    public R update(@RequestBody BrandEntity brand){
+    public R update(@RequestBody @Validated(Update.class) BrandEntity brand){
 		brandService.updateById(brand);
 
+        return R.ok();
+    }
+
+    @RequestMapping("/update/showStatus")
+    public R updateShowStatus(@RequestBody @Validated(UpdateShowStatus.class) BrandEntity brand){
+        BrandEntity updateBrand = new BrandEntity();
+        updateBrand.setBrandId(brand.getBrandId());
+        updateBrand.setShowStatus(brand.getShowStatus());
+        updateBrand.setUpdateVersion(brand.getUpdateVersion());
+        brandService.updateById(updateBrand);
         return R.ok();
     }
 
