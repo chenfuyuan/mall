@@ -34,6 +34,7 @@
         <upTool.version>1.0.0</upTool.version>
         <p6spy.version>3.9.1</p6spy.version>
         <aliyun-spring-boot-dependencies.version>1.0.0</aliyun-spring-boot-dependencies.version>
+        <fastjson-version>1.2.72</fastjson-version>
     </properties>
 
     <modules>
@@ -60,6 +61,13 @@
 
     <dependencyManagement>
         <dependencies>
+            <!--fastjson-->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>fastjson</artifactId>
+                <version>${fastjson-version}</version>
+            </dependency>
+
             <!--阿里云spring依赖-->
             <dependency>
                 <groupId>com.alibaba.cloud</groupId>

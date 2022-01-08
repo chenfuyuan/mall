@@ -8,6 +8,8 @@
 
 package com.learn.project.common.utils;
 
+import com.learn.project.common.exception.BaseErrorInfoInterface;
+import com.learn.project.common.exception.CommonEnum;
 import org.apache.http.HttpStatus;
 
 import java.util.HashMap;
@@ -20,43 +22,54 @@ import java.util.Map;
  */
 public class R extends HashMap<String, Object> {
 	private static final long serialVersionUID = 1L;
-	
-	public R() {
-		put("code", 0);
-		put("msg", "success");
+
+	private R() {
+
 	}
-	
+
 	public static R error() {
-		return error(HttpStatus.SC_INTERNAL_SERVER_ERROR, "未知异常，请联系管理员");
+		return error(CommonEnum.INTERNAL_SERVER_ERROR.getResultCode(), CommonEnum.INTERNAL_SERVER_ERROR.getResultMsg());
 	}
 	
 	public static R error(String msg) {
-		return error(HttpStatus.SC_INTERNAL_SERVER_ERROR, msg);
+		return error(CommonEnum.INTERNAL_SERVER_ERROR.getResultCode(), msg);
 	}
 	
-	public static R error(int code, String msg) {
+	public static R error(String code, String msg) {
 		R r = new R();
 		r.put("code", code);
 		r.put("msg", msg);
 		return r;
 	}
 
+	public static R error(BaseErrorInfoInterface errorInfo){
+		R r = new R();
+		r.put("code", errorInfo.getResultCode());
+		r.put("msg", errorInfo.getResultMsg());
+		return r;
+	}
+
 	public static R ok(String msg) {
 		R r = new R();
+		r.put("code", CommonEnum.SUCCESS.getResultCode());
 		r.put("msg", msg);
 		return r;
 	}
 	
 	public static R ok(Map<String, Object> map) {
-		R r = new R();
+		R r = ok();
 		r.putAll(map);
 		return r;
 	}
 	
 	public static R ok() {
-		return new R();
+		R r = new R();
+		r.put("code", CommonEnum.SUCCESS.getResultCode());
+		r.put("msg", CommonEnum.SUCCESS.getResultMsg());
+		return r;
 	}
 
+	@Override
 	public R put(String key, Object value) {
 		super.put(key, value);
 		return this;

@@ -14,6 +14,17 @@
 
 
     <dependencies>
+        <!--fastjson-->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+        </dependency>
+        <!--hibernate-validator-->
+        <dependency>
+            <groupId>org.hibernate.validator</groupId>
+            <artifactId>hibernate-validator</artifactId>
+        </dependency>
+
         <!-- https://mvnrepository.com/artifact/p6spy/p6spy 用于分析sql -->
         <dependency>
             <groupId>p6spy</groupId>
