@@ -81,7 +81,7 @@ public class GenUtils {
         String className = tableToJava(tableEntity.getTableName(), config.getStringArray("tablePrefix"));
         tableEntity.setClassName(className);
         tableEntity.setClassname(StringUtils.uncapitalize(className));
-
+        boolean hasDate = false;
         //列信息
         List<ColumnEntity> columsList = new ArrayList<>();
         for (Map<String, String> column : columns) {
@@ -98,6 +98,10 @@ public class GenUtils {
 
             //列的数据类型，转换成Java类型
             String attrType = config.getString(columnEntity.getDataType(), columnToJava(columnEntity.getDataType()));
+            //判断是否含有Date类型数据
+            if ("Date".equals(attrType)) {
+                hasDate = true;
+            }
             columnEntity.setAttrType(attrType);
 
 
@@ -144,6 +148,7 @@ public class GenUtils {
         map.put("author", config.getString("author"));
         map.put("email", config.getString("email"));
         map.put("datetime", DateUtils.format(new Date(), DateUtils.DATE_TIME_PATTERN));
+        map.put("hasDate", hasDate);
         VelocityContext context = new VelocityContext(map);
 
         //获取模板列表

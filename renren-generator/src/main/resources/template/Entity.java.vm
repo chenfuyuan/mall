@@ -6,6 +6,9 @@ import com.baomidou.mybatisplus.annotation.TableName;
 #if(${hasBigDecimal})
 import java.math.BigDecimal;
 #end
+#if(${hasDate})
+import com.learn.project.common.utils.DateFormat;
+#end
 import java.io.Serializable;
 import java.util.Date;
 import lombok.Data;
@@ -27,9 +30,13 @@ public class ${className}Entity implements Serializable {
 	 * $column.comments
 	 */
 	#if($column.columnName == $pk.columnName)
-@TableId
+    @TableId
 	#end
-private $column.attrType $column.attrname;
+	#if($column.attrType == "Date")
+	@DateFormat
+	#end
+	private $column.attrType $column.attrname;
+
 #end
 
 }
