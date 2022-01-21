@@ -1,11 +1,13 @@
 package com.learn.project.mall.product.entity;
 
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableLogic;
 import com.baomidou.mybatisplus.annotation.TableName;
 
 import java.io.Serializable;
 import java.util.Date;
 
+import com.learn.project.common.utils.DateFormat;
 import com.learn.project.common.valid.ListValue;
 import com.learn.project.common.valid.NotEmptyString;
 import com.learn.project.common.valid.group.Add;
@@ -78,14 +80,17 @@ public class BrandEntity implements Serializable {
 	/**
 	 * 是否删除[0-未删除, 1-删除]
 	 */
+	@TableLogic
 	private Integer isDelete;
 	/**
 	 * 创建时间
 	 */
+	@DateFormat
 	private Date gmtCreate;
 	/**
 	 * 修改时间
 	 */
+	@DateFormat
 	private Date gmtModified;
 	/**
 	 * 更新版本

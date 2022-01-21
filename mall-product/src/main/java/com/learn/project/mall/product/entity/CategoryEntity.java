@@ -11,6 +11,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import com.learn.project.common.utils.DateFormat;
 import com.learn.project.mall.product.util.PmsConstant;
 import lombok.Data;
 
@@ -72,10 +73,12 @@ public class CategoryEntity implements Serializable {
 	/**
 	 * 创建时间
 	 */
+	@DateFormat
 	private Date gmtCreate;
 	/**
 	 * 修改时间
 	 */
+	@DateFormat
 	private Date gmtModified;
 	/**
 	 * 更新版本
