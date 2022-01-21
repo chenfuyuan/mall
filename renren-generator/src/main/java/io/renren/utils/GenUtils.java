@@ -35,6 +35,7 @@ public class GenUtils {
 
     public static List<String> getTemplates() {
         List<String> templates = new ArrayList<String>();
+        //TODO 添加模板
         templates.add("template/Entity.java.vm");
         templates.add("template/Dao.xml.vm");
 
@@ -343,6 +344,7 @@ public class GenUtils {
                     File.separator + moduleName + File.separator + className.toLowerCase() + "-add-or-update.vue";
         }
 
+        //TODO 调整包结构
         return null;
     }
 

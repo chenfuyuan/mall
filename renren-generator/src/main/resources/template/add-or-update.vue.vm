@@ -20,8 +20,8 @@
 </template>
 
 <script>
-  import Tools from "../../../utils/Tool"
-  import GlobalConst from "../../../utils/GlobalConst"
+  import Tools from "@/utils/Tool"
+  import GlobalConst from "@/utils/GlobalConst"
   export default {
     data () {
       return {

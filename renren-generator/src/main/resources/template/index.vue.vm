@@ -58,8 +58,8 @@
 
 <script>
   import AddOrUpdate from './${pathName}-add-or-update'
-  import Tools from "../../../utils/Tool"
-  import GlobalConst from "../../../utils/GlobalConst"
+  import Tools from "@/utils/Tool"
+  import GlobalConst from "@/utils/GlobalConst"
   export default {
     data () {
       return {
