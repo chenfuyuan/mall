@@ -60,7 +60,7 @@
               method: 'get',
               #[[params: this.$http.adornParams()]]#
             }).then(({data}) => {
-              if (data && data.code === 0) {
+              if (data && data.code === GlobalConst.RESPONSE_CODE.OK) {
 #foreach($column in $columns)
 #if($column.columnName != $pk.columnName)
                 this.dataForm.${column.attrname} = data.${classname}.${column.attrname}
@@ -89,7 +89,7 @@
 #end
               })
             }).then(({data}) => {
-              if (data && data.code === 0) {
+              if (data && data.code === GlobalConst.RESPONSE_CODE.OK) {
                 #[[this.$message({]]#
                   message: '操作成功',
                   type: 'success',
