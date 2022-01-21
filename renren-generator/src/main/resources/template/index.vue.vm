@@ -23,12 +23,14 @@
         width="50">
       </el-table-column>
 #foreach($column in $columns)
+  #if($column.columnName!="is_delete")
       <el-table-column
         prop="${column.attrname}"
         header-align="center"
         align="center"
         label="${column.comments}">
       </el-table-column>
+  #end
 #end
       <el-table-column
         fixed="right"

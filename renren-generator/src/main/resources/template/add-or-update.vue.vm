@@ -6,9 +6,11 @@
     <el-form :model="dataForm" :rules="dataRule" ref="dataForm" @keyup.enter.native="dataFormSubmit()" label-width="80px">
 #foreach($column in $columns)
 #if($column.columnName != $pk.columnName)
-    <el-form-item label="${column.comments}" prop="${column.attrname}">
-      <el-input v-model="dataForm.${column.attrname}" placeholder="${column.comments}"></el-input>
-    </el-form-item>
+    #if($column.columnName != "gmt_create" and $column.columnName != "is_delete" and $column.columnName != "gmt_modified" and $column.columnName != "update_version")
+        <el-form-item label="${column.comments}" prop="${column.attrname}">
+            <el-input v-model="dataForm.${column.attrname}" placeholder="${column.comments}"></el-input>
+        </el-form-item>
+    #end
 #end
 #end
     </el-form>
@@ -39,10 +41,11 @@
         dataRule: {
 #foreach($column in $columns)
 #if($column.columnName != $pk.columnName)
-          ${column.attrname}: [
+    #if($column.columnName != "gmt_create" and $column.columnName != "is_delete" and $column.columnName != "gmt_modified" and $column.columnName != "update_version")
+        ${column.attrname}: [
             { required: true, message: '${column.comments}不能为空', trigger: 'blur' }
           ]#if($velocityCount != $columns.size()),#end
-
+    #end
 #end
 #end
         }
