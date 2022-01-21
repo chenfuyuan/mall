@@ -1,6 +1,7 @@
 package ${package}.${moduleName}.entity;
 
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableLogic;
 import com.baomidou.mybatisplus.annotation.TableName;
 
 #if(${hasBigDecimal})
@@ -15,7 +16,6 @@ import lombok.Data;
 
 /**
  * ${comments}Entity
- * 
  * @author ${author}
  * @email ${email}
  * @date ${datetime}
@@ -29,14 +29,16 @@ public class ${className}Entity implements Serializable {
 	/**
 	 * $column.comments
 	 */
-	#if($column.columnName == $pk.columnName)
+#if($column.columnName == $pk.columnName)
     @TableId
-	#end
-	#if($column.attrType == "Date")
-	@DateFormat
-	#end
-	private $column.attrType $column.attrname;
-
+#end
+#if($column.attrType == "Date")
+    @DateFormat
+#end
+#if($column.columnName == "is_delete")
+	@TableLogic
+#end
+    private $column.attrType $column.attrname;
 #end
 
 }
