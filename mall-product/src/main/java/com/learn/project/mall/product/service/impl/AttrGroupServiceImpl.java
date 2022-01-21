@@ -1,5 +1,7 @@
 package com.learn.project.mall.product.service.impl;
 
+import com.learn.project.mall.product.util.PmsConstant;
+import com.uptool.core.util.EmptyUtil;
 import org.springframework.stereotype.Service;
 import java.util.Map;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
@@ -23,13 +25,23 @@ import com.learn.project.mall.product.service.AttrGroupService;
 public class AttrGroupServiceImpl extends ServiceImpl<AttrGroupDao, AttrGroupEntity> implements AttrGroupService {
 
     @Override
-    public PageUtils queryPage(Map<String, Object> params) {
-        IPage<AttrGroupEntity> page = this.page(
-                new Query<AttrGroupEntity>().getPage(params),
-                new QueryWrapper<AttrGroupEntity>()
-        );
+    public PageUtils queryPageByCatId(Map<String, Object> params, String catId) {
+        IPage<AttrGroupEntity> pageQueryCondition = new Query<AttrGroupEntity>().getPage(params);
+        QueryWrapper<AttrGroupEntity> queryWrapper = new QueryWrapper<>();
+        String key = (String) params.get("key");
+        //搜索关键字 attrGroupId和attrGroupName
+        if (EmptyUtil.isNotEmpty(key)) {
+            queryWrapper.and((obj)->{
+                obj.eq("attr_group_id", key).or().like("attr_group_name", key);
+            });
+        }
 
-        return new PageUtils(page);
+        //判断是查询所有函数查询指定三级分类
+        if (!PmsConstant.QUERY_ALL_LABLE.equals(catId)) {
+            queryWrapper.eq("catelog_id", catId);
+        }
+
+        return new PageUtils(this.page(pageQueryCondition, queryWrapper));
     }
 
 }

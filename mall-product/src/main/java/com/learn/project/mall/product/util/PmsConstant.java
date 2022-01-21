@@ -11,4 +11,9 @@ public class PmsConstant {
      * 一级菜单
      */
     public static final int CATEGORT_LEVEL_ONE = 1;
+
+    /**
+     * 查询所有标志
+     */
+    public static final String QUERY_ALL_LABLE = "0";
 }
