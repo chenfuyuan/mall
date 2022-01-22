@@ -54,12 +54,10 @@ public class SpuInfoEntity implements Serializable {
 	/**
 	 * 
 	 */
-    @DateFormat
     private Date createTime;
 	/**
 	 * 
 	 */
-    @DateFormat
     private Date updateTime;
 	/**
 	 * 是否删除[0-未删除, 1-删除]
@@ -69,12 +67,10 @@ public class SpuInfoEntity implements Serializable {
 	/**
 	 * 创建时间
 	 */
-    @DateFormat
     private Date gmtCreate;
 	/**
 	 * 修改时间
 	 */
-    @DateFormat
     private Date gmtModified;
 	/**
 	 * 更新版本

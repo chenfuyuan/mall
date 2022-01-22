@@ -42,12 +42,10 @@ public class CommentReplayEntity implements Serializable {
 	/**
 	 * 创建时间
 	 */
-    @DateFormat
     private Date gmtCreate;
 	/**
 	 * 修改时间
 	 */
-    @DateFormat
     private Date gmtModified;
 	/**
 	 * 更新版本

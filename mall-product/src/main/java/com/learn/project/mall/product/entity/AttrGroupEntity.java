@@ -4,7 +4,7 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableLogic;
 import com.baomidou.mybatisplus.annotation.TableName;
 
-import com.learn.project.common.utils.DateFormat;
+
 import java.io.Serializable;
 import java.util.Date;
 import lombok.Data;
@@ -54,12 +54,10 @@ public class AttrGroupEntity implements Serializable {
 	/**
 	 * 创建时间
 	 */
-    @DateFormat
     private Date gmtCreate;
 	/**
 	 * 修改时间
 	 */
-    @DateFormat
     private Date gmtModified;
 	/**
 	 * 更新版本

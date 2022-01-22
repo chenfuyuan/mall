@@ -23,7 +23,7 @@
         width="50">
       </el-table-column>
 #foreach($column in $columns)
-  #if($column.columnName!="is_delete")
+  #if($column.columnName != "gmt_create" and $column.columnName != "is_delete" and $column.columnName != "gmt_modified" and $column.columnName != "update_version")
       <el-table-column
         prop="${column.attrname}"
         header-align="center"

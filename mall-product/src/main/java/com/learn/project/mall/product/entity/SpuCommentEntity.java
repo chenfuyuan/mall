@@ -53,7 +53,6 @@ public class SpuCommentEntity implements Serializable {
 	/**
 	 * 创建时间
 	 */
-    @DateFormat
     private Date createTime;
 	/**
 	 * 显示状态[0-不显示，1-显示]
@@ -95,12 +94,10 @@ public class SpuCommentEntity implements Serializable {
 	/**
 	 * 创建时间
 	 */
-    @DateFormat
     private Date gmtCreate;
 	/**
 	 * 修改时间
 	 */
-    @DateFormat
     private Date gmtModified;
 	/**
 	 * 更新版本
