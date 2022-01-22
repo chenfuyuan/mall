@@ -1,6 +1,6 @@
 package com.learn.project.common.exception;
 
-public enum CommonEnum implements BaseErrorInfoInterface {
+public enum ResponseCodeEnum implements BaseErrorInfoInterface {
 	// 数据操作错误定义
 	SUCCESS("200", "成功!"),
 	BODY_NOT_MATCH("400","请求的数据格式不符!"),
@@ -17,7 +17,7 @@ public enum CommonEnum implements BaseErrorInfoInterface {
 	/** 错误描述 */
 	private String resultMsg;
 
-	CommonEnum(String resultCode, String resultMsg) {
+	ResponseCodeEnum(String resultCode, String resultMsg) {
 		this.resultCode = resultCode;
 		this.resultMsg = resultMsg;
 	}

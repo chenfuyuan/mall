@@ -39,7 +39,7 @@ public class GlobalExceptionHandler {
 	@ResponseBody
 	public R exceptionHandler(HttpServletRequest req, NullPointerException e){
 		log.error("发生空指针异常！原因是:",e);
-		return R.error(CommonEnum.BODY_NOT_MATCH);
+		return R.error(ResponseCodeEnum.BODY_NOT_MATCH);
 	}
 
 
@@ -53,7 +53,7 @@ public class GlobalExceptionHandler {
 	@ResponseBody
 	public R exceptionHandler(HttpServletRequest req, Exception e){
     	log.error("未知异常！原因是:",e);
-       	return R.error(CommonEnum.INTERNAL_SERVER_ERROR);
+       	return R.error(ResponseCodeEnum.INTERNAL_SERVER_ERROR);
     }
 
 	@ExceptionHandler(value = MethodArgumentNotValidException.class)
@@ -65,6 +65,6 @@ public class GlobalExceptionHandler {
 		bindingResult.getFieldErrors().forEach((error)->{
 			errorMap.put(error.getField(), error.getDefaultMessage());
 		});
-		return R.error(CommonEnum.DATA_VALIDATE_ERROR).put("error", errorMap);
+		return R.error(ResponseCodeEnum.DATA_VALIDATE_ERROR).put("error", errorMap);
 	}
 }

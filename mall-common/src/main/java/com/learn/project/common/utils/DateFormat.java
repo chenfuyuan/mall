@@ -15,6 +15,6 @@ public @interface DateFormat {
     /**
      * 时间格式化
      */
-    String pattern() default "yyyy年MM月dd日HH:mm";
+    String pattern() default "yyyy-MM-dd HH:mm:ss";
 
 }

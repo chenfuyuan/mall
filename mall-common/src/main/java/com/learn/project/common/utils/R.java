@@ -9,8 +9,7 @@
 package com.learn.project.common.utils;
 
 import com.learn.project.common.exception.BaseErrorInfoInterface;
-import com.learn.project.common.exception.CommonEnum;
-import org.apache.http.HttpStatus;
+import com.learn.project.common.exception.ResponseCodeEnum;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -28,11 +27,11 @@ public class R extends HashMap<String, Object> {
 	}
 
 	public static R error() {
-		return error(CommonEnum.INTERNAL_SERVER_ERROR.getResultCode(), CommonEnum.INTERNAL_SERVER_ERROR.getResultMsg());
+		return error(ResponseCodeEnum.INTERNAL_SERVER_ERROR.getResultCode(), ResponseCodeEnum.INTERNAL_SERVER_ERROR.getResultMsg());
 	}
 	
 	public static R error(String msg) {
-		return error(CommonEnum.INTERNAL_SERVER_ERROR.getResultCode(), msg);
+		return error(ResponseCodeEnum.INTERNAL_SERVER_ERROR.getResultCode(), msg);
 	}
 	
 	public static R error(String code, String msg) {
@@ -51,7 +50,7 @@ public class R extends HashMap<String, Object> {
 
 	public static R ok(String msg) {
 		R r = new R();
-		r.put("code", CommonEnum.SUCCESS.getResultCode());
+		r.put("code", ResponseCodeEnum.SUCCESS.getResultCode());
 		r.put("msg", msg);
 		return r;
 	}
@@ -64,8 +63,8 @@ public class R extends HashMap<String, Object> {
 	
 	public static R ok() {
 		R r = new R();
-		r.put("code", CommonEnum.SUCCESS.getResultCode());
-		r.put("msg", CommonEnum.SUCCESS.getResultMsg());
+		r.put("code", ResponseCodeEnum.SUCCESS.getResultCode());
+		r.put("msg", ResponseCodeEnum.SUCCESS.getResultMsg());
 		return r;
 	}
 
