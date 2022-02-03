@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.learn.project.mall.ware.entity.PurchaseEntity;
 import com.learn.project.mall.ware.service.PurchaseService;
-import com.learn.project.common.utils.PageUtils;
-import com.learn.project.common.utils.R;
+import com.learn.project.common.mybatis.util.PageUtils;
+import com.learn.project.common.web.util.R;
 
 
 

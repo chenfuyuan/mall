@@ -1,0 +1,88 @@
+package com.learn.project.mall.product.api;
+
+import java.util.Arrays;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.learn.project.mall.product.infrastructure.persistence.mybatis.entity.CategoryEntity;
+import com.learn.project.mall.product.application.CategoryService;
+import com.learn.project.common.web.util.R;
+
+
+
+
+/**
+ * 商品三级分类Controller
+ *
+ * @author chenfuyuan
+ * @email chenfuyuan0713@163.com
+ * @date 2021-12-12 14:35:18
+ */
+@RestController
+@RequestMapping("product/category")
+public class CategoryController {
+    @Autowired
+    private CategoryService categoryService;
+
+    /**
+     * 获取当前分类及其子分类。并将其组合成树状结构进行返回
+     */
+    @RequestMapping("/list/tree")
+    public R listByTree(){
+        List<CategoryEntity> listByTree = categoryService.listByTree();
+
+        return R.ok().put("data", listByTree);
+    }
+
+
+    /**
+     * 信息
+     */
+    @RequestMapping("/info/{catId}")
+    public R info(@PathVariable("catId") Long catId){
+		CategoryEntity category = categoryService.getById(catId);
+
+        return R.ok().put("category", category);
+    }
+
+    /**
+     * 保存
+     */
+    @RequestMapping("/save")
+    public R save(@RequestBody CategoryEntity category){
+		categoryService.save(category);
+        //返回添加成功后的catId
+        return R.ok().put("saveCatId",category.getCatId());
+    }
+
+    @RequestMapping("/batch/update")
+    public R update(@RequestBody List<CategoryEntity> categoryList){
+        categoryService.updateBatchById(categoryList);
+        return R.ok();
+    }
+    /**
+     * 修改
+     */
+    @RequestMapping("/update")
+    public R update(@RequestBody CategoryEntity category){
+		categoryService.updateById(category);
+
+        return R.ok();
+    }
+
+    /**
+     * 删除
+     */
+    @RequestMapping("/delete")
+    public R delete(@RequestBody Long[] catIds){
+        //根据业务要求，删除指定分类
+        boolean result = categoryService.removeCategoryByIds(Arrays.asList(catIds));
+        return result ? R.ok() : R.error("删除失败!");
+    }
+
+}

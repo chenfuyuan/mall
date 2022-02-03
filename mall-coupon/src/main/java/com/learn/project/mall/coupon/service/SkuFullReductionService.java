@@ -1,7 +1,7 @@
 package com.learn.project.mall.coupon.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.learn.project.common.utils.PageUtils;
+import com.learn.project.common.mybatis.util.PageUtils;
 import com.learn.project.mall.coupon.entity.SkuFullReductionEntity;
 
 import java.util.Map;

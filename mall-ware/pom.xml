@@ -17,19 +17,12 @@
         <!--公共模块-->
         <dependency>
             <groupId>com.learn.project</groupId>
-            <artifactId>mall-common</artifactId>
+            <artifactId>mall-common-mybatis</artifactId>
         </dependency>
 
-        <!--spring-boot-web-->
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-
-        <!--openfeign-->
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-openfeign</artifactId>
+            <groupId>com.learn.project</groupId>
+            <artifactId>mall-common-web</artifactId>
         </dependency>
 
         <!--spring-boot-test-->

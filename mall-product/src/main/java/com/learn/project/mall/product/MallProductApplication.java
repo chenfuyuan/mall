@@ -7,7 +7,7 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 
 @MapperScan("com.learn.project.mall.product.dao")
-@EnableFeignClients(basePackages = "com.learn.project.mall.product.feign")
+@EnableFeignClients(basePackages = "com.learn.project.mall.product.api.feign")
 @EnableDiscoveryClient    //开启服务注册与发现
 @SpringBootApplication
 public class MallProductApplication {

@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.learn.project.mall.order.entity.OrderReturnApplyEntity;
 import com.learn.project.mall.order.service.OrderReturnApplyService;
-import com.learn.project.common.utils.PageUtils;
-import com.learn.project.common.utils.R;
+import com.learn.project.common.mybatis.util.PageUtils;
+import com.learn.project.common.web.util.R;
 
 
 

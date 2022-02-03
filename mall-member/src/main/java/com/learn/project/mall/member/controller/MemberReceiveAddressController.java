@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.learn.project.mall.member.entity.MemberReceiveAddressEntity;
 import com.learn.project.mall.member.service.MemberReceiveAddressService;
-import com.learn.project.common.utils.PageUtils;
-import com.learn.project.common.utils.R;
+import com.learn.project.common.mybatis.util.PageUtils;
+import com.learn.project.common.web.util.R;
 
 
 

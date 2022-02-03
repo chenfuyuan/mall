@@ -1,6 +1,6 @@
 package com.learn.project.mall.member.feign;
 
-import com.learn.project.common.utils.R;
+import com.learn.project.common.web.util.R;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.RequestMapping;
 

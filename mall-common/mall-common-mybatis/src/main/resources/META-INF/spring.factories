@@ -1,0 +1,2 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  com.learn.project.common.mybatis.config.MybatisPlusConfig

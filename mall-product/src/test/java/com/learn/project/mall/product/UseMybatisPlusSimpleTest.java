@@ -1,11 +1,9 @@
 package com.learn.project.mall.product;
 
-import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
-import com.baomidou.mybatisplus.extension.conditions.update.UpdateChainWrapper;
-import com.learn.project.mall.product.entity.BrandEntity;
-import com.learn.project.mall.product.service.BrandService;
+import com.learn.project.mall.product.infrastructure.persistence.mybatis.entity.BrandEntity;
+import com.learn.project.mall.product.application.BrandService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

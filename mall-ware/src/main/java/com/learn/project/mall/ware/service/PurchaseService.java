@@ -1,7 +1,7 @@
 package com.learn.project.mall.ware.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.learn.project.common.utils.PageUtils;
+import com.learn.project.common.mybatis.util.PageUtils;
 import com.learn.project.mall.ware.entity.PurchaseEntity;
 
 import java.util.Map;
