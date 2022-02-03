@@ -32,6 +32,12 @@
             </exclusions>
         </dependency>
 
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <scope>provided</scope>
+        </dependency>
+
         <!--gateway网关-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
