@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 
-@MapperScan("com.learn.project.mall.product.dao")
+@MapperScan("com.learn.project.mall.product.infrastructure.persistence.mybatis.mapper")
 @EnableFeignClients(basePackages = "com.learn.project.mall.product.api.feign")
 @EnableDiscoveryClient    //开启服务注册与发现
 @SpringBootApplication

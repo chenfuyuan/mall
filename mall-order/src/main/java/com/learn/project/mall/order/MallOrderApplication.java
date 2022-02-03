@@ -6,8 +6,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 
-@MapperScan("com.learn.project.mall.order.dao")
-@EnableFeignClients(basePackages = "com.learn.project.mall.order.feign")
+@MapperScan("com.learn.project.mall.order.infrastructure.persistence.mybatis.mapper")
+@EnableFeignClients(basePackages = "com.learn.project.mall.order.api.feign")
 @EnableDiscoveryClient
 @SpringBootApplication
 public class MallOrderApplication {

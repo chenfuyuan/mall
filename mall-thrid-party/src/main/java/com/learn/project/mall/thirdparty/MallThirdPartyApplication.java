@@ -13,7 +13,7 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
  */
 @SpringBootApplication
 @EnableDiscoveryClient
-@EnableFeignClients(basePackages =  "com.learn.project.mall.thirdparty.feign")
+@EnableFeignClients(basePackages =  "com.learn.project.mall.thirdparty.api.feign")
 public class MallThirdPartyApplication {
 
     public static void main(String[] args) {

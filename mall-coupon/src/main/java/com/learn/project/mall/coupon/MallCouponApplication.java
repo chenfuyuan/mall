@@ -6,9 +6,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 
-@MapperScan("com.learn.project.mall.coupon.dao")
+@MapperScan("com.learn.project.mall.coupon.infrastructure.persistence.mybatis.mapper")
 @EnableDiscoveryClient
-@EnableFeignClients(basePackages = "com.learn.project.mall.coupon.feign")
+@EnableFeignClients(basePackages = "com.learn.project.mall.coupon.api.feign")
 @SpringBootApplication
 public class MallCouponApplication {
 
