@@ -1,11 +1,10 @@
 package com.learn.project.mall.thirdparty.service.impl;
 
-import com.alibaba.nacos.shaded.org.checkerframework.checker.units.qual.A;
+
 import com.aliyun.oss.OSS;
 import com.aliyun.oss.common.utils.BinaryUtil;
 import com.aliyun.oss.model.MatchMode;
 import com.aliyun.oss.model.PolicyConditions;
-import com.learn.project.common.utils.GlobalConstant;
 import com.learn.project.mall.thirdparty.domain.AliYunOssConfig;
 import com.learn.project.mall.thirdparty.domain.AliYunOssSignature;
 import com.learn.project.mall.thirdparty.service.OssService;
@@ -13,8 +12,6 @@ import com.uptool.core.util.TimeUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
