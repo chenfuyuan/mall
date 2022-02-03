@@ -1,5 +1,6 @@
 package com.learn.project.mall.product.entity;
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableLogic;
 import com.baomidou.mybatisplus.annotation.TableName;
@@ -46,6 +47,10 @@ public class AttrGroupEntity implements Serializable {
 	 * 所属分类id
 	 */
     private Long catelogId;
+
+	@TableField(exist = false)
+	private Long[] categoryPath;
+
 	/**
 	 * 是否删除[0-未删除, 1-删除]
 	 */

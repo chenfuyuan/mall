@@ -32,5 +32,13 @@ public interface CategoryService extends IService<CategoryEntity> {
      * @return 是否删除成功
      */
     boolean removeCategoryByIds(Collection<Long> catIds);
+
+    /**
+     * 根据id获取分类
+     * @param catId 分类id
+     * @return
+     */
+    Long[] findCategoryPathByCatId(Long catId);
+
 }
 

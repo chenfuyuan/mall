@@ -16,4 +16,9 @@ public class PmsConstant {
      * 查询所有标志
      */
     public static final String QUERY_ALL_LABLE = "0";
+
+    /**
+     * 菜单最大等级
+     */
+    public static final int CATEGORY_MAX_LEVEL = 3;
 }

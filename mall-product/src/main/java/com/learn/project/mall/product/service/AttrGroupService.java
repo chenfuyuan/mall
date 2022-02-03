@@ -22,5 +22,12 @@ public interface AttrGroupService extends IService<AttrGroupEntity> {
      * @return
      */
     PageUtils queryPageByCatId(Map<String, Object> params, String catId);
+
+    /**
+     * 通过id查询对应的属性分组
+     * @param attrGroupId
+     * @return
+     */
+    AttrGroupEntity getInfoById(Long attrGroupId);
 }
 

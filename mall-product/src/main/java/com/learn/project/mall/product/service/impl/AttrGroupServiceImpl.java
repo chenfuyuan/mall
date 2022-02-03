@@ -1,7 +1,10 @@
 package com.learn.project.mall.product.service.impl;
 
+import com.learn.project.mall.product.service.CategoryService;
 import com.learn.project.mall.product.util.PmsConstant;
 import com.uptool.core.util.EmptyUtil;
+import com.uptool.core.util.NumberUtil;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.Map;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
@@ -24,6 +27,9 @@ import com.learn.project.mall.product.service.AttrGroupService;
 @Service("attrGroupService")
 public class AttrGroupServiceImpl extends ServiceImpl<AttrGroupDao, AttrGroupEntity> implements AttrGroupService {
 
+    @Autowired
+    private CategoryService categoryService;
+
     @Override
     public PageUtils queryPageByCatId(Map<String, Object> params, String catId) {
         IPage<AttrGroupEntity> pageQueryCondition = new Query<AttrGroupEntity>().getPage(params);
@@ -42,6 +48,17 @@ public class AttrGroupServiceImpl extends ServiceImpl<AttrGroupDao, AttrGroupEnt
         }
 
         return new PageUtils(this.page(pageQueryCondition, queryWrapper));
+    }
+
+    @Override
+    public AttrGroupEntity getInfoById(Long attrGroupId) {
+        AttrGroupEntity attrGroup = this.getById(attrGroupId);
+        if (EmptyUtil.isNotEmpty(attrGroup) && !NumberUtil.isEmptyOrZero(attrGroup.getCatelogId())) {
+            Long[] categoryPath = categoryService.findCategoryPathByCatId(attrGroup.getCatelogId());
+            attrGroup.setCategoryPath(categoryPath);
+        }
+
+        return attrGroup;
     }
 
 }

@@ -11,6 +11,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.learn.project.common.utils.DateFormat;
 import com.learn.project.mall.product.util.PmsConstant;
 import lombok.Data;
@@ -88,6 +89,7 @@ public class CategoryEntity implements Serializable {
 	/**
 	 * 子菜单列表
 	 */
+	@JsonInclude(JsonInclude.Include.NON_EMPTY)
 	@TableField(exist = false)
 	private List<CategoryEntity> subCategorys;
 

@@ -1,12 +1,16 @@
 package com.learn.project.mall.product.service.impl;
 
 import com.baomidou.mybatisplus.extension.toolkit.SqlHelper;
+import com.google.protobuf.Empty;
 import com.learn.project.common.utils.GlobalConstant;
 import com.learn.project.mall.product.util.PmsConstant;
 import com.uptool.core.util.EmptyUtil;
+import com.uptool.core.util.NumberUtil;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -74,6 +78,39 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryDao, CategoryEntity
 
         //删除分类
         return SqlHelper.retBool(this.baseMapper.deleteBatchIds(catIds));
+    }
+
+    @Override
+    public Long[] findCategoryPathByCatId(Long catId) {
+        CategoryEntity category = this.getById(catId);
+
+        //查询分类路径
+        Long[] categoryPath = getCategoryPath(category);
+
+        return categoryPath;
+    }
+
+    private Long[] getCategoryPath(CategoryEntity category) {
+        if (EmptyUtil.isEmpty(category.getParentCid())) {
+            return new Long[]{category.getCatId()};
+        }
+
+        List<Long> path = new ArrayList<>(PmsConstant.CATEGORY_MAX_LEVEL);
+        getCategoryPathByCatIdRecursion(category, path);
+
+        //翻转
+        Collections.reverse(path);
+        return path.toArray(new Long[path.size()]);
+    }
+
+
+    private void getCategoryPathByCatIdRecursion(CategoryEntity category,List<Long> path) {
+        if (EmptyUtil.isEmpty(category)) {
+            return;
+        }
+        path.add(category.getCatId());
+        CategoryEntity parentCategory = this.getById(category.getParentCid());
+        getCategoryPathByCatIdRecursion(parentCategory, path);
     }
 
 
