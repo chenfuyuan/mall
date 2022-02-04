@@ -1,6 +1,7 @@
 package com.learn.project.common.web.exception;
 
 import com.learn.project.common.web.constant.BaseErrorInfoInterface;
+import com.learn.project.common.web.constant.ResponseCodeEnum;
 
 public class BizException extends RuntimeException {
 
@@ -17,6 +18,8 @@ public class BizException extends RuntimeException {
 
 	public BizException() {
 		super();
+		this.errorCode = ResponseCodeEnum.DATA_VALIDATE_ERROR.getResultCode();
+		this.errorMsg = ResponseCodeEnum.DATA_VALIDATE_ERROR.getResultMsg();
 	}
 
 	public BizException(BaseErrorInfoInterface errorInfoInterface) {
@@ -33,6 +36,7 @@ public class BizException extends RuntimeException {
 	
 	public BizException(String errorMsg) {
 		super(errorMsg);
+		this.errorCode = ResponseCodeEnum.DATA_VALIDATE_ERROR.getResultCode();
 		this.errorMsg = errorMsg;
 	}
 	

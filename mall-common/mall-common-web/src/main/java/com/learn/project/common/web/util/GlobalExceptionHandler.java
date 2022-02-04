@@ -3,6 +3,7 @@ package com.learn.project.common.web.util;
 
 import com.learn.project.common.web.constant.ResponseCodeEnum;
 import com.learn.project.common.web.exception.BizException;
+import com.learn.project.common.web.exception.NoBizException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -44,6 +45,12 @@ public class GlobalExceptionHandler {
 		return R.error(ResponseCodeEnum.BODY_NOT_MATCH);
 	}
 
+	@ExceptionHandler(value = NoBizException.class)
+	@ResponseBody
+	public R exceptionHandler(HttpServletRequest req, NoBizException e) {
+		log.error("系统发送错误! 原因是{}", e.getErrorMsg());
+		return R.error(ResponseCodeEnum.INTERNAL_SERVER_ERROR);
+	}
 
     /**
         * 处理其他异常
