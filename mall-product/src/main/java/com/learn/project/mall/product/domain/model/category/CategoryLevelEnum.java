@@ -25,13 +25,16 @@ public enum CategoryLevelEnum implements ValueObject<CategoryLevelEnum> {
         this.value = value;
     }
 
-    public static CategoryLevelEnum getCategoryLevelEnum(int value) {
+    public static CategoryLevelEnum getCategoryLevelEnum(Integer value) {
+        if (value == null) {
+            throw new BizException("获取分类菜单失败,菜单等级为空!");
+        }
         for (CategoryLevelEnum level : CategoryLevelEnum.values()) {
             if (value == level.value) {
                 return level;
             }
         }
-        throw new BizException("获取分类菜单失败，菜单等级为空!");
+        throw new BizException("获取分类菜单失败，菜单等级错误!");
     }
 
     @Override

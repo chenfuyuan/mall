@@ -1,6 +1,10 @@
 package com.learn.project.mall.product.application;
 
+import com.learn.project.mall.product.application.command.CategoryCommand;
+import com.learn.project.mall.product.domain.model.category.CategoryId;
+
 import java.util.Collection;
+import java.util.List;
 
 /**
  * TODO(这里用一句话描述这个类的作用)
@@ -17,4 +21,15 @@ public interface CategoryCommandService {
      */
     boolean removeCategoryByIds(Collection<Long> catIds);
 
+    /**
+     * 保存或者更新
+     * @param category
+     */
+    void saveOrUpdate(CategoryCommand category);
+
+    /**
+     * 保存或者更新
+     * @param categoryCommandList
+     */
+    void saveOrUpdate(List<CategoryCommand> categoryCommandList);
 }

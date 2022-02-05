@@ -19,7 +19,7 @@ import java.util.List;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 
-import com.learn.project.mall.product.infrastructure.persistence.mybatis.entity.CategoryDO;
+import com.learn.project.mall.product.infrastructure.persistence.mybatis.entity.CategoryDo;
 import com.learn.project.mall.product.application.CategoryQueryService;
 
 /**
@@ -38,7 +38,7 @@ public class CategoryQueryServiceImpl implements CategoryQueryService {
     @Override
     public List<CategoryDto> queryAllToTree() {
         //获取所有需要显示的分类
-        QueryWrapper<CategoryDO> queryWrapper = new QueryWrapper<>();
+        QueryWrapper<CategoryDo> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("show_status", GlobalConstant.SHOW_STATUS_YES);
 
         List<Category> allCategoryList = categoryRepository.queryList(EmptyConstant.EMPTY_HASHMAP, queryWrapper);

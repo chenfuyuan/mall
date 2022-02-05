@@ -3,7 +3,10 @@ package com.learn.project.mall.product.api;
 import java.util.Arrays;
 import java.util.List;
 
+import com.learn.project.common.web.util.valid.ValidatorUtil;
+import com.learn.project.common.web.util.valid.group.AddGroup;
 import com.learn.project.mall.product.application.CategoryCommandService;
+import com.learn.project.mall.product.application.command.CategoryCommand;
 import com.learn.project.mall.product.application.dto.CategoryDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -11,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.learn.project.mall.product.infrastructure.persistence.mybatis.entity.CategoryDO;
+import com.learn.project.mall.product.infrastructure.persistence.mybatis.entity.CategoryDo;
 import com.learn.project.mall.product.application.CategoryQueryService;
 import com.learn.project.common.web.util.R;
 
@@ -61,37 +64,37 @@ public class CategoryController {
 
     /**
      * 保存
-     *//*
+     */
     @RequestMapping("/save")
-    public R save(@RequestBody CategoryDO category){
-        categoryCommandService.save(category);
+    public R save(@RequestBody CategoryCommand category){
+        ValidatorUtil.validateEntity(category, AddGroup.class);
+        categoryCommandService.saveOrUpdate(category);
         //返回添加成功后的catId
         return R.ok().put("saveCatId",category.getCatId());
     }
 
     @RequestMapping("/batch/update")
-    public R update(@RequestBody List<CategoryDO> categoryList){
-        categoryCommandService.updateBatchById(categoryList);
+    public R update(@RequestBody List<CategoryCommand> categoryCommandList){
+        categoryCommandService.saveOrUpdate(categoryCommandList);
         return R.ok();
     }
-    *//**
+    /**
      * 修改
-     *//*
+     */
     @RequestMapping("/update")
-    public R update(@RequestBody CategoryDO category){
-        categoryCommandService.updateById(category);
-
+    public R update(@RequestBody CategoryCommand categoryCommand){
+        categoryCommandService.saveOrUpdate(categoryCommand);
         return R.ok();
     }
 
-    *//**
+    /**
      * 删除
-     *//*
+     */
     @RequestMapping("/delete")
     public R delete(@RequestBody Long[] catIds){
         //根据业务要求，删除指定分类
         boolean result = categoryCommandService.removeCategoryByIds(Arrays.asList(catIds));
         return result ? R.ok() : R.error("删除失败!");
-    }*/
+    }
 
 }

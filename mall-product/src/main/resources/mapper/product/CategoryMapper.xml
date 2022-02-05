@@ -4,7 +4,7 @@
 <mapper namespace="com.learn.project.mall.product.infrastructure.persistence.mybatis.mapper.CategoryMapper">
 
 	<!-- 可根据自己的需求，是否要使用 -->
-    <resultMap type="com.learn.project.mall.product.infrastructure.persistence.mybatis.entity.CategoryDO" id="categoryMap">
+    <resultMap type="com.learn.project.mall.product.infrastructure.persistence.mybatis.entity.CategoryDo" id="categoryMap">
         <result property="catId" column="cat_id"/>
         <result property="name" column="name"/>
         <result property="parentCid" column="parent_cid"/>
@@ -21,7 +21,7 @@
     </resultMap>
 
     <select id="queryList" parameterType="Map"
-            resultType="com.learn.project.mall.product.infrastructure.persistence.mybatis.entity.CategoryDO">
+            resultType="com.learn.project.mall.product.infrastructure.persistence.mybatis.entity.CategoryDo">
         select c.* from pms_category c
         <where>
             and c.is_delete = '0'

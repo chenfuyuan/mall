@@ -1,9 +1,12 @@
 package com.learn.project.mall.product.application.dto;
+import com.baomidou.mybatisplus.annotation.TableLogic;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.learn.project.common.web.util.jsonSerializer.DateFormat;
 import com.learn.project.mall.product.domain.model.category.Category;
 import lombok.Data;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -16,8 +19,6 @@ import java.util.List;
 public class CategoryDto implements Serializable {
 
     private static final long serialVersionUID = 1L;
-
-    public static final CategoryDto EMPTY = new CategoryDto();
 
     /**
      * 分类id
@@ -37,6 +38,25 @@ public class CategoryDto implements Serializable {
      * 排序
      */
     private Integer sort;
+
+
+    /**
+     * 是否删除
+     */
+    private Integer isDelete;
+    /**
+     * 创建时间
+     */
+
+    private Date gmtCreate;
+    /**
+     * 修改时间
+     */
+    private Date gmtModified;
+    /**
+     * 更新版本
+     */
+    private Integer updateVersion;
 
     /**
      * 子菜单列表

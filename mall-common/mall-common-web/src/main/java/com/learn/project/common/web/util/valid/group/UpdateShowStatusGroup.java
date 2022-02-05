@@ -6,5 +6,5 @@ package com.learn.project.common.web.util.valid.group;
  * @author chenfuyuan
  * @date 2022/1/8 17:48
  */
-public interface UpdateShowStatus {
+public interface UpdateShowStatusGroup {
 }

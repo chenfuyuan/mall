@@ -1,16 +1,14 @@
 package com.learn.project.mall.product.domain.model.category;
 
 
-import com.learn.project.common.core.constant.ShowStatusEnum;
+import com.learn.project.common.core.domain.TimeInfo;
+import com.learn.project.common.mybatis.util.BaseDo;
+import com.learn.project.common.web.constant.ShowStatusEnum;
 import com.learn.project.common.core.domain.Entity;
 import com.learn.project.mall.product.domain.model.product.ProductCount;
-import com.learn.project.mall.product.infrastructure.constant.PmsConstant;
-import com.learn.project.mall.product.infrastructure.persistence.mybatis.entity.CategoryDO;
-import com.uptool.core.constant.EmptyConstant;
 import com.uptool.core.util.EmptyUtil;
 import lombok.Data;
 
-import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -56,7 +54,7 @@ public class Category implements Entity<Category>,Comparable<Category> {
     /**
      * 排序
      */
-    private int sort;
+    private Integer sort;
 
     /**
      * 图标
@@ -74,26 +72,19 @@ public class Category implements Entity<Category>,Comparable<Category> {
     private ProductCount productCount;
 
     /**
+     * 时间，版本等相关信息
+     */
+    private TimeInfo timeInfo;
+
+    /**
      * 子分类
      */
     private List<Category> subCategorys;
 
-    public Category(CategoryId categoryId, String name, Category parent, CategoryLevelEnum catLevel, ShowStatusEnum showStatus, int sort, String icon, String productUnit, ProductCount productCount, List<Category> subCategorys) {
-        this.categoryId = categoryId;
-        this.name = name;
-        this.parent = parent;
-        this.catLevel = catLevel;
-        this.showStatus = showStatus;
-        this.sort = sort;
-        this.icon = icon;
-        this.productUnit = productUnit;
-        this.productCount = productCount;
-        this.subCategorys = subCategorys;
-    }
-
     public Category() {
 
     }
+
 
     @Override
     public boolean sameIdentityAs(Category other) {
@@ -147,4 +138,13 @@ public class Category implements Entity<Category>,Comparable<Category> {
             return category;
         }).collect(Collectors.toList());
     }
+
+    public void setTimeInfo(TimeInfo timeInfo) {
+        this.timeInfo = timeInfo;
+    }
+
+    public void setTimeInfo(BaseDo baseDo) {
+        this.timeInfo = BaseDo.getTimeInfo(baseDo);
+    }
+
 }
