@@ -1,3 +1,2 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-  com.learn.project.common.web.util.GlobalExceptionHandler, \
-  com.learn.project.common.web.config.WebServerConfig
+  com.learn.project.common.web.util.GlobalExceptionHandler

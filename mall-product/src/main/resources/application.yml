@@ -9,6 +9,9 @@ spring:
     nacos:
       discovery:
         server-addr: 192.168.249.4:8848
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
 
 logging:
   level:
@@ -25,3 +28,4 @@ mybatis-plus:
     db-config:
       #配置数据库主键 自增
       id-type: auto
+
