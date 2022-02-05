@@ -1,0 +1,67 @@
+package ${package}.${moduleName}.infrastructure.persistence.mybatis.repository;
+
+import com.baomidou.mybatisplus.extension.service.IService;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import ${package}.${moduleName}.domain.model.${classname}.${className};
+import ${package}.${moduleName}.domain.model.${classname}.${className}Id;
+import ${package}.${moduleName}.domain.model.${classname}.${className}Repository;
+import ${package}.${moduleName}.infrastructure.persistence.mybatis.converter.${className}Converter;
+import ${package}.${moduleName}.infrastructure.persistence.mybatis.entity.${className}Do;
+import ${package}.${moduleName}.infrastructure.persistence.mybatis.mapper.${className}Mapper;
+import com.uptool.core.util.EmptyUtil;
+import com.uptool.core.util.ListUtil;
+import org.springframework.stereotype.Repository;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
+
+/**
+ * ${comments}-仓储服务实现类
+ *
+ * @author ${author}
+ * @email ${email}
+ * @date ${datetime}
+ */
+@Repository
+public class ${className}RepositoryImpl extends ServiceImpl<${className}Mapper, ${className}Do> implements ${className}Repository, IService<${className}Do> {
+
+
+    @Override
+    public ${className} find(${className}Id ${pk.attrname}) {
+        ${className}Do ${classname}Do = this.getById(${pk.attrname}.getId());
+        if (EmptyUtil.isNull(${classname}Do)) {
+            return null;
+        }
+        return ${className}Converter.to${className}(${classname}Do);
+    }
+
+    @Override
+    public ${className}Id store(${className} ${classname}) {
+        ${className}Do ${classname}Do = ${className}Converter.from${className}(${classname});
+        this.saveOrUpdate(${classname}Do);
+        return new ${className}Id(${classname}Do.get${pk.attrName}());
+    }
+
+    @Override
+    public boolean remove(Collection<${className}Id> ${classname}IdList) {
+        List<${pk.attrType}> ids = new ArrayList<>();
+        ${classname}IdList.forEach(${classname}Id -> ids.add(${classname}Id.getId()));
+        return this.removeByIds(ids);
+    }
+
+    @Override
+    public boolean remove(${className}Id ${classname}Id) {
+        return this.removeById(${classname}Id.getId());
+    }
+
+    @Override
+    public Set<${className}Id> store(List<${className}> ${classname}List) {
+        List<${className}Do> ${classname}DoList = ListUtil.listMapCollectToList(${classname}List, ${classname} -> ${className}Converter.from${className}(${classname}));
+        this.saveOrUpdateBatch(${classname}DoList);
+        return ${classname}DoList.stream().map(${classname}Do -> new ${className}Id(${classname}Do.get${pk.attrName}())).collect(Collectors.toSet());
+    }
+
+}

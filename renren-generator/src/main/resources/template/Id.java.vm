@@ -1,0 +1,31 @@
+package ${package}.${moduleName}.domain.model.${classname};
+
+import com.learn.project.common.core.domain.EntityId;
+import com.learn.project.common.web.exception.NoBizException;
+import com.uptool.core.util.EmptyUtil;
+
+
+/**
+ * ${comments}-领域对象-id
+ *
+ * @author ${author}
+ * @email ${email}
+ * @date ${datetime}
+ */
+public class ${className}Id implements EntityId<${className}Id> {
+
+    private final ${pk.attrType} id;
+
+
+    public ${className}Id(final ${pk.attrType} id) {
+        if (EmptyUtil.isEmpty(id)) {
+            throw new NoBizException("**id不能为空!");
+        }
+        this.id = id;
+    }
+
+    @Override
+    public ${pk.attrType} getId() {
+        return id;
+    }
+}

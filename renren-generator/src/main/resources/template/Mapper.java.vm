@@ -1,0 +1,18 @@
+package ${package}.${moduleName}.infrastructure.persistence.mybatis.mapper;
+
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import ${package}.${moduleName}.infrastructure.persistence.mybatis.entity.${className}Do;
+import org.apache.ibatis.annotations.Mapper;
+
+/**
+ * ${comments}-数据库访问接口
+ *
+ * @author ${author}
+ * @email ${email}
+ * @date ${datetime}
+ */
+@Mapper
+public interface ${className}Mapper extends BaseMapper<${className}Do> {
+
+
+}

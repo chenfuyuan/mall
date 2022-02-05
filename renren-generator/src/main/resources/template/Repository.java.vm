@@ -1,0 +1,44 @@
+package ${package}.${moduleName}.domain.model.${classname};
+
+import java.util.Collection;
+import java.util.List;
+import java.util.Set;
+
+/**
+ * ${comments}-仓储服务
+ *
+ * @author ${author}
+ * @email ${email}
+ * @date ${datetime}
+ */
+public interface ${className}Repository {
+
+    /**
+     * 通过${pk.attrname}查找
+     * @param ${pk.attrname} id
+     * @return
+     */
+    ${className} find(${className}Id ${pk.attrname});
+
+    /**
+     * 存储领域对象
+     * @param ${classname}
+     */
+    ${className}Id store(${className} ${classname});
+
+    /**
+     * 根据传递过来的id进行删除
+     * @param ${classname}IdList id列表
+     * @return
+     */
+    boolean remove(Collection<${className}Id> ${classname}IdList);
+
+    /**
+     * 根据id进行删除
+     * @param ${classname}Id id
+     * @return
+     */
+    boolean remove(${className}Id ${classname}Id);
+
+    Set<${className}Id> store(List<${className}> ${classname}List);
+}

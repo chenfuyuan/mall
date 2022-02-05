@@ -1,0 +1,29 @@
+package ${package}${moduleName}.application;
+
+import com.learn.project.common.mybatis.util.PageUtils;
+import ${package}.${moduleName}.application.dto.${className}Dto;
+
+import java.util.Map;
+
+/**
+ * ${comments}-查询服务接口
+ *
+ * @author ${author}
+ * @email ${email}
+ * @date ${datetime}
+ */
+public interface ${className}QueryService {
+    /**
+     * 分页查询数据
+     * @param params 查询参数
+     * @return 分页结果
+     */
+    PageUtils queryPage(Map<String, Object> params);
+
+    /**
+     * 通过${pk.attrname}获取指定数据
+     * @param ${pk.attrname} ${pk.attrname}
+     * @return 数据
+     */
+     ${className}Dto getById(${pk.attrType} ${pk.attrname});
+}

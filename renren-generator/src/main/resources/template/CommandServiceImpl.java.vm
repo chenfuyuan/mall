@@ -1,0 +1,79 @@
+package ${package}.${moduleName}.application.impl;
+
+import ${package}.${moduleName}.application.${className}CommandService;
+import ${package}.${moduleName}.application.assembler.${className}Assembler;
+import ${package}.${moduleName}.application.command.${className}Command;
+import ${package}.${moduleName}.domain.model.${classname}.${className};
+import ${package}.${moduleName}.domain.model.${classname}.${className}Id;
+import ${package}.${moduleName}.domain.model.${classname}.${className}Repository;
+import ${package}.${moduleName}.domain.specification.${className}CreateSpecification;
+import com.uptool.core.util.EmptyUtil;
+import com.uptool.core.util.ListUtil;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+
+
+/**
+ * ${comments}-命令服务实现类
+ *
+ * @author ${author}
+ * @email ${email}
+ * @date ${datetime}
+ */
+@Service("${classname}CommandService")
+public class ${className}CommandServiceImpl implements ${className}CommandService {
+
+    @Autowired
+    private ${className}Repository ${classname}Repository;
+
+    @Autowired
+    private ${className}CreateSpecification ${classname}CreateSpecification;
+
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public ${pk.attrType} saveOrUpdate(${className}Command ${classname}Command) {
+        ${className} ${classname} = ${className}Assembler.to${className}(${classname}Command);
+        ${classname}CreateSpecification.isSatisfiedBy(${classname});
+        return ${classname}Repository.store(${classname}).getId();
+    }
+
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public boolean delete(Collection<${pk.attrType}> ${pk.attrname}s) {
+        if (EmptyUtil.isEmpty(${pk.attrname}s)) {
+            return false;
+        }
+
+        List<${className}Id> ${classname}IdList = new ArrayList<>();
+        for (${pk.attrType} id : ${pk.attrname}s) {
+            ${classname}IdList.add(new ${className}Id(id));
+        }
+        return ${classname}Repository.remove(${classname}IdList);
+    }
+
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public boolean delete(${pk.attrType} ${pk.attrname}) {
+        return ${classname}Repository.remove(new ${className}Id(${pk.attrname}));
+    }
+
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public ${pk.attrType}[] batchSaveOrUpdate(List<${className}Command> ${classname}CommandList) {
+        List<${className}> ${classname}List = ListUtil.listMapCollectToList(${classname}CommandList, command ->
+                ${className}Assembler.to${className}(command)
+        );
+
+        //校验
+        ${classname}List.forEach(${classname}->{
+            ${classname}CreateSpecification.isSatisfiedBy(${classname});
+        });
+
+        return ${classname}Repository.store(${classname}List).stream().map(${pk.attrname}->${pk.attrname}.getId()).toArray(${pk.attrType}[]::new);
+    }
+}

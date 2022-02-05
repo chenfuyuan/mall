@@ -1,0 +1,70 @@
+package ${package}.${moduleName}.application.assembler;
+
+import com.learn.project.common.core.domain.CommonInfo;
+import com.learn.project.common.core.domain.EntityId;
+import ${package}.${moduleName}.application.command.${className}Command;
+import ${package}.${moduleName}.application.dto.${className}Dto;
+import ${package}.${moduleName}.domain.model.${classname}.${className};
+import ${package}.${moduleName}.domain.model.${classname}.${className}Id;
+import com.uptool.core.util.EmptyUtil;
+
+/**
+ * ${comments}-装配器
+ * 用于将 应用层对象与业务层对象进行转换
+ *
+ * @author ${author}
+ * @email ${email}
+ * @date ${datetime}
+ */
+public class ${className}Assembler {
+
+    /**
+     * 转换成领域对象
+     * @param command 命令对象
+     * @return
+     */
+    public static ${className} to${className}(${className}Command command) {
+        if (EmptyUtil.isEmpty(command)) {
+            return null;
+        }
+        ${className} result = new ${className}();
+        result.set${pk.attrName}(command.get${pk.attrName}() == null ? null: new ${className}Id(command.get${pk.attrName}()));
+
+#foreach ($column in $columns)
+#if($column.columnName != $pk.columnName && !$column.commonField)
+        result.set${column.attrName}(command.get${column.attrName}());
+#end
+#end
+
+        result.setCommonInfo(CommonInfo.getInstance(command.getGmtCreate(), command.getGmtModified(), command.getIsDelete(), command.getUpdateVersion()));
+
+        return result;
+    }
+
+    /**
+     * 转换成数据传输对象
+     * @param ${classname} 领域对象
+     * @return
+     */
+    public static ${className}Dto from${className}(${className} ${classname}) {
+        if (EmptyUtil.isEmpty(${classname})) {
+            return null;
+        }
+        ${className}Dto result = new ${className}Dto();
+        result.setId(EntityId.getId(${classname}.get${pk.attrName}()));
+
+#foreach ($column in $columns)
+#if($column.columnName != $pk.columnName && !$column.commonField)
+        result.set${column.attrName}(${classname}.get${column.attrName}());
+#end
+#end
+
+        if (${classname}.getCommonInfo() != null) {
+            result.setIsDelete(${classname}.getCommonInfo().getIsDeleteEnum().getValue());
+            result.setGmtCreate(${classname}.getCommonInfo().getCreateTime());
+            result.setGmtModified(${classname}.getCommonInfo().getUpdateTime());
+            result.setUpdateVersion(${classname}.getCommonInfo().getVersion());
+        }
+        return result;
+    }
+}

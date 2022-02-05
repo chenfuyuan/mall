@@ -1,0 +1,24 @@
+package ${package}.${moduleName}.application.command;
+
+
+import lombok.Data;
+
+import java.util.Date;
+
+/**
+ * ${comments}-命令对象
+ *
+ * @author ${author}
+ * @email ${email}
+ * @date ${datetime}
+ */
+@Data
+public class ${className}Command {
+
+#foreach ($column in $columns)
+    /**
+    * $column.comments
+    */
+    private $column.attrType $column.attrname;
+#end
+}

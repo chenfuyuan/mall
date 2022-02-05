@@ -23,7 +23,17 @@ public class ColumnEntity {
     private String attrType;
     //auto_increment
     private String extra;
-    
+
+	private boolean commonField;
+
+	public boolean getCommonField() {
+		return commonField;
+	}
+
+	public void setCommonField(boolean commonField) {
+		this.commonField = commonField;
+	}
+
 	public String getColumnName() {
 		return columnName;
 	}

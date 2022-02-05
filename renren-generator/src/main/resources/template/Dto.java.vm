@@ -1,0 +1,23 @@
+package ${package}.${moduleName}.application.dto;
+
+import lombok.Data;
+
+import java.util.Date;
+
+/**
+ * ${comments}-数据传输对象
+ *
+ * @author ${author}
+ * @email ${email}
+ * @date ${datetime}
+ */
+@Data
+public class ${className}Dto {
+
+#foreach ($column in $columns)
+    /**
+    * $column.comments
+    */
+    private $column.attrType $column.attrname;
+#end
+}

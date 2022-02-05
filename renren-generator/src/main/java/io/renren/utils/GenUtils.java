@@ -33,19 +33,56 @@ public class GenUtils {
 
     private static String currentTableName;
 
+    private static final String[] COMMON_FIELD = {"is_delete", "gmt_create", "gmt_modified", "update_version"};
+
+    private static final String TEMPLATE_PATH = "template/";
+
+    private static final String TEMPLATE_JAVA_SUFFIX = ".java.vm";
+
+    private static final String MYBATIS_FILE_PATH = "infrastructure" + File.separator + "persistence" + File.separator + "mybatis" + File.separator;
+
+    private static final String APPLICATION_FILE_PATH = "application" + File.separator;
+
+    private static final String DOMAIN_FILE_PATH = "domain" + File.separator;
+
+    private static String addJavaTemplate(String fileName) {
+        return TEMPLATE_PATH + fileName + TEMPLATE_JAVA_SUFFIX;
+    }
+
     public static List<String> getTemplates() {
         List<String> templates = new ArrayList<String>();
         //TODO 添加模板
-        templates.add("template/Entity.java.vm");
-        templates.add("template/Dao.xml.vm");
+        String templateStr = "template/";
+        String javaStr = ".java.vm";
+        //java
+        //api
+        templates.add(addJavaTemplate("Controller"));
 
+        //application
+        templates.add(addJavaTemplate("Assembler"));
+        templates.add(addJavaTemplate("Command"));
+        templates.add(addJavaTemplate("Dto"));
+        templates.add(addJavaTemplate("CommandService"));
+        templates.add(addJavaTemplate("CommandServiceImpl"));
+        templates.add(addJavaTemplate("QueryService"));
+        templates.add(addJavaTemplate("QueryServiceImpl"));
+
+        //domain
+        templates.add(addJavaTemplate("DoMain"));
+        templates.add(addJavaTemplate("Id"));
+        templates.add(addJavaTemplate("CreateSpecification"));
+        templates.add(addJavaTemplate("Repository"));
+
+        //infrastructure
+        templates.add(addJavaTemplate("Mapper"));
+        templates.add(addJavaTemplate("Do"));
+        templates.add(addJavaTemplate("RepositoryImpl"));
+        templates.add(addJavaTemplate("Converter"));
+
+        //sql
         templates.add("template/menu.sql.vm");
 
-        templates.add("template/Service.java.vm");
-        templates.add("template/ServiceImpl.java.vm");
-        templates.add("template/Controller.java.vm");
-        templates.add("template/Dao.java.vm");
-
+        //vue
         templates.add("template/index.vue.vm");
         templates.add("template/add-or-update.vue.vm");
         if (MongoManager.isMongo()) {
@@ -56,6 +93,122 @@ public class GenUtils {
             templates.add("template/MongoEntity.java.vm");
         }
         return templates;
+    }
+
+    /**
+     * 获取文件名
+     */
+    public static String getFileName(String template, String className, String packageName, String moduleName,String classname) {
+        String packagePath = "main" + File.separator + "java" + File.separator;
+        if (StringUtils.isNotBlank(packageName)) {
+            packagePath += packageName.replace(".", File.separator) + File.separator + moduleName + File.separator;
+        }
+
+        if (template.contains("Assembler"+ TEMPLATE_JAVA_SUFFIX)) {
+            return packagePath + APPLICATION_FILE_PATH + "assembler" + File.separator + className + "Assembler.java";
+        }
+
+        if (template.contains("Command" + TEMPLATE_JAVA_SUFFIX)) {
+            return packagePath + APPLICATION_FILE_PATH + "command" + File.separator + className + "Command.java";
+        }
+
+        if (template.contains("Dto" + TEMPLATE_JAVA_SUFFIX)) {
+            return packagePath + APPLICATION_FILE_PATH + "dto" + File.separator + className + "Dto.java";
+        }
+
+        if (template.contains("QueryServiceImpl" + TEMPLATE_JAVA_SUFFIX)) {
+            return packagePath + APPLICATION_FILE_PATH + "impl" + File.separator + className + "QueryServiceImpl.java";
+        }
+
+        if (template.contains("CommandServiceImpl" + TEMPLATE_JAVA_SUFFIX)) {
+            return packagePath + APPLICATION_FILE_PATH + "impl" + File.separator + className + "CommandServiceImpl.java";
+        }
+
+        if (template.contains("QueryService" + TEMPLATE_JAVA_SUFFIX)) {
+            return packagePath + APPLICATION_FILE_PATH + className + "QueryService.java";
+        }
+
+        if (template.contains("CommandService" + TEMPLATE_JAVA_SUFFIX)) {
+            return packagePath + APPLICATION_FILE_PATH + className + "CommandService.java";
+        }
+
+        if (template.contains("DoMain" + TEMPLATE_JAVA_SUFFIX)) {
+            return packagePath + DOMAIN_FILE_PATH + "model" + File.separator + classname + File.separator + className + ".java";
+        }
+
+        if (template.contains("Id" + TEMPLATE_JAVA_SUFFIX)) {
+            return packagePath + DOMAIN_FILE_PATH + "model" + File.separator + classname + File.separator + className + "Id.java";
+        }
+
+        if (template.contains("Repository" + TEMPLATE_JAVA_SUFFIX)) {
+            return packagePath + DOMAIN_FILE_PATH + "model" + File.separator +classname + File.separator + className + "Repository.java";
+        }
+
+        if (template.contains("CreateSpecification" + TEMPLATE_JAVA_SUFFIX)) {
+            return packagePath + DOMAIN_FILE_PATH + "specification" + File.separator + className + "CreateSpecification.java";
+        }
+
+        if (template.contains("Do" + TEMPLATE_JAVA_SUFFIX)) {
+            return packagePath + MYBATIS_FILE_PATH + "entity" + File.separator + className + "Do.java";
+        }
+
+        if (template.contains("Converter" + TEMPLATE_JAVA_SUFFIX)) {
+            return packagePath + MYBATIS_FILE_PATH + "converter" + File.separator + className + "Converter.java";
+        }
+
+        if (template.contains("RepositoryImpl" + TEMPLATE_JAVA_SUFFIX)) {
+            return packagePath + MYBATIS_FILE_PATH + "repository" + File.separator + className + "RepositoryImpl.java";
+        }
+
+        if (template.contains("Mapper.java.vm")) {
+            return packagePath + MYBATIS_FILE_PATH + "mapper" + File.separator + className + "Mapper.java";
+        }
+
+
+
+        if (template.contains("MongoChildrenEntity.java.vm")) {
+            return packagePath + "entity" + File.separator + "inner" + File.separator + currentTableName + File.separator + splitInnerName(className) + "InnerEntity.java";
+        }
+        if (template.contains("Entity.java.vm") || template.contains("MongoEntity.java.vm")) {
+            return packagePath + "entity" + File.separator + className + "Entity.java";
+        }
+
+        if (template.contains("Dao.java.vm")) {
+            return packagePath + "dao" + File.separator + className + "Dao.java";
+        }
+
+        if (template.contains("Service.java.vm")) {
+            return packagePath + "service" + File.separator + className + "Service.java";
+        }
+
+        if (template.contains("ServiceImpl.java.vm")) {
+            return packagePath + "service" + File.separator + "impl" + File.separator + className + "ServiceImpl.java";
+        }
+
+        if (template.contains("Controller.java.vm")) {
+            return packagePath + "api" + File.separator + className + "Controller.java";
+        }
+
+        if (template.contains("Dao.xml.vm")) {
+            return "main" + File.separator + "resources" + File.separator + "mapper" + File.separator + moduleName + File.separator + className + "Dao.xml";
+        }
+
+        if (template.contains("menu.sql.vm")) {
+            return className.toLowerCase() + "_menu.sql";
+        }
+
+        if (template.contains("index.vue.vm")) {
+            return "main" + File.separator + "resources" + File.separator + "src" + File.separator + "views" + File.separator + "modules" +
+                    File.separator + moduleName + File.separator + className.toLowerCase() + ".vue";
+        }
+
+        if (template.contains("add-or-update.vue.vm")) {
+            return "main" + File.separator + "resources" + File.separator + "src" + File.separator + "views" + File.separator + "modules" +
+                    File.separator + moduleName + File.separator + className.toLowerCase() + "-add-or-update.vue";
+        }
+
+        //TODO 调整包结构
+        return null;
     }
 
     public static List<String> getMongoChildTemplates() {
@@ -90,6 +243,11 @@ public class GenUtils {
             columnEntity.setDataType(column.get("dataType"));
             columnEntity.setComments(column.get("columnComment"));
             columnEntity.setExtra(column.get("extra"));
+
+
+            // 设置是否是公共字段
+            columnEntity.setCommonField(isCommonField(column.get("columnName")));
+
 
             //列名转换成Java属性名
             String attrName = columnToJava(columnEntity.getColumnName());
@@ -161,7 +319,7 @@ public class GenUtils {
 
             try {
                 //添加到zip
-                zip.putNextEntry(new ZipEntry(getFileName(template, tableEntity.getClassName(), config.getString("package"), config.getString("moduleName"))));
+                zip.putNextEntry(new ZipEntry(getFileName(template, tableEntity.getClassName(), config.getString("package"), config.getString("moduleName"),tableEntity.getClassname())));
                 IOUtils.write(sw.toString(), zip, "UTF-8");
                 IOUtils.closeQuietly(sw);
                 zip.closeEntry();
@@ -169,6 +327,15 @@ public class GenUtils {
                 throw new RRException("渲染模板失败，表名：" + tableEntity.getTableName(), e);
             }
         }
+    }
+
+    private static boolean isCommonField(String columName) {
+        for (String field : COMMON_FIELD) {
+            if (field.equals(columName)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     /**
@@ -257,7 +424,7 @@ public class GenUtils {
             tpl.merge(context, sw);
             try {
                 //添加到zip
-                zip.putNextEntry(new ZipEntry(getFileName(template, tableEntity.getClassName(), config.getString("package"), config.getString("moduleName"))));
+                zip.putNextEntry(new ZipEntry(getFileName(template, tableEntity.getClassName(), config.getString("package"), config.getString("moduleName"),tableEntity.getClassname())));
                 IOUtils.write(sw.toString(), zip, "UTF-8");
                 IOUtils.closeQuietly(sw);
                 zip.closeEntry();
@@ -281,7 +448,7 @@ public class GenUtils {
     public static String tableToJava(String tableName, String[] tablePrefixArray) {
         if (null != tablePrefixArray && tablePrefixArray.length > 0) {
             for (String tablePrefix : tablePrefixArray) {
-                  if (tableName.startsWith(tablePrefix)){
+                if (tableName.startsWith(tablePrefix)) {
                     tableName = tableName.replaceFirst(tablePrefix, "");
                 }
             }
@@ -300,61 +467,10 @@ public class GenUtils {
         }
     }
 
-    /**
-     * 获取文件名
-     */
-    public static String getFileName(String template, String className, String packageName, String moduleName) {
-        String packagePath = "main" + File.separator + "java" + File.separator;
-        if (StringUtils.isNotBlank(packageName)) {
-            packagePath += packageName.replace(".", File.separator) + File.separator + moduleName + File.separator;
-        }
-        if (template.contains("MongoChildrenEntity.java.vm")) {
-            return packagePath + "entity" + File.separator + "inner" + File.separator + currentTableName+ File.separator + splitInnerName(className)+ "InnerEntity.java";
-        }
-        if (template.contains("Entity.java.vm") || template.contains("MongoEntity.java.vm")) {
-            return packagePath + "entity" + File.separator + className + "Entity.java";
-        }
 
-        if (template.contains("Dao.java.vm")) {
-            return packagePath + "dao" + File.separator + className + "Dao.java";
-        }
 
-        if (template.contains("Service.java.vm")) {
-            return packagePath + "service" + File.separator + className + "Service.java";
-        }
-
-        if (template.contains("ServiceImpl.java.vm")) {
-            return packagePath + "service" + File.separator + "impl" + File.separator + className + "ServiceImpl.java";
-        }
-
-        if (template.contains("Controller.java.vm")) {
-            return packagePath + "controller" + File.separator + className + "Controller.java";
-        }
-
-        if (template.contains("Dao.xml.vm")) {
-            return "main" + File.separator + "resources" + File.separator + "mapper" + File.separator + moduleName + File.separator + className + "Dao.xml";
-        }
-
-        if (template.contains("menu.sql.vm")) {
-            return className.toLowerCase() + "_menu.sql";
-        }
-
-        if (template.contains("index.vue.vm")) {
-            return "main" + File.separator + "resources" + File.separator + "src" + File.separator + "views" + File.separator + "modules" +
-                    File.separator + moduleName + File.separator + className.toLowerCase() + ".vue";
-        }
-
-        if (template.contains("add-or-update.vue.vm")) {
-            return "main" + File.separator + "resources" + File.separator + "src" + File.separator + "views" + File.separator + "modules" +
-                    File.separator + moduleName + File.separator + className.toLowerCase() + "-add-or-update.vue";
-        }
-
-        //TODO 调整包结构
-        return null;
-    }
-
-    private static String splitInnerName(String name){
-          name = name.replaceAll("\\.","_");
-          return name;
+    private static String splitInnerName(String name) {
+        name = name.replaceAll("\\.", "_");
+        return name;
     }
 }

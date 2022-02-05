@@ -1,0 +1,62 @@
+package ${package}.${moduleName}.infrastructure.persistence.mybatis.converter;
+
+import com.learn.project.common.mybatis.util.ConverterUtil;
+import ${package}.${moduleName}.domain.model.${classname}.${className};
+import ${package}.${moduleName}.domain.model.${classname}.${className}Id;
+import ${package}.${moduleName}.infrastructure.persistence.mybatis.entity.${className}Do;
+import com.uptool.core.util.EmptyUtil;
+
+/**
+ * ${comments}-转换器对象
+ * 用于Do与领域对象的相互转换
+ *
+ * @author ${author}
+ * @email ${email}
+ * @date ${datetime}
+ */
+public class ${className}Converter {
+
+    /**
+     * 将领域对象转化为数据对象
+     * @param ${classname} 领域对象
+     * @return
+     */
+    public static ${className}Do from${className}(${className} ${classname}) {
+        if (EmptyUtil.isNull(${classname})) {
+            return null;
+        }
+        ${className}Do result = new ${className}Do();
+        ConverterUtil.fromDomainModelCommonInfo(result,${classname},${classname});
+
+#foreach ($column in $columns)
+#if($column.columnName != $pk.columnName && !$column.commonField)
+        result.set${column.attrName}(${classname}.get${column.attrName}());
+#end
+#end
+
+        return result;
+    }
+
+    /**
+     * 将数据对象转化为领域对象
+     * @param ${classname}Do 数据对象
+     * @return
+     */
+    public static ${className} to${className}(${className}Do ${classname}Do) {
+        if (EmptyUtil.isNull(${classname}Do)) {
+            return null;
+        }
+
+        ${className} result = new ${className}();
+        ConverterUtil.toDomainModelCommonInfo(result, ${classname}Do);
+
+        result.set${pk.attrName}(new ${className}Id(${classname}Do.get${pk.attrName}()));
+
+#foreach ($column in $columns)
+#if($column.columnName != $pk.columnName && !$column.commonField)
+        result.set${column.attrName}(${classname}Do.get${column.attrName}());
+#end
+#end
+        return result;
+    }
+}

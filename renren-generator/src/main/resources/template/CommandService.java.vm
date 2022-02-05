@@ -1,0 +1,43 @@
+package ${package}.${moduleName}.application;
+
+import ${package}.${moduleName}.application.command.${className}Command;
+
+import java.util.Collection;
+import java.util.List;
+
+/**
+ * ${comments}-命令服务接口
+ *
+ * @author ${author}
+ * @email ${email}
+ * @date ${datetime}
+ */
+public interface ${className}CommandService {
+
+    /**
+     * 保存或更新
+     * @param ${classname}Command
+     */
+    ${pk.attrType} saveOrUpdate(${className}Command ${classname}Command);
+
+    /**
+     * 删除，根据传递过来的${pk.attrname}列表
+     * @param ${pk.attrname}s ${pk.attrname}列表
+     * @return
+     */
+    boolean delete(Collection<${pk.attrType}> ${pk.attrname}s);
+
+    /**
+     * 删除，根据传递过来的${pk.attrname}
+     * @param ${pk.attrname} ${pk.attrname}
+     * @return
+     */
+    boolean delete(${pk.attrType} ${pk.attrname});
+
+    /**
+     * 批量进行保存或更新
+     * @param ${classname}CommandList
+     * @return
+     */
+    ${pk.attrType}[] batchSaveOrUpdate(List<${className}Command> ${classname}CommandList);
+}

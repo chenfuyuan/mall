@@ -1,0 +1,43 @@
+package ${package}.${moduleName}.domain.model.${classname};
+
+import com.learn.project.common.core.domain.Entity;
+import com.learn.project.common.core.domain.CommonInfo;
+import com.learn.project.common.core.domain.EntityId;
+import com.learn.project.common.core.domain.HaveCommonInfo;
+import lombok.Data;
+
+/**
+ * ${comments}-领域对象
+ *
+ * @author ${author}
+ * @email ${email}
+ * @date ${datetime}
+ */
+@Data
+public class ${className} implements Entity<${className}>, HaveCommonInfo {
+
+
+#foreach($column in $columns)
+#if($column.columnName == $pk.columnName)
+    /**
+    * 主键-$column.comments
+    */
+    private ${className}Id $column.attrname;
+#elseif(!$column.commonField)
+    /**
+    * $column.comments
+    */
+    private $column.attrType $column.attrname;
+#end
+#end
+
+    /**
+     * 时间信息
+     */
+    private CommonInfo commonInfo;
+
+    @Override
+    public EntityId getUniqueLabel() {
+        return this.${pk.attrname};
+    }
+}

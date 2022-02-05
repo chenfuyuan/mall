@@ -1,0 +1,55 @@
+package ${package}.${moduleName}.application.impl;
+
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.learn.project.common.mybatis.util.PageUtils;
+import com.learn.project.common.mybatis.util.Query;
+import ${package}.${moduleName}.application.${className}QueryService;
+import ${package}.${moduleName}.application.assembler.${className}Assembler;
+import ${package}.${moduleName}.application.dto.${className}Dto;
+import ${package}.${moduleName}.domain.model.${classname}.${className};
+import ${package}.${moduleName}.domain.model.${classname}.${className}Id;
+import ${package}.${moduleName}.domain.model.${classname}.${className}Repository;
+import ${package}.${moduleName}.infrastructure.persistence.mybatis.entity.${className}Do;
+import ${package}.${moduleName}.infrastructure.persistence.mybatis.mapper.${className}Mapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.Map;
+
+/**
+ * ${comments}-查询服务实现类
+ *
+ * @author ${author}
+ * @email ${email}
+ * @date ${datetime}
+ */
+@Service("${classname}QueryService")
+public class ${className}QueryServiceImpl implements ${className}QueryService {
+
+    @Autowired
+    private ${className}Mapper ${classname}Mapper;
+
+    @Autowired
+    private ${className}Repository ${classname}Repository;
+
+    @Override
+    public PageUtils queryPage(Map<String, Object> params) {
+        //填充查询条件
+        QueryWrapper<${className}Do> queryWrapper = new QueryWrapper<>();
+
+        //查询
+        IPage<${className}Do> page = ${classname}Mapper.selectPage(new Query().getPage(params),queryWrapper);
+
+        //封装分页
+        return new PageUtils(page);
+    }
+
+    @Override
+    public ${className}Dto getById(${pk.attrType} ${pk.attrname}) {
+        ${className} ${classname} = ${classname}Repository.find(new ${className}Id(${pk.attrname}));
+        return ${className}Assembler.from${className}(${classname});
+    }
+
+
+}
