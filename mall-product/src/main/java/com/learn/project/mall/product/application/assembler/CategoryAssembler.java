@@ -1,7 +1,7 @@
 package com.learn.project.mall.product.application.assembler;
-import com.learn.project.common.core.domain.TimeInfo;
+import com.learn.project.common.core.domain.CommonInfo;
 import com.learn.project.common.web.constant.ShowStatusEnum;
-import com.google.common.collect.Lists;
+
 import com.learn.project.mall.product.domain.model.product.ProductCount;
 import com.learn.project.mall.product.domain.model.category.CategoryLevelEnum;
 
@@ -9,10 +9,9 @@ import com.learn.project.mall.product.application.command.CategoryCommand;
 import com.learn.project.mall.product.application.dto.CategoryDto;
 import com.learn.project.mall.product.domain.model.category.Category;
 import com.learn.project.mall.product.domain.model.category.CategoryId;
-import com.uptool.core.util.EmptyUtil;
+
 import com.uptool.core.util.ListUtil;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -59,7 +58,7 @@ public class CategoryAssembler {
         category.setIcon(command.getIcon());
         category.setProductUnit(command.getProductUnit());
         category.setProductCount(command.getProductCount() == null ? null : new ProductCount(command.getProductCount()));
-        category.setTimeInfo(TimeInfo.getInstance(command.getGmtCreate(), command.getGmtModified(), command.getIsDelete(), command.getUpdateVersion()));
+        category.setTimeInfo(CommonInfo.getInstance(command.getGmtCreate(), command.getGmtModified(), command.getIsDelete(), command.getUpdateVersion()));
         return category;
     }
 

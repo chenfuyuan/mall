@@ -1,8 +1,7 @@
 package com.learn.project.mall.product.domain.model.product;
 
-import com.learn.project.common.core.domain.Entity;
+import com.learn.project.common.core.domain.ValueObject;
 import com.learn.project.common.web.exception.BizException;
-import com.uptool.core.stdlib.In;
 import lombok.Getter;
 
 /**
@@ -12,7 +11,7 @@ import lombok.Getter;
  * @date 2022/2/4 0:48
  */
 @Getter
-public class ProductCount implements Entity<ProductCount> {
+public class ProductCount implements ValueObject<ProductCount> {
     private int count;
 
     public ProductCount(Integer count) {
@@ -26,8 +25,9 @@ public class ProductCount implements Entity<ProductCount> {
     }
 
 
+
     @Override
-    public boolean sameIdentityAs(ProductCount other) {
+    public boolean sameValueAs(ProductCount other) {
         return other != null && other.count == count;
     }
 }

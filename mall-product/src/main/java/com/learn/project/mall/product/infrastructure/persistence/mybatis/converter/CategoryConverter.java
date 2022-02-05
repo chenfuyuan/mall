@@ -35,7 +35,7 @@ public class CategoryConverter {
         category.setParentId(new CategoryId(entity.getParentCid()));
         category.setShowStatus(ShowStatusEnum.getShowStatusEnum(entity.getShowStatus()));
         category.setSort(entity.getSort());
-        category.setTimeInfo(BaseDo.getTimeInfo(entity));
+        category.setTimeInfo(BaseDo.getCommonInfo(entity));
         return category;
     }
 

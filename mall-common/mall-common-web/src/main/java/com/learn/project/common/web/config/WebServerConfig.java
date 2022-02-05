@@ -2,6 +2,7 @@ package com.learn.project.common.web.config;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.learn.project.common.web.util.jsonSerializer.DateFormatterAnnotationIntrospector;
+import org.springframework.boot.autoconfigure.jackson.Jackson2ObjectMapperBuilderCustomizer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
@@ -14,7 +15,7 @@ import java.util.TimeZone;
  * @author chenfuyuan
  * @date 2022/1/21 19:08
  */
-@Configuration
+//@Configuration    //弃用该配置，改由application.yml中的 spring.jackson.date-formate配置
 public class WebServerConfig {
 
     @Bean
@@ -31,4 +32,5 @@ public class WebServerConfig {
         objectMapper.setAnnotationIntrospector(new DateFormatterAnnotationIntrospector());
         return converter;
     }
+
 }

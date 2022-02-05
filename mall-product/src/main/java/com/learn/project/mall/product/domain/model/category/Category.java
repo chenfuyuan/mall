@@ -1,7 +1,8 @@
 package com.learn.project.mall.product.domain.model.category;
 
 
-import com.learn.project.common.core.domain.TimeInfo;
+import com.learn.project.common.core.domain.CommonInfo;
+import com.learn.project.common.core.domain.EntityId;
 import com.learn.project.common.mybatis.util.BaseDo;
 import com.learn.project.common.web.constant.ShowStatusEnum;
 import com.learn.project.common.core.domain.Entity;
@@ -74,7 +75,7 @@ public class Category implements Entity<Category>,Comparable<Category> {
     /**
      * 时间，版本等相关信息
      */
-    private TimeInfo timeInfo;
+    private CommonInfo timeInfo;
 
     /**
      * 子分类
@@ -89,6 +90,11 @@ public class Category implements Entity<Category>,Comparable<Category> {
     @Override
     public boolean sameIdentityAs(Category other) {
         return other != null && categoryId.sameValueAs(other.categoryId);
+    }
+
+    @Override
+    public EntityId getUniqueLabel() {
+        return this.categoryId;
     }
 
     @Override
@@ -139,12 +145,12 @@ public class Category implements Entity<Category>,Comparable<Category> {
         }).collect(Collectors.toList());
     }
 
-    public void setTimeInfo(TimeInfo timeInfo) {
+    public void setTimeInfo(CommonInfo timeInfo) {
         this.timeInfo = timeInfo;
     }
 
     public void setTimeInfo(BaseDo baseDo) {
-        this.timeInfo = BaseDo.getTimeInfo(baseDo);
+        this.timeInfo = BaseDo.getCommonInfo(baseDo);
     }
 
 }

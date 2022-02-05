@@ -1,10 +1,13 @@
 package com.learn.project.common.web.util.valid;
 
 import com.learn.project.common.web.exception.BizException;
+import com.uptool.core.util.EmptyUtil;
 
 import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
 import javax.validation.Validator;
+import java.util.Collection;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -37,5 +40,21 @@ public class ValidatorUtil {
             }
             throw new BizException(msg.toString());
         }
+    }
+
+    /**
+     * 遍历集合，并对每一项进行校验
+     * @param collection 集合
+     * @param groups 分组
+     * @throws BizException 业务异常
+     */
+    public static void validateList(Collection<Object> collection, Class<?>... groups) throws BizException {
+        if (EmptyUtil.isEmpty(collection)) {
+            return;
+        }
+
+        collection.forEach(item->{
+            validateEntity(item, groups);
+        });
     }
 }

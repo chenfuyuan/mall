@@ -8,7 +8,7 @@ import java.io.Serializable;
  * @author haoxin
  * @date 2021-02-01
  **/
-public interface Entity<T> extends Serializable {
+public interface Entity<T extends Entity> extends Serializable {
 
     /**
      * Entities compare by identity, not by attributes.
@@ -16,5 +16,11 @@ public interface Entity<T> extends Serializable {
      * @param other The other entity.
      * @return true if the identities are the same, regardless of other attributes.
      */
-    boolean sameIdentityAs(T other);
+    default boolean sameIdentityAs(T other){
+        return other != null && this.getUniqueLabel().sameValueAs(other.getUniqueLabel());
+    }
+
+
+    EntityId getUniqueLabel();
+
 }

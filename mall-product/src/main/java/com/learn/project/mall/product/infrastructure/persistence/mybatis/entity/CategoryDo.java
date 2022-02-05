@@ -62,4 +62,13 @@ public class CategoryDo extends BaseDo implements Serializable {
 	 */
 	private Integer productCount;
 
+	@Override
+	public void inUniqueLabel(Long uniqueLabel) {
+		this.catId = uniqueLabel;
+	}
+
+	@Override
+	public Long outUniqueLabel() {
+		return this.catId;
+	}
 }

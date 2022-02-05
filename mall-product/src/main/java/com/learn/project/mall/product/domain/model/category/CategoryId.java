@@ -1,5 +1,6 @@
 package com.learn.project.mall.product.domain.model.category;
 
+import com.learn.project.common.core.domain.EntityId;
 import com.learn.project.common.core.domain.ValueObject;
 import com.uptool.core.util.EmptyUtil;
 import com.uptool.core.util.NumberUtil;
@@ -12,7 +13,7 @@ import java.security.Permission;
  * @author chenfuyuan
  * @date 2022/2/3 23:43
  */
-public class CategoryId implements ValueObject<CategoryId> {
+public class CategoryId implements EntityId<CategoryId> {
 
     private Long id;
 
@@ -34,6 +35,7 @@ public class CategoryId implements ValueObject<CategoryId> {
         return id+"";
     }
 
+    @Override
     public Long getId() {
         return id;
     }

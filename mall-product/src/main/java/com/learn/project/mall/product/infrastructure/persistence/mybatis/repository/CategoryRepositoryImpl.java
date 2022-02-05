@@ -32,7 +32,6 @@ public class CategoryRepositoryImpl extends ServiceImpl<CategoryMapper, Category
     @Override
     public List<Category> queryList(Map<String, Object> params, QueryWrapper<CategoryDo> wrapper) {
         List<CategoryDo> queryList = getBaseMapper().queryList(params,wrapper);
-
         return queryList.stream()
                 .map(categoryDO -> CategoryConverter.toCategory(categoryDO))
                 .collect(Collectors.toList());

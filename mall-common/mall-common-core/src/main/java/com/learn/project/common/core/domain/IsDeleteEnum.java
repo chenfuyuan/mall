@@ -34,6 +34,10 @@ public enum IsDeleteEnum implements ValueObject<IsDeleteEnum>{
         return value == DELETE.value ? DELETE : NORMAL;
     }
 
+    public static Integer getValue(IsDeleteEnum isDeleteEnum){
+        return isDeleteEnum == null ? null : isDeleteEnum.getValue();
+    }
+
     @Override
     public boolean sameValueAs(IsDeleteEnum other) {
         return other != null && other == this;
