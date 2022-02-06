@@ -1,0 +1,31 @@
+package com.learn.project.mall.product.domain.model.spuInfo;
+
+import com.learn.project.common.core.domain.EntityId;
+import com.learn.project.common.web.exception.NoBizException;
+import com.uptool.core.util.EmptyUtil;
+
+
+/**
+ * spu信息-领域对象-id
+ *
+ * @author chenfuyuan
+ * @email chenfuyuan0713@163.com
+ * @date 2022-02-06 20:41:32
+ */
+public class SpuInfoId implements EntityId<SpuInfoId> {
+
+    private final Long id;
+
+
+    public SpuInfoId(final Long id) {
+        if (EmptyUtil.isEmpty(id)) {
+            throw new NoBizException("商品id不能为空!");
+        }
+        this.id = id;
+    }
+
+    @Override
+    public Long getId() {
+        return id;
+    }
+}
