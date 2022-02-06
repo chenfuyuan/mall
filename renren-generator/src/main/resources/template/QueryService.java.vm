@@ -1,4 +1,4 @@
-package ${package}${moduleName}.application;
+package ${package}.${moduleName}.application;
 
 import com.learn.project.common.mybatis.util.PageUtils;
 import ${package}.${moduleName}.application.dto.${className}Dto;

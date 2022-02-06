@@ -5,6 +5,12 @@ import com.learn.project.common.core.domain.CommonInfo;
 import com.learn.project.common.core.domain.EntityId;
 import com.learn.project.common.core.domain.HaveCommonInfo;
 import lombok.Data;
+#if(${hasBigDecimal})
+import java.math.BigDecimal;
+#end
+#if(${hasDate})
+import java.util.Date;
+#end
 
 /**
  * ${comments}-领域对象

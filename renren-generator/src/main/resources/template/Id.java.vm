@@ -19,7 +19,7 @@ public class ${className}Id implements EntityId<${className}Id> {
 
     public ${className}Id(final ${pk.attrType} id) {
         if (EmptyUtil.isEmpty(id)) {
-            throw new NoBizException("**id不能为空!");
+            throw new NoBizException("${pk.comments}不能为空!");
         }
         this.id = id;
     }

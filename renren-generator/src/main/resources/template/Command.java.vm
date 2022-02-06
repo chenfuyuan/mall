@@ -2,8 +2,12 @@ package ${package}.${moduleName}.application.command;
 
 
 import lombok.Data;
-
+#if(${hasBigDecimal})
+import java.math.BigDecimal;
+#end
+#if(${hasDate})
 import java.util.Date;
+#end
 
 /**
  * ${comments}-命令对象

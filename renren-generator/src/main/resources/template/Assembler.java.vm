@@ -51,7 +51,7 @@ public class ${className}Assembler {
             return null;
         }
         ${className}Dto result = new ${className}Dto();
-        result.setId(EntityId.getId(${classname}.get${pk.attrName}()));
+        result.set${pk.attrName}(EntityId.getId(${classname}.get${pk.attrName}()));
 
 #foreach ($column in $columns)
 #if($column.columnName != $pk.columnName && !$column.commonField)
