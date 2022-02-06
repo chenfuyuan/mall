@@ -23,7 +23,7 @@ import java.util.List;
  *
  * @author chenfuyuan
  * @email chenfuyuan0713@163.com
- * @date 2022-02-06 20:41:32
+ * @date 2022-02-06 21:50:38
  */
 @Service("attrCommandService")
 public class AttrCommandServiceImpl implements AttrCommandService {
@@ -31,13 +31,12 @@ public class AttrCommandServiceImpl implements AttrCommandService {
     @Autowired
     private AttrRepository attrRepository;
 
-    @Autowired
-    private AttrCreateSpecification attrCreateSpecification;
 
     @Override
     @Transactional(rollbackFor = Exception.class)
     public Long saveOrUpdate(AttrCommand attrCommand) {
         Attr attr = AttrAssembler.toAttr(attrCommand);
+        AttrCreateSpecification attrCreateSpecification = new AttrCreateSpecification();
         attrCreateSpecification.isSatisfiedBy(attr);
         return attrRepository.store(attr).getId();
     }
@@ -70,6 +69,7 @@ public class AttrCommandServiceImpl implements AttrCommandService {
         );
 
         //校验
+        AttrCreateSpecification attrCreateSpecification = new AttrCreateSpecification();
         attrList.forEach(attr->{
             attrCreateSpecification.isSatisfiedBy(attr);
         });

@@ -23,7 +23,7 @@ import java.util.List;
  *
  * @author chenfuyuan
  * @email chenfuyuan0713@163.com
- * @date 2022-02-06 20:41:32
+ * @date 2022-02-06 21:50:38
  */
 @Service("productAttrValueCommandService")
 public class ProductAttrValueCommandServiceImpl implements ProductAttrValueCommandService {
@@ -31,13 +31,12 @@ public class ProductAttrValueCommandServiceImpl implements ProductAttrValueComma
     @Autowired
     private ProductAttrValueRepository productAttrValueRepository;
 
-    @Autowired
-    private ProductAttrValueCreateSpecification productAttrValueCreateSpecification;
 
     @Override
     @Transactional(rollbackFor = Exception.class)
     public Long saveOrUpdate(ProductAttrValueCommand productAttrValueCommand) {
         ProductAttrValue productAttrValue = ProductAttrValueAssembler.toProductAttrValue(productAttrValueCommand);
+        ProductAttrValueCreateSpecification productAttrValueCreateSpecification = new ProductAttrValueCreateSpecification();
         productAttrValueCreateSpecification.isSatisfiedBy(productAttrValue);
         return productAttrValueRepository.store(productAttrValue).getId();
     }
@@ -70,6 +69,7 @@ public class ProductAttrValueCommandServiceImpl implements ProductAttrValueComma
         );
 
         //校验
+        ProductAttrValueCreateSpecification productAttrValueCreateSpecification = new ProductAttrValueCreateSpecification();
         productAttrValueList.forEach(productAttrValue->{
             productAttrValueCreateSpecification.isSatisfiedBy(productAttrValue);
         });

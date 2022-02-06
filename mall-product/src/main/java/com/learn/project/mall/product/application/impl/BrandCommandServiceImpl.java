@@ -23,7 +23,7 @@ import java.util.List;
  *
  * @author chenfuyuan
  * @email chenfuyuan0713@163.com
- * @date 2022-02-06 20:41:32
+ * @date 2022-02-06 21:50:38
  */
 @Service("brandCommandService")
 public class BrandCommandServiceImpl implements BrandCommandService {
@@ -31,13 +31,12 @@ public class BrandCommandServiceImpl implements BrandCommandService {
     @Autowired
     private BrandRepository brandRepository;
 
-    @Autowired
-    private BrandCreateSpecification brandCreateSpecification;
 
     @Override
     @Transactional(rollbackFor = Exception.class)
     public Long saveOrUpdate(BrandCommand brandCommand) {
         Brand brand = BrandAssembler.toBrand(brandCommand);
+        BrandCreateSpecification brandCreateSpecification = new BrandCreateSpecification();
         brandCreateSpecification.isSatisfiedBy(brand);
         return brandRepository.store(brand).getId();
     }
@@ -70,6 +69,7 @@ public class BrandCommandServiceImpl implements BrandCommandService {
         );
 
         //校验
+        BrandCreateSpecification brandCreateSpecification = new BrandCreateSpecification();
         brandList.forEach(brand->{
             brandCreateSpecification.isSatisfiedBy(brand);
         });

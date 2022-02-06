@@ -23,7 +23,7 @@ import java.util.List;
  *
  * @author chenfuyuan
  * @email chenfuyuan0713@163.com
- * @date 2022-02-06 20:41:32
+ * @date 2022-02-06 21:50:38
  */
 @Service("spuImagesCommandService")
 public class SpuImagesCommandServiceImpl implements SpuImagesCommandService {
@@ -31,13 +31,12 @@ public class SpuImagesCommandServiceImpl implements SpuImagesCommandService {
     @Autowired
     private SpuImagesRepository spuImagesRepository;
 
-    @Autowired
-    private SpuImagesCreateSpecification spuImagesCreateSpecification;
 
     @Override
     @Transactional(rollbackFor = Exception.class)
     public Long saveOrUpdate(SpuImagesCommand spuImagesCommand) {
         SpuImages spuImages = SpuImagesAssembler.toSpuImages(spuImagesCommand);
+        SpuImagesCreateSpecification spuImagesCreateSpecification = new SpuImagesCreateSpecification();
         spuImagesCreateSpecification.isSatisfiedBy(spuImages);
         return spuImagesRepository.store(spuImages).getId();
     }
@@ -70,6 +69,7 @@ public class SpuImagesCommandServiceImpl implements SpuImagesCommandService {
         );
 
         //校验
+        SpuImagesCreateSpecification spuImagesCreateSpecification = new SpuImagesCreateSpecification();
         spuImagesList.forEach(spuImages->{
             spuImagesCreateSpecification.isSatisfiedBy(spuImages);
         });

@@ -2,8 +2,6 @@ package ${package}.${moduleName}.domain.specification;
 
 import com.learn.project.common.core.domain.AbstractSpecification;
 import ${package}.${moduleName}.domain.model.${classname}.${className};
-import ${package}.${moduleName}.domain.model.${classname}.${className}Repository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 /**
@@ -15,16 +13,6 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class ${className}CreateSpecification extends AbstractSpecification<${className}> {
-
-    /**
-     * 仓储服务
-     */
-    private final ${className}Repository ${classname}Repository;
-
-    @Autowired
-    public ${className}CreateSpecification(${className}Repository ${classname}Repository) {
-        this.${classname}Repository = ${classname}Repository;
-    }
 
     @Override
     public boolean isSatisfiedBy(${className} ${classname}) {

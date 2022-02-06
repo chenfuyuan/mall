@@ -23,7 +23,7 @@ import java.util.List;
  *
  * @author chenfuyuan
  * @email chenfuyuan0713@163.com
- * @date 2022-02-06 20:41:32
+ * @date 2022-02-06 21:50:38
  */
 @Service("skuSaleAttrValueCommandService")
 public class SkuSaleAttrValueCommandServiceImpl implements SkuSaleAttrValueCommandService {
@@ -31,13 +31,12 @@ public class SkuSaleAttrValueCommandServiceImpl implements SkuSaleAttrValueComma
     @Autowired
     private SkuSaleAttrValueRepository skuSaleAttrValueRepository;
 
-    @Autowired
-    private SkuSaleAttrValueCreateSpecification skuSaleAttrValueCreateSpecification;
 
     @Override
     @Transactional(rollbackFor = Exception.class)
     public Long saveOrUpdate(SkuSaleAttrValueCommand skuSaleAttrValueCommand) {
         SkuSaleAttrValue skuSaleAttrValue = SkuSaleAttrValueAssembler.toSkuSaleAttrValue(skuSaleAttrValueCommand);
+        SkuSaleAttrValueCreateSpecification skuSaleAttrValueCreateSpecification = new SkuSaleAttrValueCreateSpecification();
         skuSaleAttrValueCreateSpecification.isSatisfiedBy(skuSaleAttrValue);
         return skuSaleAttrValueRepository.store(skuSaleAttrValue).getId();
     }
@@ -70,6 +69,7 @@ public class SkuSaleAttrValueCommandServiceImpl implements SkuSaleAttrValueComma
         );
 
         //校验
+        SkuSaleAttrValueCreateSpecification skuSaleAttrValueCreateSpecification = new SkuSaleAttrValueCreateSpecification();
         skuSaleAttrValueList.forEach(skuSaleAttrValue->{
             skuSaleAttrValueCreateSpecification.isSatisfiedBy(skuSaleAttrValue);
         });

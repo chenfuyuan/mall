@@ -23,7 +23,7 @@ import java.util.List;
  *
  * @author chenfuyuan
  * @email chenfuyuan0713@163.com
- * @date 2022-02-06 20:41:32
+ * @date 2022-02-06 21:50:38
  */
 @Service("attrAttrgroupRelationCommandService")
 public class AttrAttrgroupRelationCommandServiceImpl implements AttrAttrgroupRelationCommandService {
@@ -31,13 +31,12 @@ public class AttrAttrgroupRelationCommandServiceImpl implements AttrAttrgroupRel
     @Autowired
     private AttrAttrgroupRelationRepository attrAttrgroupRelationRepository;
 
-    @Autowired
-    private AttrAttrgroupRelationCreateSpecification attrAttrgroupRelationCreateSpecification;
 
     @Override
     @Transactional(rollbackFor = Exception.class)
     public Long saveOrUpdate(AttrAttrgroupRelationCommand attrAttrgroupRelationCommand) {
         AttrAttrgroupRelation attrAttrgroupRelation = AttrAttrgroupRelationAssembler.toAttrAttrgroupRelation(attrAttrgroupRelationCommand);
+        AttrAttrgroupRelationCreateSpecification attrAttrgroupRelationCreateSpecification = new AttrAttrgroupRelationCreateSpecification();
         attrAttrgroupRelationCreateSpecification.isSatisfiedBy(attrAttrgroupRelation);
         return attrAttrgroupRelationRepository.store(attrAttrgroupRelation).getId();
     }
@@ -70,6 +69,7 @@ public class AttrAttrgroupRelationCommandServiceImpl implements AttrAttrgroupRel
         );
 
         //校验
+        AttrAttrgroupRelationCreateSpecification attrAttrgroupRelationCreateSpecification = new AttrAttrgroupRelationCreateSpecification();
         attrAttrgroupRelationList.forEach(attrAttrgroupRelation->{
             attrAttrgroupRelationCreateSpecification.isSatisfiedBy(attrAttrgroupRelation);
         });

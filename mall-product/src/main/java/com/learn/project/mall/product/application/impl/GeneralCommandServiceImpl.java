@@ -23,7 +23,7 @@ import java.util.List;
  *
  * @author chenfuyuan
  * @email chenfuyuan0713@163.com
- * @date 2022-02-06 20:41:32
+ * @date 2022-02-06 21:50:38
  */
 @Service("generalCommandService")
 public class GeneralCommandServiceImpl implements GeneralCommandService {
@@ -31,13 +31,12 @@ public class GeneralCommandServiceImpl implements GeneralCommandService {
     @Autowired
     private GeneralRepository generalRepository;
 
-    @Autowired
-    private GeneralCreateSpecification generalCreateSpecification;
 
     @Override
     @Transactional(rollbackFor = Exception.class)
     public Long saveOrUpdate(GeneralCommand generalCommand) {
         General general = GeneralAssembler.toGeneral(generalCommand);
+        GeneralCreateSpecification generalCreateSpecification = new GeneralCreateSpecification();
         generalCreateSpecification.isSatisfiedBy(general);
         return generalRepository.store(general).getId();
     }
@@ -70,6 +69,7 @@ public class GeneralCommandServiceImpl implements GeneralCommandService {
         );
 
         //校验
+        GeneralCreateSpecification generalCreateSpecification = new GeneralCreateSpecification();
         generalList.forEach(general->{
             generalCreateSpecification.isSatisfiedBy(general);
         });

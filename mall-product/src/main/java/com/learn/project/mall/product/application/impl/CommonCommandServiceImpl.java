@@ -23,7 +23,7 @@ import java.util.List;
  *
  * @author chenfuyuan
  * @email chenfuyuan0713@163.com
- * @date 2022-02-06 20:41:32
+ * @date 2022-02-06 21:50:38
  */
 @Service("commonCommandService")
 public class CommonCommandServiceImpl implements CommonCommandService {
@@ -31,13 +31,12 @@ public class CommonCommandServiceImpl implements CommonCommandService {
     @Autowired
     private CommonRepository commonRepository;
 
-    @Autowired
-    private CommonCreateSpecification commonCreateSpecification;
 
     @Override
     @Transactional(rollbackFor = Exception.class)
     public Long saveOrUpdate(CommonCommand commonCommand) {
         Common common = CommonAssembler.toCommon(commonCommand);
+        CommonCreateSpecification commonCreateSpecification = new CommonCreateSpecification();
         commonCreateSpecification.isSatisfiedBy(common);
         return commonRepository.store(common).getId();
     }
@@ -70,6 +69,7 @@ public class CommonCommandServiceImpl implements CommonCommandService {
         );
 
         //校验
+        CommonCreateSpecification commonCreateSpecification = new CommonCreateSpecification();
         commonList.forEach(common->{
             commonCreateSpecification.isSatisfiedBy(common);
         });

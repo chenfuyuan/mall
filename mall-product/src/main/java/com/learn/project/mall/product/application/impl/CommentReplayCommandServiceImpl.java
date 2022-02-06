@@ -23,7 +23,7 @@ import java.util.List;
  *
  * @author chenfuyuan
  * @email chenfuyuan0713@163.com
- * @date 2022-02-06 20:41:32
+ * @date 2022-02-06 21:50:38
  */
 @Service("commentReplayCommandService")
 public class CommentReplayCommandServiceImpl implements CommentReplayCommandService {
@@ -31,13 +31,12 @@ public class CommentReplayCommandServiceImpl implements CommentReplayCommandServ
     @Autowired
     private CommentReplayRepository commentReplayRepository;
 
-    @Autowired
-    private CommentReplayCreateSpecification commentReplayCreateSpecification;
 
     @Override
     @Transactional(rollbackFor = Exception.class)
     public Long saveOrUpdate(CommentReplayCommand commentReplayCommand) {
         CommentReplay commentReplay = CommentReplayAssembler.toCommentReplay(commentReplayCommand);
+        CommentReplayCreateSpecification commentReplayCreateSpecification = new CommentReplayCreateSpecification();
         commentReplayCreateSpecification.isSatisfiedBy(commentReplay);
         return commentReplayRepository.store(commentReplay).getId();
     }
@@ -70,6 +69,7 @@ public class CommentReplayCommandServiceImpl implements CommentReplayCommandServ
         );
 
         //校验
+        CommentReplayCreateSpecification commentReplayCreateSpecification = new CommentReplayCreateSpecification();
         commentReplayList.forEach(commentReplay->{
             commentReplayCreateSpecification.isSatisfiedBy(commentReplay);
         });

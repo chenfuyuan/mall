@@ -23,7 +23,7 @@ import java.util.List;
  *
  * @author chenfuyuan
  * @email chenfuyuan0713@163.com
- * @date 2022-02-06 20:41:32
+ * @date 2022-02-06 21:50:38
  */
 @Service("attrGroupCommandService")
 public class AttrGroupCommandServiceImpl implements AttrGroupCommandService {
@@ -31,13 +31,12 @@ public class AttrGroupCommandServiceImpl implements AttrGroupCommandService {
     @Autowired
     private AttrGroupRepository attrGroupRepository;
 
-    @Autowired
-    private AttrGroupCreateSpecification attrGroupCreateSpecification;
 
     @Override
     @Transactional(rollbackFor = Exception.class)
     public Long saveOrUpdate(AttrGroupCommand attrGroupCommand) {
         AttrGroup attrGroup = AttrGroupAssembler.toAttrGroup(attrGroupCommand);
+        AttrGroupCreateSpecification attrGroupCreateSpecification = new AttrGroupCreateSpecification();
         attrGroupCreateSpecification.isSatisfiedBy(attrGroup);
         return attrGroupRepository.store(attrGroup).getId();
     }
@@ -70,6 +69,7 @@ public class AttrGroupCommandServiceImpl implements AttrGroupCommandService {
         );
 
         //校验
+        AttrGroupCreateSpecification attrGroupCreateSpecification = new AttrGroupCreateSpecification();
         attrGroupList.forEach(attrGroup->{
             attrGroupCreateSpecification.isSatisfiedBy(attrGroup);
         });

@@ -23,7 +23,7 @@ import java.util.List;
  *
  * @author chenfuyuan
  * @email chenfuyuan0713@163.com
- * @date 2022-02-06 20:41:32
+ * @date 2022-02-06 21:50:38
  */
 @Service("skuInfoCommandService")
 public class SkuInfoCommandServiceImpl implements SkuInfoCommandService {
@@ -31,13 +31,12 @@ public class SkuInfoCommandServiceImpl implements SkuInfoCommandService {
     @Autowired
     private SkuInfoRepository skuInfoRepository;
 
-    @Autowired
-    private SkuInfoCreateSpecification skuInfoCreateSpecification;
 
     @Override
     @Transactional(rollbackFor = Exception.class)
     public Long saveOrUpdate(SkuInfoCommand skuInfoCommand) {
         SkuInfo skuInfo = SkuInfoAssembler.toSkuInfo(skuInfoCommand);
+        SkuInfoCreateSpecification skuInfoCreateSpecification = new SkuInfoCreateSpecification();
         skuInfoCreateSpecification.isSatisfiedBy(skuInfo);
         return skuInfoRepository.store(skuInfo).getId();
     }
@@ -70,6 +69,7 @@ public class SkuInfoCommandServiceImpl implements SkuInfoCommandService {
         );
 
         //校验
+        SkuInfoCreateSpecification skuInfoCreateSpecification = new SkuInfoCreateSpecification();
         skuInfoList.forEach(skuInfo->{
             skuInfoCreateSpecification.isSatisfiedBy(skuInfo);
         });

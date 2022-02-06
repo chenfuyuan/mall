@@ -23,7 +23,7 @@ import java.util.List;
  *
  * @author chenfuyuan
  * @email chenfuyuan0713@163.com
- * @date 2022-02-06 20:41:32
+ * @date 2022-02-06 21:50:38
  */
 @Service("categoryBrandRelationCommandService")
 public class CategoryBrandRelationCommandServiceImpl implements CategoryBrandRelationCommandService {
@@ -31,13 +31,12 @@ public class CategoryBrandRelationCommandServiceImpl implements CategoryBrandRel
     @Autowired
     private CategoryBrandRelationRepository categoryBrandRelationRepository;
 
-    @Autowired
-    private CategoryBrandRelationCreateSpecification categoryBrandRelationCreateSpecification;
 
     @Override
     @Transactional(rollbackFor = Exception.class)
     public Long saveOrUpdate(CategoryBrandRelationCommand categoryBrandRelationCommand) {
         CategoryBrandRelation categoryBrandRelation = CategoryBrandRelationAssembler.toCategoryBrandRelation(categoryBrandRelationCommand);
+        CategoryBrandRelationCreateSpecification categoryBrandRelationCreateSpecification = new CategoryBrandRelationCreateSpecification();
         categoryBrandRelationCreateSpecification.isSatisfiedBy(categoryBrandRelation);
         return categoryBrandRelationRepository.store(categoryBrandRelation).getId();
     }
@@ -70,6 +69,7 @@ public class CategoryBrandRelationCommandServiceImpl implements CategoryBrandRel
         );
 
         //校验
+        CategoryBrandRelationCreateSpecification categoryBrandRelationCreateSpecification = new CategoryBrandRelationCreateSpecification();
         categoryBrandRelationList.forEach(categoryBrandRelation->{
             categoryBrandRelationCreateSpecification.isSatisfiedBy(categoryBrandRelation);
         });

@@ -23,7 +23,7 @@ import java.util.List;
  *
  * @author chenfuyuan
  * @email chenfuyuan0713@163.com
- * @date 2022-02-06 20:41:32
+ * @date 2022-02-06 21:50:38
  */
 @Service("spuCommentCommandService")
 public class SpuCommentCommandServiceImpl implements SpuCommentCommandService {
@@ -31,13 +31,12 @@ public class SpuCommentCommandServiceImpl implements SpuCommentCommandService {
     @Autowired
     private SpuCommentRepository spuCommentRepository;
 
-    @Autowired
-    private SpuCommentCreateSpecification spuCommentCreateSpecification;
 
     @Override
     @Transactional(rollbackFor = Exception.class)
     public Long saveOrUpdate(SpuCommentCommand spuCommentCommand) {
         SpuComment spuComment = SpuCommentAssembler.toSpuComment(spuCommentCommand);
+        SpuCommentCreateSpecification spuCommentCreateSpecification = new SpuCommentCreateSpecification();
         spuCommentCreateSpecification.isSatisfiedBy(spuComment);
         return spuCommentRepository.store(spuComment).getId();
     }
@@ -70,6 +69,7 @@ public class SpuCommentCommandServiceImpl implements SpuCommentCommandService {
         );
 
         //校验
+        SpuCommentCreateSpecification spuCommentCreateSpecification = new SpuCommentCreateSpecification();
         spuCommentList.forEach(spuComment->{
             spuCommentCreateSpecification.isSatisfiedBy(spuComment);
         });

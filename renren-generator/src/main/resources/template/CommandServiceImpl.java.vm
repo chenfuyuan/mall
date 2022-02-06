@@ -31,13 +31,12 @@ public class ${className}CommandServiceImpl implements ${className}CommandServic
     @Autowired
     private ${className}Repository ${classname}Repository;
 
-    @Autowired
-    private ${className}CreateSpecification ${classname}CreateSpecification;
 
     @Override
     @Transactional(rollbackFor = Exception.class)
     public ${pk.attrType} saveOrUpdate(${className}Command ${classname}Command) {
         ${className} ${classname} = ${className}Assembler.to${className}(${classname}Command);
+        ${className}CreateSpecification ${classname}CreateSpecification = new ${className}CreateSpecification();
         ${classname}CreateSpecification.isSatisfiedBy(${classname});
         return ${classname}Repository.store(${classname}).getId();
     }
@@ -70,6 +69,7 @@ public class ${className}CommandServiceImpl implements ${className}CommandServic
         );
 
         //校验
+        ${className}CreateSpecification ${classname}CreateSpecification = new ${className}CreateSpecification();
         ${classname}List.forEach(${classname}->{
             ${classname}CreateSpecification.isSatisfiedBy(${classname});
         });
