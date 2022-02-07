@@ -10,6 +10,7 @@ import com.learn.project.mall.product.application.dto.AttrGroupDto;
 import com.learn.project.mall.product.domain.model.attrGroup.AttrGroup;
 import com.learn.project.mall.product.domain.model.attrGroup.AttrGroupId;
 import com.learn.project.mall.product.domain.model.attrGroup.AttrGroupRepository;
+import com.learn.project.mall.product.infrastructure.constant.PmsConstant;
 import com.learn.project.mall.product.infrastructure.persistence.mybatis.entity.AttrGroupDo;
 import com.learn.project.mall.product.infrastructure.persistence.mybatis.mapper.AttrGroupMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,9 +35,13 @@ public class AttrGroupQueryServiceImpl implements AttrGroupQueryService {
     private AttrGroupRepository attrGroupRepository;
 
     @Override
-    public PageUtils queryPage(Map<String, Object> params) {
+    public PageUtils queryPageByCategoryId(Map<String, Object> params, String categoryId) {
         //填充查询条件
         QueryWrapper<AttrGroupDo> queryWrapper = new QueryWrapper<>();
+
+        if (!PmsConstant.QUERY_ALL_LABLE.equals(categoryId)) {
+            queryWrapper.eq("catelog_id", categoryId);
+        }
 
         //查询
         IPage<AttrGroupDo> page = attrGroupMapper.selectPage(new Query().getPage(params),queryWrapper);

@@ -16,9 +16,10 @@ public interface AttrGroupQueryService {
     /**
      * 分页查询数据
      * @param params 查询参数
+     * @param categoryId 分类id
      * @return 分页结果
      */
-    PageUtils queryPage(Map<String, Object> params);
+    PageUtils queryPageByCategoryId(Map<String, Object> params, String categoryId);
 
     /**
      * 通过attrGroupId获取指定数据
