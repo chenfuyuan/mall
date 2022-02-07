@@ -43,4 +43,6 @@ public interface CategoryRepository  {
     void store(List<Category> categoryList);
 
     boolean remove(Collection<CategoryId> catIds);
+
+    List<Category> findSubCategory(Collection<CategoryId> categoryIds);
 }

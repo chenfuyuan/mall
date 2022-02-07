@@ -17,6 +17,7 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -73,6 +74,18 @@ public class CategoryRepositoryImpl extends ServiceImpl<CategoryMapper, Category
         List<Long> ids = new ArrayList<>();
         categoryIds.forEach(categoryId -> ids.add(categoryId.getId()));
         return this.removeByIds(ids);
+    }
+
+    @Override
+    public List<Category> findSubCategory(Collection<CategoryId> categoryIds) {
+        if (EmptyUtil.isEmpty(categoryIds)) {
+            return new ArrayList<>();
+        }
+        Long[] catIds = categoryIds.stream().map(id-> id.getId()).toArray(Long[]::new);
+        QueryWrapper<CategoryDo> queryWrapper = new QueryWrapper<>();
+        queryWrapper.in("parent_cid", catIds);
+        queryWrapper.notIn("cat_id", catIds);
+        return this.queryList(new HashMap<>(), queryWrapper);
     }
 
 

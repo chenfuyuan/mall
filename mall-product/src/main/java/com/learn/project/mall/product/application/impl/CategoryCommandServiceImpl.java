@@ -8,6 +8,7 @@ import com.learn.project.mall.product.domain.model.category.Category;
 import com.learn.project.mall.product.domain.model.category.CategoryId;
 import com.learn.project.mall.product.domain.model.category.CategoryRepository;
 import com.learn.project.mall.product.domain.specification.CategoryCreateSpecification;
+import com.learn.project.mall.product.domain.specification.CategoryDeleteSpecification;
 import com.learn.project.mall.product.infrastructure.persistence.mybatis.entity.CategoryDo;
 import com.uptool.core.util.EmptyUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,24 +38,15 @@ public class CategoryCommandServiceImpl implements CategoryCommandService {
         if (EmptyUtil.isEmpty(catIds)) {
             return false;
         }
-        //判断该分类是否含有子分类
-        QueryWrapper<CategoryDo> queryWrapper = new QueryWrapper<>();
-        queryWrapper.in("parent_cid", catIds);
-        queryWrapper.notIn("cat_id", catIds);
-        List<Category> categoryList = categoryRepository.queryList(new HashMap<>(), queryWrapper);
-
-        //过滤需要删除的元素
-//        categoryEntities = categoryEntities.stream().filter(item ->
-//                !catIds.contains(item.getCatId())
-//        ).collect(Collectors.toList());
-        if (EmptyUtil.isNotEmpty(categoryList)) {
-            return false;
-        }
 
         List<CategoryId> categoryIdList = new ArrayList<>();
         for (Long catId : catIds) {
             categoryIdList.add(new CategoryId(catId));
         }
+
+        //判断该分类是否含有子分类
+        CategoryDeleteSpecification categoryDeleteSpecification = new CategoryDeleteSpecification(categoryRepository);
+        categoryDeleteSpecification.isSatisfiedBy(categoryIdList);
 
         //删除分类
         return this.categoryRepository.remove(categoryIdList);

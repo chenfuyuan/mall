@@ -24,6 +24,7 @@
             resultType="com.learn.project.mall.product.infrastructure.persistence.mybatis.entity.CategoryDo">
         select c.* from pms_category c
         <where>
+            ${ew.sqlSegment}
             and c.is_delete = '0'
             <if test="params.catId !=null and params.catId != ''">and c.cat_id = #{params.parentId}</if>
         </where>

@@ -19,6 +19,6 @@ import java.util.Map;
 @Mapper
 public interface CategoryMapper extends BaseMapper<CategoryDo> {
 
-    List<CategoryDo> queryList(@Param("params") Map<String, Object> params, @Param("es") QueryWrapper<CategoryDo> wrapper);
+    List<CategoryDo> queryList(@Param("params") Map<String, Object> params, @Param("ew") QueryWrapper<CategoryDo> wrapper);
 
 }
