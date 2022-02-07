@@ -17,16 +17,11 @@
     <dependencies>
         <dependency>
             <groupId>com.learn.project</groupId>
-            <artifactId>mall-common</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
+            <artifactId>mall-common-web</artifactId>
             <exclusions>
                 <exclusion>
-                    <groupId>mysql</groupId>
-                    <artifactId>mysql-connector-java</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>com.baomidou</groupId>
-                    <artifactId>mybatis-plus-boot-starter</artifactId>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-web</artifactId>
                 </exclusion>
             </exclusions>
         </dependency>
