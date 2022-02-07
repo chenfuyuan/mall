@@ -25,6 +25,10 @@
                 </exclusion>
             </exclusions>
         </dependency>
+        <dependency>
+            <groupId>com.learn.project</groupId>
+            <artifactId>mall-common-core</artifactId>
+        </dependency>
 
         <dependency>
             <groupId>javax.servlet</groupId>
