@@ -29,5 +29,9 @@
             <artifactId>mall-common-web</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>com.learn.project</groupId>
+            <artifactId>mall-common-core</artifactId>
+        </dependency>
     </dependencies>
 </project>
