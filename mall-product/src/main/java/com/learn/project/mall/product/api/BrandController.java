@@ -6,6 +6,7 @@ import com.learn.project.common.web.util.valid.ValidatorUtil;
 import com.learn.project.common.web.util.valid.group.AddGroup;
 import com.learn.project.common.web.util.valid.group.UpdateGroup;
 
+import com.learn.project.common.web.util.valid.group.UpdateShowStatusGroup;
 import com.learn.project.mall.product.application.BrandCommandService;
 import com.learn.project.mall.product.application.BrandQueryService;
 import com.learn.project.mall.product.application.command.BrandCommand;
@@ -42,7 +43,7 @@ public class BrandController {
      * 列表
      */
     @RequestMapping("/list")
-    public R list(@RequestParam Map<String, Object> params){
+    public R list(@RequestParam Map<String, Object> params) {
         PageUtils page = brandQueryService.queryPage(params);
         return R.ok().put("page", page);
     }
@@ -51,7 +52,7 @@ public class BrandController {
      * 信息
      */
     @RequestMapping("/info/{brandId}")
-    public R info(@PathVariable("brandId") Long brandId){
+    public R info(@PathVariable("brandId") Long brandId) {
         BrandDto brandDto = brandQueryService.getById(brandId);
         return R.ok().put("brand", brandDto);
     }
@@ -60,12 +61,12 @@ public class BrandController {
      * 保存
      */
     @RequestMapping("/save")
-    public R save(@RequestBody BrandCommand brandCommand){
+    public R save(@RequestBody BrandCommand brandCommand) {
         ValidatorUtil.validateEntity(brandCommand, AddGroup.class);
         Long saveId = brandCommandService.saveOrUpdate(brandCommand);
         return R.ok().put("saveId", saveId);
     }
-    
+
     /**
      * 批量保存
      */
@@ -80,7 +81,7 @@ public class BrandController {
      * 修改
      */
     @RequestMapping("/update")
-    public R update(@RequestBody BrandCommand brandCommand){
+    public R update(@RequestBody BrandCommand brandCommand) {
         ValidatorUtil.validateEntity(brandCommand, UpdateGroup.class);
         Long updateId = brandCommandService.saveOrUpdate(brandCommand);
         return R.ok().put("updateId", updateId);
@@ -93,14 +94,14 @@ public class BrandController {
     public R batchUpdate(@RequestBody List<BrandCommand> brandCommandList) {
         ValidatorUtil.validateEntity(brandCommandList, UpdateGroup.class);
         Long[] updateIds = brandCommandService.batchSaveOrUpdate(brandCommandList);
-        return R.ok().put("updateIds",updateIds);
+        return R.ok().put("updateIds", updateIds);
     }
 
     /**
      * 删除
      */
     @RequestMapping("/delete")
-    public R delete(@RequestBody Long[] brandIds){
+    public R delete(@RequestBody Long[] brandIds) {
         brandCommandService.delete(Arrays.asList(brandIds));
         return R.ok();
     }
@@ -114,4 +115,14 @@ public class BrandController {
         return R.ok();
     }
 
+    /**
+     * 更新显示状态
+     * @return
+     */
+    @RequestMapping("/update/showStatus")
+    public R updateShowStatus(@RequestBody BrandCommand brandCommand) {
+        ValidatorUtil.validateEntity(brandCommand, UpdateShowStatusGroup.class);
+        brandCommandService.saveOrUpdate(brandCommand);
+        return R.ok();
+    }
 }
