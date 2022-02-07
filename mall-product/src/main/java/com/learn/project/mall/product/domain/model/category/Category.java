@@ -142,7 +142,7 @@ public class Category implements Entity<Category>,Comparable<Category> {
             //递归寻找子分类
             category.setSubCategorys(buildSubCategorysByList(category, source));
             return category;
-        }).collect(Collectors.toList());
+        }).sorted().collect(Collectors.toList());
     }
 
     public void setTimeInfo(CommonInfo timeInfo) {

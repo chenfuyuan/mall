@@ -17,7 +17,7 @@ public class CategoryCommand {
     /**
      * 分类id
      */
-    @NotNull(groups = UpdateGroup.class,message = "分类Id不能为空")
+    @NotNull(groups = UpdateGroup.class,message = "分类Id不能为空!")
     private Long catId;
     /**
      * 分类名称

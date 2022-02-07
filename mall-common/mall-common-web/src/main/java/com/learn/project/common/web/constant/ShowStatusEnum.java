@@ -22,7 +22,7 @@ public enum ShowStatusEnum implements ValueObject<ShowStatusEnum> {
 
     public static ShowStatusEnum getShowStatusEnum(Integer value) {
         if (value == null) {
-            throw new BizException("创建显示状态时错误，显示状态为空!");
+            return null;
         }
         return value == SHOW.value ? SHOW : HIDE;
     }

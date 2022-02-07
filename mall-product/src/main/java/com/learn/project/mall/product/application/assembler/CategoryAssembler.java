@@ -32,6 +32,10 @@ public class CategoryAssembler {
         dto.setName(category.getName());
         dto.setCatLevel(category.getCatLevel() == null ? null : category.getCatLevel().getValue());
         dto.setSort(category.getSort());
+        dto.setProductCount(category.getProductCount()==null?null:category.getProductCount().getCount());
+        dto.setProductUnit(category.getProductUnit());
+        dto.setParentCid(category.getParentId()==null?null:category.getParentId().getId());
+
         if (category.getTimeInfo() != null) {
             dto.setIsDelete(category.getTimeInfo().getIsDeleteEnum().getValue());
             dto.setGmtCreate(category.getTimeInfo().getCreateTime());

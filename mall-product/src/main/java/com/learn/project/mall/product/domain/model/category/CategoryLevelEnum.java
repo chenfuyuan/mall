@@ -27,7 +27,7 @@ public enum CategoryLevelEnum implements ValueObject<CategoryLevelEnum> {
 
     public static CategoryLevelEnum getCategoryLevelEnum(Integer value) {
         if (value == null) {
-            throw new BizException("获取分类菜单失败,菜单等级为空!");
+            return null;
         }
         for (CategoryLevelEnum level : CategoryLevelEnum.values()) {
             if (value == level.value) {
