@@ -65,6 +65,10 @@ public class AttrGroupAssembler {
             result.setGmtModified(attrGroup.getCommonInfo().getUpdateTime());
             result.setUpdateVersion(attrGroup.getCommonInfo().getVersion());
         }
+
+        if (EmptyUtil.isNotNull(attrGroup.getCategoryPath())) {
+            result.setCategoryPath(attrGroup.getCategoryPath().getPath());
+        }
         return result;
     }
 }

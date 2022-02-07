@@ -2,6 +2,7 @@ package com.learn.project.mall.product.domain.model.category;
 
 import com.learn.project.common.core.domain.ValueObject;
 import com.learn.project.common.web.exception.NoBizException;
+import com.uptool.core.able.EmptyAble;
 import com.uptool.core.util.EmptyUtil;
 import com.uptool.core.util.NumberUtil;
 import lombok.Getter;
@@ -14,7 +15,7 @@ import java.util.Objects;
  * @date 2022/2/4 16:40
  */
 @Getter
-public class CategoryPath implements ValueObject<CategoryPath> {
+public class CategoryPath implements ValueObject<CategoryPath>, EmptyAble {
 
     private final Long[] path;
 
@@ -25,6 +26,10 @@ public class CategoryPath implements ValueObject<CategoryPath> {
         this.path = path;
     }
 
+    @Override
+    public boolean isEmpty() {
+        return path == null || path.length == 0;
+    }
 
     @Override
     public boolean sameValueAs(CategoryPath other) {

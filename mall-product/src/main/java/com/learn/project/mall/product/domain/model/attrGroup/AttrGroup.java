@@ -4,6 +4,7 @@ import com.learn.project.common.core.domain.Entity;
 import com.learn.project.common.core.domain.CommonInfo;
 import com.learn.project.common.core.domain.EntityId;
 import com.learn.project.common.core.domain.HaveCommonInfo;
+import com.learn.project.mall.product.domain.model.category.CategoryPath;
 import lombok.Data;
 import java.util.Date;
 
@@ -47,6 +48,11 @@ public class AttrGroup implements Entity<AttrGroup>, HaveCommonInfo {
      * 时间信息
      */
     private CommonInfo commonInfo;
+
+    /**
+     * 所属分类路径
+     */
+    private CategoryPath categoryPath;
 
     @Override
     public EntityId getUniqueLabel() {

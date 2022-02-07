@@ -50,7 +50,11 @@ public class CategoryRepositoryImpl extends ServiceImpl<CategoryMapper, Category
 
     @Override
     public CategoryPath getCategoryPath(CategoryId categoryId) {
+        //查询需要寻找路径的分类Id
         CategoryDo categoryDO = this.getById(categoryId.getId());
+        if (categoryDO == null) {
+            return new CategoryPath(new Long[0]);
+        }
         //查询分类路径
         Long[] pathArray = getCategoryPath(categoryDO);
         return new CategoryPath(pathArray);

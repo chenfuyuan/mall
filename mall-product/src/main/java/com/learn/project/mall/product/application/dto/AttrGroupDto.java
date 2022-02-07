@@ -54,4 +54,9 @@ public class AttrGroupDto {
     * 更新版本
     */
     private Integer updateVersion;
+
+    /**
+     * 所属分类的分类路径
+     */
+    private Long[] categoryPath;
 }

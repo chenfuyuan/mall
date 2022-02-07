@@ -8,6 +8,7 @@ import com.learn.project.common.web.constant.ShowStatusEnum;
 import com.learn.project.common.core.domain.Entity;
 import com.learn.project.mall.product.domain.model.product.ProductCount;
 import com.uptool.core.util.EmptyUtil;
+import com.uptool.core.util.SortUtil;
 import lombok.Data;
 
 import java.util.List;
@@ -99,7 +100,7 @@ public class Category implements Entity<Category>,Comparable<Category> {
 
     @Override
     public int compareTo(Category o) {
-        return this.getSort() -  o.getSort();
+        return SortUtil.compareNullToZero(this.getSort(),o.getSort());
     }
 
     /**

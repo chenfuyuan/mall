@@ -2,14 +2,19 @@ package com.learn.project.mall.product.infrastructure.persistence.mybatis.reposi
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.learn.project.common.web.exception.BizException;
 import com.learn.project.mall.product.domain.model.attrGroup.AttrGroup;
 import com.learn.project.mall.product.domain.model.attrGroup.AttrGroupId;
 import com.learn.project.mall.product.domain.model.attrGroup.AttrGroupRepository;
+import com.learn.project.mall.product.domain.model.category.CategoryId;
+import com.learn.project.mall.product.domain.model.category.CategoryPath;
+import com.learn.project.mall.product.domain.model.category.CategoryRepository;
 import com.learn.project.mall.product.infrastructure.persistence.mybatis.converter.AttrGroupConverter;
 import com.learn.project.mall.product.infrastructure.persistence.mybatis.entity.AttrGroupDo;
 import com.learn.project.mall.product.infrastructure.persistence.mybatis.mapper.AttrGroupMapper;
 import com.uptool.core.util.EmptyUtil;
 import com.uptool.core.util.ListUtil;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
@@ -28,6 +33,8 @@ import java.util.stream.Collectors;
 @Repository
 public class AttrGroupRepositoryImpl extends ServiceImpl<AttrGroupMapper, AttrGroupDo> implements AttrGroupRepository, IService<AttrGroupDo> {
 
+    @Autowired
+    private CategoryRepository categoryRepository;
 
     @Override
     public AttrGroup find(AttrGroupId attrGroupId) {
@@ -35,7 +42,16 @@ public class AttrGroupRepositoryImpl extends ServiceImpl<AttrGroupMapper, AttrGr
         if (EmptyUtil.isNull(attrGroupDo)) {
             return null;
         }
-        return AttrGroupConverter.toAttrGroup(attrGroupDo);
+        AttrGroup attrGroup = AttrGroupConverter.toAttrGroup(attrGroupDo);
+
+        //查询所属分类路径，并填充
+        CategoryPath categoryPath = categoryRepository.getCategoryPath(new CategoryId(attrGroup.getCatelogId()));
+        if (EmptyUtil.isEmpty(categoryPath)) {
+            throw new BizException("该属性分组查询不到分类路径!");
+        }
+        attrGroup.setCategoryPath(categoryPath);
+
+        return attrGroup;
     }
 
     @Override
