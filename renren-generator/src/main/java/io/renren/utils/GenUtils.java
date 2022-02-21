@@ -79,6 +79,9 @@ public class GenUtils {
         templates.add(addJavaTemplate("RepositoryImpl"));
         templates.add(addJavaTemplate("Converter"));
 
+        //Dao.xml
+        templates.add("template/Dao.xml.vm");
+
         //sql
         templates.add("template/menu.sql.vm");
 
