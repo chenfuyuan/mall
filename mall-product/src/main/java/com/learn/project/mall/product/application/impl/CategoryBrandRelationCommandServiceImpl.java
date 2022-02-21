@@ -31,13 +31,24 @@ public class CategoryBrandRelationCommandServiceImpl implements CategoryBrandRel
     @Autowired
     private CategoryBrandRelationRepository categoryBrandRelationRepository;
 
+    @Autowired
+    private CategoryBrandRelationCreateSpecification categoryBrandRelationCreateSpecification;
 
     @Override
     @Transactional(rollbackFor = Exception.class)
     public Long saveOrUpdate(CategoryBrandRelationCommand categoryBrandRelationCommand) {
         CategoryBrandRelation categoryBrandRelation = CategoryBrandRelationAssembler.toCategoryBrandRelation(categoryBrandRelationCommand);
-        CategoryBrandRelationCreateSpecification categoryBrandRelationCreateSpecification = new CategoryBrandRelationCreateSpecification();
         categoryBrandRelationCreateSpecification.isSatisfiedBy(categoryBrandRelation);
+        return categoryBrandRelationRepository.store(categoryBrandRelation).getId();
+    }
+
+
+    @Override
+    public Long addDetail(CategoryBrandRelationCommand categoryBrandRelationCommand) {
+        CategoryBrandRelation categoryBrandRelation = CategoryBrandRelationAssembler.toCategoryBrandRelation(categoryBrandRelationCommand);
+        //校验，并填充信息
+        categoryBrandRelationCreateSpecification.isSatisfiedBy(categoryBrandRelation);
+
         return categoryBrandRelationRepository.store(categoryBrandRelation).getId();
     }
 
@@ -69,11 +80,11 @@ public class CategoryBrandRelationCommandServiceImpl implements CategoryBrandRel
         );
 
         //校验
-        CategoryBrandRelationCreateSpecification categoryBrandRelationCreateSpecification = new CategoryBrandRelationCreateSpecification();
         categoryBrandRelationList.forEach(categoryBrandRelation->{
             categoryBrandRelationCreateSpecification.isSatisfiedBy(categoryBrandRelation);
         });
 
         return categoryBrandRelationRepository.store(categoryBrandRelationList).stream().map(id->id.getId()).toArray(Long[]::new);
     }
+
 }

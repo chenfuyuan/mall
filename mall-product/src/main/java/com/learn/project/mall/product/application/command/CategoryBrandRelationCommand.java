@@ -1,7 +1,10 @@
 package com.learn.project.mall.product.application.command;
 
 
+import com.learn.project.common.web.util.valid.group.AddGroup;
 import lombok.Data;
+
+import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 /**
@@ -15,39 +18,13 @@ import java.util.Date;
 public class CategoryBrandRelationCommand {
 
     /**
-    * 
-    */
-    private Long id;
-    /**
     * 品牌id
     */
+    @NotNull(groups = {AddGroup.class},message = "新增品牌分类关联时，品牌Id不能为空!")
     private Long brandId;
     /**
     * 分类id
     */
+    @NotNull(groups = {AddGroup.class},message = "新增品牌分类关联时，分类Id不能为空!")
     private Long catelogId;
-    /**
-    * 
-    */
-    private String brandName;
-    /**
-    * 
-    */
-    private String catelogName;
-    /**
-    * 是否删除[0-未删除, 1-删除]
-    */
-    private Integer isDelete;
-    /**
-    * 创建时间
-    */
-    private Date gmtCreate;
-    /**
-    * 修改时间
-    */
-    private Date gmtModified;
-    /**
-    * 更新版本
-    */
-    private Integer updateVersion;
 }

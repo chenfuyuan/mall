@@ -7,6 +7,7 @@ import com.learn.project.common.mybatis.util.Query;
 import com.learn.project.mall.product.application.CategoryBrandRelationQueryService;
 import com.learn.project.mall.product.application.assembler.CategoryBrandRelationAssembler;
 import com.learn.project.mall.product.application.dto.CategoryBrandRelationDto;
+import com.learn.project.mall.product.domain.model.brand.BrandId;
 import com.learn.project.mall.product.domain.model.categoryBrandRelation.CategoryBrandRelation;
 import com.learn.project.mall.product.domain.model.categoryBrandRelation.CategoryBrandRelationId;
 import com.learn.project.mall.product.domain.model.categoryBrandRelation.CategoryBrandRelationRepository;
@@ -15,6 +16,7 @@ import com.learn.project.mall.product.infrastructure.persistence.mybatis.mapper.
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -49,6 +51,13 @@ public class CategoryBrandRelationQueryServiceImpl implements CategoryBrandRelat
     public CategoryBrandRelationDto getById(Long id) {
         CategoryBrandRelation categoryBrandRelation = categoryBrandRelationRepository.find(new CategoryBrandRelationId(id));
         return CategoryBrandRelationAssembler.fromCategoryBrandRelation(categoryBrandRelation);
+    }
+
+    @Override
+    public List<CategoryBrandRelationDto> queryByBrandId(Long bId) {
+        BrandId brandId = new BrandId(bId);
+        List<CategoryBrandRelation> categoryBrandRelationList = categoryBrandRelationRepository.find(brandId);
+        return CategoryBrandRelationAssembler.fromCategoryBrandRelation(categoryBrandRelationList);
     }
 
 

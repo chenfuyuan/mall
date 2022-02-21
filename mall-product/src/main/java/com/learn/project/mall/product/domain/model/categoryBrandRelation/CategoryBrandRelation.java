@@ -4,6 +4,8 @@ import com.learn.project.common.core.domain.Entity;
 import com.learn.project.common.core.domain.CommonInfo;
 import com.learn.project.common.core.domain.EntityId;
 import com.learn.project.common.core.domain.HaveCommonInfo;
+import com.learn.project.mall.product.domain.model.brand.Brand;
+import com.learn.project.mall.product.domain.model.category.Category;
 import lombok.Data;
 import java.util.Date;
 
@@ -22,22 +24,16 @@ public class CategoryBrandRelation implements Entity<CategoryBrandRelation>, Hav
     * 主键-
     */
     private CategoryBrandRelationId id;
+
     /**
-    * 品牌id
-    */
-    private Long brandId;
+     * 品牌
+     */
+    private Brand brand;
+
     /**
-    * 分类id
-    */
-    private Long catelogId;
-    /**
-    * 
-    */
-    private String brandName;
-    /**
-    * 
-    */
-    private String catelogName;
+     * 分类
+     */
+    private Category category;
 
     /**
      * 时间信息
@@ -48,4 +44,6 @@ public class CategoryBrandRelation implements Entity<CategoryBrandRelation>, Hav
     public EntityId getUniqueLabel() {
         return this.id;
     }
+
+
 }

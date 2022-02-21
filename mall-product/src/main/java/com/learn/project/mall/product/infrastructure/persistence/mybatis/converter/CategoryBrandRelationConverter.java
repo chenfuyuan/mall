@@ -1,6 +1,10 @@
 package com.learn.project.mall.product.infrastructure.persistence.mybatis.converter;
 
 import com.learn.project.common.mybatis.util.ConverterUtil;
+import com.learn.project.mall.product.domain.model.brand.Brand;
+import com.learn.project.mall.product.domain.model.brand.BrandId;
+import com.learn.project.mall.product.domain.model.category.Category;
+import com.learn.project.mall.product.domain.model.category.CategoryId;
 import com.learn.project.mall.product.domain.model.categoryBrandRelation.CategoryBrandRelation;
 import com.learn.project.mall.product.domain.model.categoryBrandRelation.CategoryBrandRelationId;
 import com.learn.project.mall.product.infrastructure.persistence.mybatis.entity.CategoryBrandRelationDo;
@@ -28,10 +32,11 @@ public class CategoryBrandRelationConverter {
         CategoryBrandRelationDo result = new CategoryBrandRelationDo();
         ConverterUtil.fromDomainModelCommonInfo(result,categoryBrandRelation,categoryBrandRelation);
 
-        result.setBrandId(categoryBrandRelation.getBrandId());
-        result.setCatelogId(categoryBrandRelation.getCatelogId());
-        result.setBrandName(categoryBrandRelation.getBrandName());
-        result.setCatelogName(categoryBrandRelation.getCatelogName());
+        result.setBrandId(categoryBrandRelation.getBrand().getBrandId().getId());
+        result.setBrandName(categoryBrandRelation.getBrand().getName());
+
+        result.setCatelogId(categoryBrandRelation.getCategory().getCategoryId().getId());
+        result.setCatelogName(categoryBrandRelation.getCategory().getName());
 
         return result;
     }
@@ -51,10 +56,16 @@ public class CategoryBrandRelationConverter {
 
         result.setId(new CategoryBrandRelationId(categoryBrandRelationDo.getId()));
 
-        result.setBrandId(categoryBrandRelationDo.getBrandId());
-        result.setCatelogId(categoryBrandRelationDo.getCatelogId());
-        result.setBrandName(categoryBrandRelationDo.getBrandName());
-        result.setCatelogName(categoryBrandRelationDo.getCatelogName());
+        Brand brand = new Brand();
+        brand.setBrandId(new BrandId(categoryBrandRelationDo.getId()));
+        brand.setName(categoryBrandRelationDo.getBrandName());
+        result.setBrand(brand);
+
+        Category category = new Category();
+        category.setCategoryId(new CategoryId(categoryBrandRelationDo.getId()));
+        category.setName(categoryBrandRelationDo.getCatelogName());
+        result.setCategory(category);
+
         return result;
     }
 }

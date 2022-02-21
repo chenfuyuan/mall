@@ -1,7 +1,9 @@
 package com.learn.project.mall.product.infrastructure.persistence.mybatis.repository;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.learn.project.mall.product.domain.model.brand.BrandId;
 import com.learn.project.mall.product.domain.model.categoryBrandRelation.CategoryBrandRelation;
 import com.learn.project.mall.product.domain.model.categoryBrandRelation.CategoryBrandRelationId;
 import com.learn.project.mall.product.domain.model.categoryBrandRelation.CategoryBrandRelationRepository;
@@ -36,6 +38,14 @@ public class CategoryBrandRelationRepositoryImpl extends ServiceImpl<CategoryBra
             return null;
         }
         return CategoryBrandRelationConverter.toCategoryBrandRelation(categoryBrandRelationDo);
+    }
+
+    @Override
+    public List<CategoryBrandRelation> find(BrandId brandId) {
+        QueryWrapper<CategoryBrandRelationDo> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("brand_id", brandId.getId());
+        List<CategoryBrandRelationDo> queryResult = this.list(queryWrapper);
+        return ListUtil.listMapCollectToList(queryResult, item -> CategoryBrandRelationConverter.toCategoryBrandRelation(item));
     }
 
     @Override

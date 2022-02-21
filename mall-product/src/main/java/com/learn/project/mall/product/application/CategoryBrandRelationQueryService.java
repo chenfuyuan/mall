@@ -3,6 +3,7 @@ package com.learn.project.mall.product.application;
 import com.learn.project.common.mybatis.util.PageUtils;
 import com.learn.project.mall.product.application.dto.CategoryBrandRelationDto;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -26,4 +27,11 @@ public interface CategoryBrandRelationQueryService {
      * @return 数据
      */
      CategoryBrandRelationDto getById(Long id);
+
+    /**
+     * 通过品牌Id获取指定数据
+     * @param brandId 品牌Id
+     * @return
+     */
+    List<CategoryBrandRelationDto> queryByBrandId(Long brandId);
 }

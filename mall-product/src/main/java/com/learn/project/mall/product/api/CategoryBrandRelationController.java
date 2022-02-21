@@ -12,6 +12,7 @@ import com.learn.project.mall.product.application.command.CategoryBrandRelationC
 import com.learn.project.mall.product.application.dto.CategoryBrandRelationDto;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -48,6 +49,17 @@ public class CategoryBrandRelationController {
     }
 
     /**
+     * 根据品牌Id查询所关联的分类
+     * @param brandId
+     * @return
+     */
+    @GetMapping("/category/list")
+    public R categoryList(@RequestParam(value = "brandId",required = true) Long brandId) {
+        List<CategoryBrandRelationDto> categoryBrandRelationList = categoryBrandRelationQueryService.queryByBrandId(brandId);
+        return R.ok().put("relationList", categoryBrandRelationList);
+    }
+
+    /**
      * 信息
      */
     @RequestMapping("/info/{id}")
@@ -62,39 +74,10 @@ public class CategoryBrandRelationController {
     @RequestMapping("/save")
     public R save(@RequestBody CategoryBrandRelationCommand categoryBrandRelationCommand){
         ValidatorUtil.validateEntity(categoryBrandRelationCommand, AddGroup.class);
-        Long saveId = categoryBrandRelationCommandService.saveOrUpdate(categoryBrandRelationCommand);
+        Long saveId = categoryBrandRelationCommandService.addDetail(categoryBrandRelationCommand);
         return R.ok().put("saveId", saveId);
     }
-    
-    /**
-     * 批量保存
-     */
-    @RequestMapping("/batchSave")
-    public R batchSave(@RequestBody List<CategoryBrandRelationCommand> categoryBrandRelationCommandList) {
-        ValidatorUtil.validateEntity(categoryBrandRelationCommandList, AddGroup.class);
-        Long[] saveIds = categoryBrandRelationCommandService.batchSaveOrUpdate(categoryBrandRelationCommandList);
-        return R.ok().put("saveIds", saveIds);
-    }
 
-    /**
-     * 修改
-     */
-    @RequestMapping("/update")
-    public R update(@RequestBody CategoryBrandRelationCommand categoryBrandRelationCommand){
-        ValidatorUtil.validateEntity(categoryBrandRelationCommand, UpdateGroup.class);
-        Long updateId = categoryBrandRelationCommandService.saveOrUpdate(categoryBrandRelationCommand);
-        return R.ok().put("updateId", updateId);
-    }
-
-    /**
-     * 批量修改
-     */
-    @RequestMapping("/batchUpdate")
-    public R batchUpdate(@RequestBody List<CategoryBrandRelationCommand> categoryBrandRelationCommandList) {
-        ValidatorUtil.validateEntity(categoryBrandRelationCommandList, UpdateGroup.class);
-        Long[] updateIds = categoryBrandRelationCommandService.batchSaveOrUpdate(categoryBrandRelationCommandList);
-        return R.ok().put("updateIds",updateIds);
-    }
 
     /**
      * 删除

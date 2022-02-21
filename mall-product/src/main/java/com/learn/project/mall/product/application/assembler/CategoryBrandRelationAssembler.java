@@ -4,9 +4,17 @@ import com.learn.project.common.core.domain.CommonInfo;
 import com.learn.project.common.core.domain.EntityId;
 import com.learn.project.mall.product.application.command.CategoryBrandRelationCommand;
 import com.learn.project.mall.product.application.dto.CategoryBrandRelationDto;
+import com.learn.project.mall.product.domain.model.brand.Brand;
+import com.learn.project.mall.product.domain.model.brand.BrandId;
+import com.learn.project.mall.product.domain.model.category.Category;
+import com.learn.project.mall.product.domain.model.category.CategoryId;
 import com.learn.project.mall.product.domain.model.categoryBrandRelation.CategoryBrandRelation;
 import com.learn.project.mall.product.domain.model.categoryBrandRelation.CategoryBrandRelationId;
 import com.uptool.core.util.EmptyUtil;
+import com.uptool.core.util.ListUtil;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 品牌分类关联-装配器
@@ -20,6 +28,7 @@ public class CategoryBrandRelationAssembler {
 
     /**
      * 转换成领域对象
+     *
      * @param command 命令对象
      * @return
      */
@@ -28,20 +37,23 @@ public class CategoryBrandRelationAssembler {
             return null;
         }
         CategoryBrandRelation result = new CategoryBrandRelation();
-        result.setId(command.getId() == null ? null: new CategoryBrandRelationId(command.getId()));
 
-        result.setBrandId(command.getBrandId());
-        result.setCatelogId(command.getCatelogId());
-        result.setBrandName(command.getBrandName());
-        result.setCatelogName(command.getCatelogName());
+        //设置品牌
+        Brand brand = new Brand();
+        brand.setBrandId(new BrandId(command.getBrandId()));
+        result.setBrand(brand);
 
-        result.setCommonInfo(CommonInfo.getInstance(command.getGmtCreate(), command.getGmtModified(), command.getIsDelete(), command.getUpdateVersion()));
+        //设置分类
+        Category category = new Category();
+        category.setCategoryId(new CategoryId(command.getCatelogId()));
+        result.setCategory(category);
 
         return result;
     }
 
     /**
      * 转换成数据传输对象
+     *
      * @param categoryBrandRelation 领域对象
      * @return
      */
@@ -52,10 +64,17 @@ public class CategoryBrandRelationAssembler {
         CategoryBrandRelationDto result = new CategoryBrandRelationDto();
         result.setId(EntityId.getId(categoryBrandRelation.getId()));
 
-        result.setBrandId(categoryBrandRelation.getBrandId());
-        result.setCatelogId(categoryBrandRelation.getCatelogId());
-        result.setBrandName(categoryBrandRelation.getBrandName());
-        result.setCatelogName(categoryBrandRelation.getCatelogName());
+        // 品牌
+        if (EmptyUtil.isNotEmpty(categoryBrandRelation.getBrand())) {
+            result.setBrandId(categoryBrandRelation.getBrand().getBrandId().getId());
+            result.setBrandName(categoryBrandRelation.getBrand().getName());
+        }
+
+        //分类
+        if (EmptyUtil.isNotEmpty(categoryBrandRelation.getCategory())) {
+            result.setCatelogId(categoryBrandRelation.getCategory().getCategoryId().getId());
+            result.setCatelogName(categoryBrandRelation.getCategory().getName());
+        }
 
         if (categoryBrandRelation.getCommonInfo() != null) {
             result.setIsDelete(categoryBrandRelation.getCommonInfo().getIsDeleteEnum().getValue());
@@ -64,5 +83,17 @@ public class CategoryBrandRelationAssembler {
             result.setUpdateVersion(categoryBrandRelation.getCommonInfo().getVersion());
         }
         return result;
+    }
+
+    /**
+     * 将集合转换成数据传输对象
+     * @param categoryBrandRelation
+     * @return
+     */
+    public static List<CategoryBrandRelationDto> fromCategoryBrandRelation(List<CategoryBrandRelation> categoryBrandRelation) {
+        if (categoryBrandRelation == null) {
+            return new ArrayList<>();
+        }
+        return ListUtil.listMapCollectToList(categoryBrandRelation, (item) -> fromCategoryBrandRelation(item));
     }
 }

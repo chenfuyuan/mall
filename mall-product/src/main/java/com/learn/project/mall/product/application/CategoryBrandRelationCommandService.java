@@ -40,4 +40,11 @@ public interface CategoryBrandRelationCommandService {
      * @return
      */
     Long[] batchSaveOrUpdate(List<CategoryBrandRelationCommand> categoryBrandRelationCommandList);
+
+    /**
+     * 添加 分类与品牌关联详情
+     * @param categoryBrandRelationCommand
+     * @return
+     */
+    Long addDetail(CategoryBrandRelationCommand categoryBrandRelationCommand);
 }

@@ -1,5 +1,7 @@
 package com.learn.project.mall.product.domain.model.categoryBrandRelation;
 
+import com.learn.project.mall.product.domain.model.brand.BrandId;
+
 import java.util.Collection;
 import java.util.List;
 import java.util.Set;
@@ -19,6 +21,13 @@ public interface CategoryBrandRelationRepository {
      * @return
      */
     CategoryBrandRelation find(CategoryBrandRelationId id);
+
+    /**
+     * 通过品牌Id查找 品牌对应关系
+     * @param brandId 品牌Id
+     * @return
+     */
+    List<CategoryBrandRelation> find(BrandId brandId);
 
     /**
      * 存储领域对象
