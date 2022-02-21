@@ -4,6 +4,7 @@ package com.learn.project.common.web.util;
 import com.learn.project.common.web.constant.ResponseCodeEnum;
 import com.learn.project.common.web.exception.BizException;
 import com.learn.project.common.web.exception.NoBizException;
+import com.uptool.core.Exception.ValidationException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -31,6 +32,19 @@ public class GlobalExceptionHandler {
     	log.error("发生业务异常！原因是：{}",e.getErrorMsg());
     	return R.error(e.getErrorCode(),e.getErrorMsg());
     }
+
+	/**
+	 * 处理校验异常
+	 * @param req
+	 * @param e
+	 * @return
+	 */
+	@ExceptionHandler(value = ValidationException.class)
+	@ResponseBody
+	public R bizExceptionHandler(HttpServletRequest req, ValidationException e) {
+		log.error("发生业务异常！原因是：{}",e.getMessage());
+		return R.error(ResponseCodeEnum.DATA_VALIDATE_ERROR.getResultCode(),e.getMessage());
+	}
 
 	/**
 	 * 处理空指针的异常

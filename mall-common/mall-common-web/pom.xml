@@ -12,6 +12,10 @@
     <artifactId>mall-common-web</artifactId>
 
     <dependencies>
+        <dependency>
+            <groupId>com.upTool</groupId>
+            <artifactId>upTool-core</artifactId>
+        </dependency>
         <!--spring-starter-web-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
